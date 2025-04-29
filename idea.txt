@@ -1,0 +1,7 @@
+graph TD
+    A[SRS PDF] --> B(PDF Text Extraction)
+    B --> C(Requirements Preprocessing)
+    C --> D[Knowledge Graph Construction]
+    D --> E(LLM-Guided UML Generation)
+    E --> F[PlantUML Code]
+    F --> G(Visual Diagram)
