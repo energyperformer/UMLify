@@ -1,0 +1,158 @@
+{
+  "metadata": {
+    "title": "Copm5541 SRS 1",
+    "author": "Team4-Comp5541",
+    "creation_date": "D:20100504144616",
+    "page_count": 31,
+    "processed_date": "2025-04-30T00:28:07.724314"
+  },
+  "summary": {
+    "system_overview": "The Unified University Inventory System (UUIS) is a web-based application that allows users to access and manage the integrated inventory of the university. It provides a secure access to the data from outside the university at any time during working hours.",
+    "actors": [
+      {
+        "name": "Inventory Admin",
+        "type": "user",
+        "description": "A user who can manage and update the inventory"
+      },
+      {
+        "name": "User",
+        "type": "user",
+        "description": "A general user who can create requests and view reports"
+      },
+      {
+        "name": "Administrator",
+        "type": "user",
+        "description": "A user who can change permissions and manage the system"
+      },
+      {
+        "name": "IT Team",
+        "type": "user",
+        "description": "A team responsible for maintaining the system and database"
+      },
+      {
+        "name": "Authentication System",
+        "type": "system",
+        "description": "A system responsible for authenticating users"
+      },
+      {
+        "name": "Inventory System",
+        "type": "system",
+        "description": "A system responsible for managing the inventory"
+      }
+    ],
+    "core_functionalities": [
+      {
+        "name": "Inventory Management",
+        "description": "The system allows users to manage and update the inventory, including adding, editing, and deleting assets"
+      },
+      {
+        "name": "Request Management",
+        "description": "The system allows users to create requests to borrow or reserve assets, and administrators to approve or reject these requests"
+      },
+      {
+        "name": "Reporting",
+        "description": "The system allows users to generate reports on user permissions, requests, and assets by location"
+      },
+      {
+        "name": "Authentication and Authorization",
+        "description": "The system authenticates and authorizes users to access the system and perform actions based on their roles and permissions"
+      }
+    ],
+    "requirements": [
+      {
+        "type": "functional",
+        "description": "The system should allow users to add, edit, and delete assets"
+      },
+      {
+        "type": "functional",
+        "description": "The system should allow users to create requests to borrow or reserve assets"
+      },
+      {
+        "type": "functional",
+        "description": "The system should allow administrators to approve or reject requests"
+      },
+      {
+        "type": "non-functional",
+        "description": "The system should be available at all times during working hours"
+      },
+      {
+        "type": "non-functional",
+        "description": "The system should be secure and protect user data"
+      },
+      {
+        "type": "non-functional",
+        "description": "The system should be usable by users with basic experience on the internet and office software"
+      }
+    ],
+    "use_cases": [
+      {
+        "name": "Modify Asset",
+        "actors": [
+          "Inventory Admin"
+        ],
+        "description": "The Inventory Admin can modify an asset's properties",
+        "preconditions": [
+          "The Inventory Admin is authenticated"
+        ],
+        "postconditions": [
+          "The system state is updated according to the modification"
+        ]
+      },
+      {
+        "name": "Create Request",
+        "actors": [
+          "User"
+        ],
+        "description": "The User can create a request to borrow or reserve an asset",
+        "preconditions": [
+          "The User is authenticated"
+        ],
+        "postconditions": [
+          "A new request is pending waiting for approval"
+        ]
+      },
+      {
+        "name": "Approve Request",
+        "actors": [
+          "Administrator"
+        ],
+        "description": "The Administrator can approve or reject a request",
+        "preconditions": [
+          "The Administrator is authenticated",
+          "The request list is not empty"
+        ],
+        "postconditions": [
+          "The Inventory system is updated"
+        ]
+      },
+      {
+        "name": "Search",
+        "actors": [
+          "User"
+        ],
+        "description": "The User can search for assets",
+        "preconditions": [
+          "The User is authenticated",
+          "The search operation is authorized"
+        ],
+        "postconditions": [
+          "Search results are displayed"
+        ]
+      },
+      {
+        "name": "Create Report",
+        "actors": [
+          "User"
+        ],
+        "description": "The User can create reports on user permissions, requests, and assets by location",
+        "preconditions": [
+          "The User is authenticated",
+          "The User is authorized to create reports"
+        ],
+        "postconditions": [
+          "A report is generated"
+        ]
+      }
+    ]
+  }
+}
