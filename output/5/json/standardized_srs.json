@@ -1,0 +1,80 @@
+{
+  "introduction": {
+    "purpose": "to integrate 3 faculties databases providing a web interface for users to access and manage the integrated inventory",
+    "scope": "the iufa application provides a web-based interface for users to access and manage the inventory",
+    "definitions": [
+      "unified university inventory system",
+      "technology-independent",
+      "business terminology"
+    ]
+  },
+  "system_overview": {
+    "description": "a web-based inventory management system for universities",
+    "features": [
+      "asset management",
+      "request management",
+      "report generation",
+      "user authentication"
+    ]
+  },
+  "functional_requirements": {
+    "user_requirements": [
+      "users can create requests",
+      "users can view asset information",
+      "users can view request status"
+    ],
+    "system_requirements": [
+      "system can authenticate users",
+      "system can authorize user actions",
+      "system can generate reports"
+    ]
+  },
+  "non_functional_requirements": {
+    "performance": [
+      "system should be available during working hours",
+      "system should respond within 1 minute"
+    ],
+    "security": [
+      "system should authenticate users",
+      "system should authorize user actions",
+      "system should protect data"
+    ],
+    "usability": [
+      "system should be easy to use",
+      "system should provide clear and consistent terminology"
+    ]
+  },
+  "use_cases": {
+    "actors": [
+      "inventory admin",
+      "users",
+      "authentication system"
+    ],
+    "descriptions": [
+      "modify asset",
+      "create request",
+      "return asset",
+      "approve request",
+      "change permissions"
+    ]
+  },
+  "system_interfaces": {
+    "user_interfaces": [
+      "web interface",
+      "search interface",
+      "report interface"
+    ],
+    "hardware_interfaces": [
+      "servers",
+      "databases"
+    ],
+    "software_interfaces": [
+      "operating systems",
+      "browsers"
+    ]
+  },
+  "constraints": [
+    "system should be installed on microsoft or unix platforms",
+    "system should be available on browsers like ie, firefox, chrome, opera or safari"
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "actors": [
+    {
+      "name": "Customer",
+      "description": "Interact with the system to place orders, provide feedback, and request bills",
+      "type": "primary"
+    },
+    {
+      "name": "Head Chef",
+      "description": "Manage orders, assign dishes to chefs, and mark dishes as cooked",
+      "type": "primary"
+    },
+    {
+      "name": "Chef",
+      "description": "View their assigned orders and prepare dishes",
+      "type": "primary"
+    },
+    {
+      "name": "Admin",
+      "description": "Manage staff, menu items, and inventory",
+      "type": "primary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "Place Order",
+      "description": "The system shows a list of cards (UI element) of dishes, each with a picture and price. The system displays list of dishes, allows customer to select and add to order"
+    },
+    {
+      "name": "Cancel or Edit Order",
+      "description": "The system allows customers to cancel or edit orders. The system allows customer to cancel or edit order, notifies head chef"
+    },
+    {
+      "name": "Provide Feedback",
+      "description": "The system provides a feedback mechanism for customers. The system stores customer feedback"
+    },
+    {
+      "name": "Request Bill",
+      "description": "Allow customers to request bills"
+    },
+    {
+      "name": "Manage Orders",
+      "description": "Enable staff to manage orders and inventory"
+    },
+    {
+      "name": "Assign Dishes",
+      "description": "Allow head chefs to assign dishes to chefs"
+    },
+    {
+      "name": "Mark Dishes as Cooked",
+      "description": "Allow head chefs to mark dishes as cooked"
+    },
+    {
+      "name": "Manage Staff",
+      "description": "Allow admin to manage staff"
+    },
+    {
+      "name": "Manage Menu Items",
+      "description": "Allow admin to manage menu items"
+    },
+    {
+      "name": "Manage Inventory",
+      "description": "Allow admin to manage inventory"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Customer",
+      "target": "Place Order",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Cancel or Edit Order",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Provide Feedback",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Request Bill",
+      "type": "association"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage Orders",
+      "type": "association"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Assign Dishes",
+      "type": "association"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Mark Dishes as Cooked",
+      "type": "association"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Staff",
+      "type": "association"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Menu Items",
+      "type": "association"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Inventory",
+      "type": "association"
+    },
+    {
+      "source": "Place Order",
+      "target": "Cancel or Edit Order",
+      "type": "include"
+    }
+  ]
+}

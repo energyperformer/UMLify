@@ -1,0 +1,86 @@
+{
+  "introduction": {
+    "purpose": "to integrate 3 faculties' databases and provide a web interface for users to access and manage the integrated inventory",
+    "scope": "to provide a unified university inventory system (UUIS) with a web interface for users to access and manage inventory",
+    "definitions": [
+      "unified university inventory system (UUIS)",
+      "technology-independent",
+      "business terminology"
+    ]
+  },
+  "system_overview": {
+    "description": "a web-based system for managing university inventory, including assets, locations, and user permissions",
+    "features": [
+      "asset management",
+      "location management",
+      "user permission management",
+      "report generation"
+    ]
+  },
+  "functional_requirements": {
+    "user_requirements": [
+      "create requests",
+      "edit assets",
+      "modify assets",
+      "add inventory assets",
+      "create new locations"
+    ],
+    "system_requirements": [
+      "authenticate users",
+      "authorize user actions",
+      "update inventory",
+      "generate reports"
+    ]
+  },
+  "non_functional_requirements": {
+    "performance": [
+      "learning time between 2-4 hours",
+      "availability during working hours"
+    ],
+    "security": [
+      "user authentication",
+      "permission-based access control",
+      "data backup"
+    ],
+    "usability": [
+      "clear and consistent terminology",
+      "easy to use interface"
+    ]
+  },
+  "use_cases": {
+    "actors": [
+      "inventory admin",
+      "users",
+      "administrators"
+    ],
+    "descriptions": [
+      "modify asset",
+      "edit asset",
+      "add new asset",
+      "create request",
+      "return asset",
+      "approve request",
+      "change permissions"
+    ]
+  },
+  "system_interfaces": {
+    "user_interfaces": [
+      "web interface",
+      "search interface",
+      "report interface"
+    ],
+    "hardware_interfaces": [
+      "servers",
+      "databases"
+    ],
+    "software_interfaces": [
+      "operating systems",
+      "browsers"
+    ]
+  },
+  "constraints": [
+    "availability during working hours",
+    "compatibility with microsoft and unix platforms",
+    "compatibility with multiple browsers"
+  ]
+}

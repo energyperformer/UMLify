@@ -1,0 +1,230 @@
+23
+DEFINING AND USING SPRITES
+23
+Defining and using sprites
+A Sprite is a small graphic element that can be used in diagrams.
+In PlantUML, sprites are monochrome and can have either 4, 8 or 16 gray level.
+To define a sprite, you have to use a hexadecimal digit between 0 and F per pixel.
+Then you can use the sprite using <$XXX> where XXX is the name of the sprite.
+@startuml
+sprite $foo1 {
+FFFFFFFFFFFFFFF
+F0123456789ABCF
+F0123456789ABCF
+F0123456789ABCF
+F0123456789ABCF
+F0123456789ABCF
+F0123456789ABCF
+F0123456789ABCF
+F0123456789ABCF
+FFFFFFFFFFFFFFF
+}
+Alice -> Bob : Testing <$foo1>
+@enduml
+You can scale the sprite.
+@startuml
+sprite $foo1 {
+FFFFFFFFFFFFFFF
+F0123456789ABCF
+F0123456789ABCF
+F0123456789ABCF
+F0123456789ABCF
+F0123456789ABCF
+F0123456789ABCF
+F0123456789ABCF
+F0123456789ABCF
+FFFFFFFFFFFFFFF
+}
+Alice -> Bob : Testing <$foo1{scale=3}>
+@enduml
+23.1
+Inline SVG sprite
+You can also use inlined SVG for sprites.
+PlantUML Language Reference Guide (1.2025.0)
+521 / 606
+
+
+23.1
+Inline SVG sprite
+23
+DEFINING AND USING SPRITES
+Only a tiny subset of SVG directives is possible, so you probably have to compress existing SVG files
+using https://vecta.io/nano. [Ref. GH-1066]
+@startuml
+sprite foo1 <svg width="8" height="8" viewBox="0 0 8 8">
+<path d="M1 0l-1 1 1.5 1.5-1.5 1.5h4v-4l-1.5 1.5-1.5-1.5zm3 4v4l1.5-1.5 1.5 1.5 1-1-1.5-1.5 1.5-1.5h-
+</svg>
+Alice->Bob : <$foo1*3>
+@enduml
+Another example:
+@startuml
+sprite foo1 <svg viewBox="0 0 36 36">
+<path fill="#77B255" d="M36 32c0 2.209-1.791 4-4 4H4c-2.209 0-4-1.791-4-4V4c0-2.209 1.791-4 4-4h28c2
+<path fill="#FFF" d="M21.529 18.006l8.238-8.238c.977-.976.977-2.559 0-3.535-.977-.977-2.559-.977-3.53
+</svg>
+Alice->Bob : <$foo1>
+@enduml
+You can also use rotation:
+@startuml
+sprite react <svg viewBox="0 0 230 230">
+<circle cx="115" cy="115" r="20.5" fill="#61dafb"/>
+<ellipse rx="110" ry="42"
+cx="115" cy="115" stroke="#61dafb" stroke-width="10" fill="none"/>
+<ellipse rx="110" ry="42"
+cx="115" cy="115" stroke="#61dafb" stroke-width="10" fill="none" transform
+<ellipse rx="110" ry="42"
+cx="115" cy="115" stroke="#61dafb" stroke-width="10" fill="none" transform
+</svg>
+rectangle <$react{scale=0.2}>
+@enduml
+And you can use color:
+@startuml
+sprite react <svg viewBox="0 0 230 230">
+<circle cx="115" cy="102" r="20.5" fill="#61dafb"/>
+PlantUML Language Reference Guide (1.2025.0)
+522 / 606
+
+
+23.2
+Changing colors
+23
+DEFINING AND USING SPRITES
+<ellipse rx="110" ry="42"
+cx="115" cy="102" stroke="#ff0000" stroke-width="10" fill="none"/>
+<g transform="rotate(100 115 102)">
+<ellipse rx="110" ry="42"
+cx="115" cy="102" stroke="#00ff00" stroke-width="10" fill="none"/>
+</g>
+<g transform="rotate(-100 115 102)">
+<ellipse rx="110" ry="42"
+cx="115" cy="102" stroke="#0000ff" stroke-width="10" fill="none"/>
+</g>
+</svg>
+rectangle <$react{scale=1}>
+@enduml
+23.2
+Changing colors
+Although sprites are monochrome, it’s possible to change their color.
+@startuml
+sprite $foo1 {
+FFFFFFFFFFFFFFF
+F0123456789ABCF
+F0123456789ABCF
+F0123456789ABCF
+F0123456789ABCF
+F0123456789ABCF
+F0123456789ABCF
+F0123456789ABCF
+F0123456789ABCF
+FFFFFFFFFFFFFFF
+}
+Alice -> Bob : Testing <$foo1,scale=3.4,color=orange>
+@enduml
+23.3
+Encoding Sprite
+To encode sprite, you can use the command line like:
+java -jar plantuml.jar -encodesprite 16z foo.png
+PlantUML Language Reference Guide (1.2025.0)
+523 / 606
+
+
+23.4
+Importing Sprite
+23
+DEFINING AND USING SPRITES
+where foo.png is the image file you want to use (it will be converted to gray automatically).
+After -encodesprite, you have to specify a format: 4, 8, 16, 4z, 8z or 16z.
+The number indicates the gray level and the optional z is used to enable compression in sprite definition.
+23.4
+Importing Sprite
+You can also launch the GUI to generate a sprite from an existing image.
+Click in the menubar then on File/Open Sprite Window.
+After copying an image into you clipboard, several possible definitions of the corresponding sprite will be
+displayed : you will just have to pickup the one you want.
+23.5
+Examples
+@startuml
+sprite $printer [15x15/8z] NOtH3W0W208HxFz_kMAhj7lHWpa1XC716sz0Pq4MVPEWfBHIuxP3L6kbTcizR8tAhzaqFvXwvF
+start
+:click on <$printer> to print the page;
+@enduml
+@startuml
+sprite $bug [15x15/16z] PKzR2i0m2BFMi15p__FEjQEqB1z27aeqCqixa8S4OT7C53cKpsHpaYPDJY_12MHM-BLRyywPhrrl
+sprite $printer [15x15/8z] NOtH3W0W208HxFz_kMAhj7lHWpa1XC716sz0Pq4MVPEWfBHIuxP3L6kbTcizR8tAhzaqFvXwv
+sprite $disk {
+444445566677881
+436000000009991
+43600000000ACA1
+53700000001A7A1
+53700000012B8A1
+53800000123B8A1
+63800001233C9A1
+634999AABBC99B1
+744566778899AB1
+7456AAAAA99AAB1
+8566AFC228AABB1
+8567AC8118BBBB1
+867BD4433BBBBB1
+39AAAAABBBBBBC1
+}
+title Use of sprites (<$printer>, <$bug>...)
+class Example {
+Can have some bug : <$bug>
+Click on <$disk> to save
+}
+note left : The printer <$printer> is available
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+524 / 606
+
+
+23.6
+StdLib
+23
+DEFINING AND USING SPRITES
+23.6
+StdLib
+The PlantUML StdLib includes a number of ready icons in various IT areas such as architecture, cloud
+services, logos etc. It including AWS, Azure, Kubernetes, C4, product Logos and many others. To explore
+these libraries:
+• Browse the Github folders of PlantUML StdLib
+• Browse the source repos of StdLib collections that interest you. Eg if you are interested in logos
+you can find that it came from gilbarbara-plantuml-sprites, and quickly find its
+sprites-list. (The next section shows how to list selected sprites but unfortunately that’s in grayscale
+whereas this custom listing is in color.)
+• Study the in-depth Hitchhiker’s Guide to PlantUML, eg sections Standard Library Sprites and
+PlantUML Stdlib Overview
+23.7
+Listing Sprites
+You can use the listsprites command to show available sprites:
+• Used on its own, it just shows ArchiMate sprites
+• If you include some sprite libraries in your diagram, the command shows all these sprites, as
+explained in View all the icons with listsprites.
+(Example from Hitchhikers Guide to PlantUML)
+@startuml
+!define osaPuml https://raw.githubusercontent.com/Crashedmind/PlantUML-opensecurityarchitecture2-icon
+!include osaPuml/Common.puml
+!include osaPuml/User/all.puml
+!include osaPuml/Hardware/all.puml
+!include osaPuml/Misc/all.puml
+!include osaPuml/Server/all.puml
+!include osaPuml/Site/all.puml
+listsprites
+' From The Hitchhiker’s Guide to PlantUML
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+525 / 606
+
+
+23.7
+Listing Sprites
+23
+DEFINING AND USING SPRITES
+Most collections have files called all that allow you to see a whole sub-collection at once. Else you
+need to find the sprites that interest you and include them one by one. Unfortunately, the version of
+a collection included in StdLib often does not have such all files, so as you see above we include the
+collection from github, not from StdLib.
+All sprites are in grayscale, but most collections define specific macros that include appropriate (vendor-
+specific) colors.
+PlantUML Language Reference Guide (1.2025.0)
+526 / 606

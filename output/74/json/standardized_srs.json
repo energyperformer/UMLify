@@ -1,0 +1,185 @@
+{
+  "system": {
+    "name": "DineOut",
+    "description": "DineOut is a restaurant management system developed with the intention of automating the day-to-day tasks in a restaurant like order and inventory management, bill generation, and taking feedback.",
+    "purpose": "The purpose of DineOut is to improve the performance of the restaurant by eradicating the daily paperwork, minimizing human error, and reducing labor costs.",
+    "scope": "The scope of DineOut includes order management, inventory management, bill generation, and customer feedback. It is designed for use in restaurants and will be accessed by customers, hall managers, head chefs, admins, and chefs."
+  },
+  "stakeholders": [
+    {
+      "name": "Customer",
+      "description": "The end-user who places orders and interacts with the system",
+      "roles": [
+        "Order Placement",
+        "Order Editing",
+        "Bill Payment",
+        "Feedback Provision"
+      ]
+    },
+    {
+      "name": "Head Chef",
+      "description": "Responsible for managing kitchen operations and assigning orders to chefs",
+      "roles": [
+        "Order Assignment",
+        "Dish Marking as Cooked",
+        "Order Management"
+      ]
+    },
+    {
+      "name": "Hall Manager",
+      "description": "Oversees the dining area and manages table assignments and order status",
+      "roles": [
+        "Table Management",
+        "Order Status Updates",
+        "Bill Management"
+      ]
+    },
+    {
+      "name": "Admin",
+      "description": "Responsible for system administration, including staff management and menu updates",
+      "roles": [
+        "Staff Management",
+        "Menu Management",
+        "System Configuration"
+      ]
+    },
+    {
+      "name": "Chef",
+      "description": "Prepares dishes and manages their respective queues",
+      "roles": [
+        "Dish Preparation",
+        "Queue Management"
+      ]
+    },
+    {
+      "name": "Waiter",
+      "description": "Assists customers with ordering and serves food",
+      "roles": [
+        "Order Assistance",
+        "Food Service"
+      ]
+    }
+  ],
+  "functional_requirements": [
+    {
+      "id": "FR-001",
+      "description": "The system shall allow customers to scroll through the menu and select the dishes they want.",
+      "priority": "High",
+      "actors_involved": "Customer"
+    },
+    {
+      "id": "FR-002",
+      "description": "The system shall allow customers to cancel or edit their order at any time before it is prepared.",
+      "priority": "High",
+      "actors_involved": "Customer"
+    },
+    {
+      "id": "FR-003",
+      "description": "The system shall allow customers to provide feedback regarding the food and overall service of the restaurant.",
+      "priority": "Medium",
+      "actors_involved": "Customer"
+    },
+    {
+      "id": "FR-004",
+      "description": "The system shall allow customers to request a bill.",
+      "priority": "High",
+      "actors_involved": "Customer"
+    },
+    {
+      "id": "FR-005",
+      "description": "The system shall allow customers to ask for help through the system.",
+      "priority": "Medium",
+      "actors_involved": "Customer"
+    },
+    {
+      "id": "FR-006",
+      "description": "The system shall assign the Head Chef to assign dishes in an order to chefs according to their specialties.",
+      "priority": "High",
+      "actors_involved": "Head Chef"
+    },
+    {
+      "id": "FR-007",
+      "description": "The system shall show dish queues and their status for chefs.",
+      "priority": "High",
+      "actors_involved": "Chef"
+    },
+    {
+      "id": "FR-008",
+      "description": "The system shall allow the admin to perform CRUD operations on staff members, menu items, and inventory.",
+      "priority": "High",
+      "actors_involved": "Admin"
+    },
+    {
+      "id": "FR-009",
+      "description": "The system shall allow the Head Chef to mark orders as complete.",
+      "priority": "High",
+      "actors_involved": "Head Chef"
+    },
+    {
+      "id": "FR-010",
+      "description": "The system shall allow the Head Chef to approve the cancellation of a dish or order.",
+      "priority": "High",
+      "actors_involved": "Head Chef"
+    },
+    {
+      "id": "FR-011",
+      "description": "The system shall allow the Hall Manager to mark a bill as paid.",
+      "priority": "High",
+      "actors_involved": "Hall Manager"
+    },
+    {
+      "id": "FR-012",
+      "description": "The system shall notify the Hall Manager when a particular order is complete.",
+      "priority": "High",
+      "actors_involved": "Hall Manager"
+    },
+    {
+      "id": "FR-013",
+      "description": "The system shall allow the Hall Manager to see and edit the status of tables reserved and available, and their capacities.",
+      "priority": "High",
+      "actors_involved": "Hall Manager"
+    },
+    {
+      "id": "FR-014",
+      "description": "The system shall place an order in the 'pending orders' table in the Firebase database when a customer places an order.",
+      "priority": "High",
+      "actors_involved": "Customer"
+    },
+    {
+      "id": "FR-015",
+      "description": "The system shall notify the Head Chef of pending orders.",
+      "priority": "High",
+      "actors_involved": "Head Chef"
+    },
+    {
+      "id": "FR-016",
+      "description": "The system shall allow the Head Chef to assign a dish to a particular chef based on the specialty of the chef.",
+      "priority": "High",
+      "actors_involved": "Head Chef"
+    },
+    {
+      "id": "FR-017",
+      "description": "The system shall allow chefs to see the new order in their screens or on a central display in the kitchen.",
+      "priority": "High",
+      "actors_involved": "Chef"
+    },
+    {
+      "id": "FR-018",
+      "description": "The system shall print the bill through the Manager's interface.",
+      "priority": "High",
+      "actors_involved": "Hall Manager"
+    },
+    {
+      "id": "FR-019",
+      "description": "The system shall allow the Admin to add, edit, or delete menu items.",
+      "priority": "Medium",
+      "actors_involved": "Admin"
+    },
+    {
+      "id": "FR-020",
+      "description": "The system shall allow the Admin to add, edit, or delete staff members.",
+      "priority": "Medium",
+      "actors_involved": "Admin"
+    }
+  ]
+}

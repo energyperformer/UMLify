@@ -1,0 +1,169 @@
+{
+  "actors": [
+    {
+      "name": "inventory admin",
+      "description": "manages inventory and assets",
+      "type": "primary"
+    },
+    {
+      "name": "users",
+      "description": "access and manage inventory",
+      "type": "primary"
+    },
+    {
+      "name": "authentication system",
+      "description": "authenticates users",
+      "type": "secondary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "create request",
+      "description": "users create requests for assets",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "request is created"
+      ],
+      "main_flow": [
+        "user submits request",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "request is rejected"
+      ]
+    },
+    {
+      "name": "edit asset",
+      "description": "users edit asset information",
+      "actors": [
+        "users",
+        "inventory admin"
+      ],
+      "preconditions": [
+        "user is authenticated",
+        "asset exists"
+      ],
+      "postconditions": [
+        "asset information is updated"
+      ],
+      "main_flow": [
+        "user edits asset",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "edit is rejected"
+      ]
+    },
+    {
+      "name": "approve request",
+      "description": "inventory admin approves requests",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "request exists",
+        "admin is authenticated"
+      ],
+      "postconditions": [
+        "request is approved"
+      ],
+      "main_flow": [
+        "admin approves request",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "request is rejected"
+      ]
+    },
+    {
+      "name": "transfer asset",
+      "description": "assets are transferred between users",
+      "actors": [
+        "users",
+        "inventory admin"
+      ],
+      "preconditions": [
+        "asset exists",
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "asset is transferred"
+      ],
+      "main_flow": [
+        "user requests transfer",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "transfer is rejected"
+      ]
+    },
+    {
+      "name": "return asset",
+      "description": "users return assets",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "asset is assigned to user",
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "asset is returned"
+      ],
+      "main_flow": [
+        "user returns asset",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "return is rejected"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "users",
+      "to": "create request",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "edit asset",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "edit asset",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "approve request",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "transfer asset",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "transfer asset",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "return asset",
+      "type": "association"
+    },
+    {
+      "from": "authentication system",
+      "to": "users",
+      "type": "association"
+    }
+  ]
+}

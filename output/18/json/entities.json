@@ -1,0 +1,170 @@
+{
+  "actors": [
+    {
+      "name": "inventory admin",
+      "description": "manages inventory and approves requests",
+      "type": "primary"
+    },
+    {
+      "name": "users",
+      "description": "access and manage inventory",
+      "type": "primary"
+    },
+    {
+      "name": "authentication system",
+      "description": "authenticates users",
+      "type": "secondary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "create request",
+      "description": "users create requests for inventory assets",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "request is created"
+      ],
+      "main_flow": [
+        "user submits request",
+        "system updates request status"
+      ],
+      "alternative_flows": [
+        "request is rejected"
+      ]
+    },
+    {
+      "name": "approve request",
+      "description": "inventory admin approves or rejects requests",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "request is created"
+      ],
+      "postconditions": [
+        "request is approved or rejected"
+      ],
+      "main_flow": [
+        "admin reviews request",
+        "admin updates request status"
+      ],
+      "alternative_flows": [
+        "request is rejected"
+      ]
+    },
+    {
+      "name": "add new asset",
+      "description": "inventory admin adds new assets to inventory",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "admin is authenticated"
+      ],
+      "postconditions": [
+        "new asset is added"
+      ],
+      "main_flow": [
+        "admin submits new asset info",
+        "system updates inventory"
+      ],
+      "alternative_flows": []
+    },
+    {
+      "name": "edit asset",
+      "description": "inventory admin edits existing assets",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "asset exists"
+      ],
+      "postconditions": [
+        "asset is updated"
+      ],
+      "main_flow": [
+        "admin submits updated asset info",
+        "system updates inventory"
+      ],
+      "alternative_flows": []
+    },
+    {
+      "name": "transfer asset",
+      "description": "inventory admin transfers assets between locations",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "asset exists"
+      ],
+      "postconditions": [
+        "asset is transferred"
+      ],
+      "main_flow": [
+        "admin submits transfer request",
+        "system updates inventory"
+      ],
+      "alternative_flows": []
+    },
+    {
+      "name": "return asset",
+      "description": "users return assets to inventory",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "asset is checked out"
+      ],
+      "postconditions": [
+        "asset is returned"
+      ],
+      "main_flow": [
+        "user submits return request",
+        "system updates inventory"
+      ],
+      "alternative_flows": []
+    }
+  ],
+  "relationships": [
+    {
+      "from": "users",
+      "to": "create request",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "approve request",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "add new asset",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "edit asset",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "transfer asset",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "return asset",
+      "type": "association"
+    },
+    {
+      "from": "create request",
+      "to": "approve request",
+      "type": "include"
+    }
+  ]
+}

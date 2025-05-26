@@ -1,0 +1,227 @@
+{
+  "system": {
+    "name": "DineOut",
+    "description": "DineOut is a restaurant management system developed with the intention of automating the day-to-day tasks in a restaurant like order and inventory management, bill generation, and taking feedback."
+  },
+  "actors": [
+    {
+      "name": "Customer",
+      "type": "primary",
+      "description": "The person who uses the DineOut application to place orders and pay bills."
+    },
+    {
+      "name": "Admin",
+      "type": "external-system",
+      "description": "The person responsible for managing the DineOut system, including adding, editing, and deleting staff members and menu items."
+    },
+    {
+      "name": "Head Chef",
+      "type": "primary",
+      "description": "The person responsible for managing the kitchen and assigning orders to chefs."
+    },
+    {
+      "name": "Chef",
+      "type": "primary",
+      "description": "The person responsible for preparing dishes for customer orders."
+    },
+    {
+      "name": "Hall Manager",
+      "type": "external-system",
+      "description": "The person responsible for managing the dining area and receiving notifications from the system."
+    },
+    {
+      "name": "Waiter",
+      "type": "primary",
+      "description": "The person responsible for serving customers and receiving orders."
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "Manage Menu Items",
+      "description": "Create, read, update, and delete menu items to maintain the restaurant's menu",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Inventory Items",
+      "description": "Create, read, update, and delete inventory items to track restaurant supplies",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Mark Dishes Cooked",
+      "description": "Mark dishes as cooked to update the status of orders",
+      "priority": "Medium"
+    },
+    {
+      "name": "Manage Approve Cancellations",
+      "description": "Approve dish cancellations to manage order changes",
+      "priority": "Medium"
+    },
+    {
+      "name": "Manage Mark Bills Paid",
+      "description": "Mark bills as paid to update payment status",
+      "priority": "High"
+    },
+    {
+      "name": "Add Orders",
+      "description": "Add orders to the queue to initiate food preparation",
+      "priority": "High"
+    },
+    {
+      "name": "Remove Orders",
+      "description": "Remove orders from the queue to manage order flow",
+      "priority": "Medium"
+    },
+    {
+      "name": "View Orders",
+      "description": "View orders in the queue to track order status",
+      "priority": "Medium"
+    },
+    {
+      "name": "Manage Load Balance Orders",
+      "description": "Automatically distribute orders across chefs to optimize kitchen workflow",
+      "priority": "Low"
+    },
+    {
+      "name": "Manage Print Orders and Receipts",
+      "description": "Print orders and receipts using a remote printer to provide physical records",
+      "priority": "Low"
+    },
+    {
+      "name": "Manage Place Orders",
+      "description": "Place orders to initiate the ordering process",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Tables",
+      "description": "Manage table assignments and availability to optimize seating",
+      "priority": "Medium"
+    },
+    {
+      "name": "Process Payments",
+      "description": "Process payments to complete transactions",
+      "priority": "High"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Customer",
+      "target": "Manage Place Orders",
+      "type": "association",
+      "description": "Customer places orders"
+    },
+    {
+      "source": "Customer",
+      "target": "Process Payments",
+      "type": "association",
+      "description": "Customer makes payments"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Menu Items",
+      "type": "association",
+      "description": "Admin manages menu items"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Inventory Items",
+      "type": "association",
+      "description": "Admin manages inventory items"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Tables",
+      "type": "association",
+      "description": "Admin manages tables"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage Load Balance Orders",
+      "type": "association",
+      "description": "Head Chef manages order distribution"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage Mark Dishes Cooked",
+      "type": "association",
+      "description": "Head Chef marks dishes as cooked"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage Approve Cancellations",
+      "type": "association",
+      "description": "Head Chef approves cancellations"
+    },
+    {
+      "source": "Chef",
+      "target": "Manage Mark Dishes Cooked",
+      "type": "association",
+      "description": "Chef marks dishes as cooked"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Tables",
+      "type": "association",
+      "description": "Hall Manager manages tables"
+    },
+    {
+      "source": "Waiter",
+      "target": "Add Orders",
+      "type": "association",
+      "description": "Waiter adds orders"
+    },
+    {
+      "source": "Waiter",
+      "target": "Remove Orders",
+      "type": "association",
+      "description": "Waiter removes orders"
+    },
+    {
+      "source": "Waiter",
+      "target": "View Orders",
+      "type": "association",
+      "description": "Waiter views orders"
+    },
+    {
+      "source": "Manage Place Orders",
+      "target": "Add Orders",
+      "type": "include",
+      "description": "Placing orders includes adding orders to the queue"
+    },
+    {
+      "source": "Add Orders",
+      "target": "Manage Load Balance Orders",
+      "type": "include",
+      "description": "Adding orders includes distributing orders across chefs"
+    },
+    {
+      "source": "Manage Mark Dishes Cooked",
+      "target": "View Orders",
+      "type": "include",
+      "description": "Marking dishes as cooked includes viewing order status"
+    },
+    {
+      "source": "Manage Approve Cancellations",
+      "target": "Remove Orders",
+      "type": "include",
+      "description": "Approving cancellations includes removing orders"
+    },
+    {
+      "source": "Process Payments",
+      "target": "Manage Mark Bills Paid",
+      "type": "include",
+      "description": "Processing payments includes marking bills as paid"
+    },
+    {
+      "source": "Manage Print Orders and Receipts",
+      "target": "Manage Place Orders",
+      "type": "extend",
+      "description": "Printing orders and receipts extends the order placement process"
+    },
+    {
+      "source": "Manage Print Orders and Receipts",
+      "target": "Process Payments",
+      "type": "extend",
+      "description": "Printing orders and receipts extends the payment process"
+    }
+  ]
+}

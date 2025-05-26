@@ -1,0 +1,200 @@
+{
+  "system": {
+    "name": "DineOut",
+    "description": "DineOut is an android application that aims to digitalize the process of various restaurant management operations including ordering and inventory management and POS."
+  },
+  "actors": [
+    {
+      "name": "Customer",
+      "type": "primary",
+      "description": "The customer who interacts with the system to place orders, request help, edit orders, cancel orders, and provide feedback."
+    },
+    {
+      "name": "Hall Manager",
+      "type": "secondary",
+      "description": "The hall manager who receives notifications from the system for order readiness, customer requests for help, and bill requests."
+    },
+    {
+      "name": "Head Chef",
+      "type": "secondary",
+      "description": "The head chef who approves dish removals, marks dishes as cooked, and receives notifications from the system."
+    },
+    {
+      "name": "Chef",
+      "type": "secondary",
+      "description": "The chef who receives orders and notifies the head chef when dishes are cooked."
+    },
+    {
+      "name": "Admin",
+      "type": "secondary",
+      "description": "The admin who manages staff members and menu items in the system."
+    },
+    {
+      "name": "Printer",
+      "type": "hardware",
+      "description": "The printer used by the system to print bills."
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "Manage place order",
+      "description": "The system will give customers the ability to place their orders using the product.",
+      "priority": "high"
+    },
+    {
+      "name": "Manage customer help",
+      "description": "Our system will provide help for the customer if the customer faces issues in using the tab.",
+      "priority": "high"
+    },
+    {
+      "name": "Manage chef order queue",
+      "description": "Whenever a new order is placed by the Customer, the dishes in the orders are classified into categories.",
+      "priority": "high"
+    },
+    {
+      "name": "edit order",
+      "description": "Customer can edit the order any time before the serving.",
+      "priority": "high"
+    },
+    {
+      "name": "Manage cancel order",
+      "description": "Our system will also provide an option to cancel the current order.",
+      "priority": "high"
+    },
+    {
+      "name": "Manage mark dish as cooked",
+      "description": "The head chef can mark the dish of a particular order complete when notified by the chef.",
+      "priority": "high"
+    },
+    {
+      "name": "Manage request bill",
+      "description": "Request bill option gives the ability to the customer to ask for receipt and pay the bill.",
+      "priority": "high"
+    },
+    {
+      "name": "Manage customer feedback",
+      "description": "The system will give customers the ability to give a feedback for the food or overall services.",
+      "priority": "high"
+    },
+    {
+      "name": "add edit delete staff members",
+      "description": "The system gives ability to the admin to add, edit and delete staff members.",
+      "priority": "high"
+    },
+    {
+      "name": "add edit delete menu items",
+      "description": "The system gives ability to the admin to add, edit and delete menu items.",
+      "priority": "high"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Customer",
+      "target": "Manage place order",
+      "type": "association",
+      "description": "Customer places an order"
+    },
+    {
+      "source": "Customer",
+      "target": "Manage customer help",
+      "type": "association",
+      "description": "Customer requests help"
+    },
+    {
+      "source": "Customer",
+      "target": "edit order",
+      "type": "association",
+      "description": "Customer edits an order"
+    },
+    {
+      "source": "Customer",
+      "target": "Manage cancel order",
+      "type": "association",
+      "description": "Customer cancels an order"
+    },
+    {
+      "source": "Customer",
+      "target": "Manage request bill",
+      "type": "association",
+      "description": "Customer requests a bill"
+    },
+    {
+      "source": "Customer",
+      "target": "Manage customer feedback",
+      "type": "association",
+      "description": "Customer provides feedback"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage request bill",
+      "type": "association",
+      "description": "Hall manager receives bill requests"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage customer help",
+      "type": "association",
+      "description": "Hall manager receives customer help requests"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage mark dish as cooked",
+      "type": "association",
+      "description": "Head chef marks dishes as cooked"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage chef order queue",
+      "type": "association",
+      "description": "Head chef manages chef order queue"
+    },
+    {
+      "source": "Chef",
+      "target": "Manage chef order queue",
+      "type": "association",
+      "description": "Chef receives orders"
+    },
+    {
+      "source": "Admin",
+      "target": "add edit delete staff members",
+      "type": "association",
+      "description": "Admin manages staff members"
+    },
+    {
+      "source": "Admin",
+      "target": "add edit delete menu items",
+      "type": "association",
+      "description": "Admin manages menu items"
+    },
+    {
+      "source": "Printer",
+      "target": "Manage request bill",
+      "type": "association",
+      "description": "Printer prints bills"
+    },
+    {
+      "source": "Manage place order",
+      "target": "Manage chef order queue",
+      "type": "include",
+      "description": "Placing an order includes managing the chef order queue"
+    },
+    {
+      "source": "Manage cancel order",
+      "target": "Manage chef order queue",
+      "type": "include",
+      "description": "Cancelling an order includes updating the chef order queue"
+    },
+    {
+      "source": "edit order",
+      "target": "Manage chef order queue",
+      "type": "include",
+      "description": "Editing an order includes updating the chef order queue"
+    },
+    {
+      "source": "Manage request bill",
+      "target": "Manage mark dish as cooked",
+      "type": "include",
+      "description": "Requesting a bill includes checking if dishes are cooked"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+@startuml
+title Use Case Diagram for DineOut
+
+left to right direction
+
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+skinparam usecase {
+    BackgroundColor PaleGreen
+    BorderColor Green
+    ArrowColor Green
+}
+skinparam rectangle {
+    BackgroundColor LightBlue
+    BorderColor Blue
+}
+actor "Customer"
+actor "Head Chef"
+actor "Chef"
+actor "Admin"
+actor "Hall Manager"
+actor "Firebase Database"
+actor "Manager's Interface"
+rectangle "DineOut" {
+  usecase "Manage customer"
+  usecase "Manage head chef"
+  usecase "Manage chef"
+  usecase "Manage admin"
+  usecase "Manage hall manager"
+  usecase "Manage system"
+}
+  "Customer" --> "Manage customer"
+  "Head Chef" --> "Manage head chef"
+  "Chef" --> "Manage chef"
+  "Admin" --> "Manage customer"
+  "Admin" --> "Manage head chef"
+  "Admin" --> "Manage chef"
+  "Admin" --> "Manage hall manager"
+  "Admin" --> "Manage system"
+  "Hall Manager" --> "Manage hall manager"
+  "Firebase Database" --> "Manage customer"
+  "Firebase Database" --> "Manage admin"
+  "Manager's Interface" --> "Manage admin"
+  "Manager's Interface" --> "Manage system"
+  "Manage admin" ..> "Manage system" : <<include>>
+  "Unnamed" -- "Unnamed": Admin performs CRUD operations on customers
+  "Unnamed" -- "Unnamed": Admin performs CRUD operations on head chefs
+  "Unnamed" -- "Unnamed": Admin performs CRUD operations on chefs
+  "Unnamed" -- "Unnamed": Admin performs CRUD operations on hall managers
+  "Unnamed" -- "Unnamed": Admin performs CRUD operations on system
+  "Unnamed" -- "Unnamed": Customer interacts with the system for their information
+  "Unnamed" -- "Unnamed": Head chef interacts with the system for their information
+  "Unnamed" -- "Unnamed": Chef interacts with the system for their information
+  "Unnamed" -- "Unnamed": Hall manager interacts with the system for their information
+  "Unnamed" -- "Unnamed": The Manager's Interface is likely used by an admin to manage their account or perform administrative tasks.
+  "Unnamed" -- "Unnamed": The Manager's Interface might be used to manage overall system settings or configurations.
+  "Unnamed" ..> "Unnamed" : <<include>>
+  "Unnamed" ..> "Unnamed" : <<include>>
+  "Unnamed" ..> "Unnamed" : <<include>>
+@enduml

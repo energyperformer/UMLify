@@ -1,0 +1,171 @@
+{
+  "system": {
+    "name": "DineOut",
+    "description": "DineOut is a restaurant management system developed with the intention of automating the day-to-day tasks in a restaurant like order and inventory management, bill generation, and taking feedback.",
+    "purpose": "The purpose of DineOut is to improve the performance of the restaurant by eradicating the daily paperwork, minimizing human error, and reducing labor costs.",
+    "scope": "The scope of DineOut includes order management, inventory management, bill generation, and customer feedback. It is designed for use in restaurants and will be used by customers, managers, head chefs, admins, and chefs."
+  },
+  "stakeholders": [
+    {
+      "name": "Customer",
+      "description": "The person who uses the DineOut application to place orders and pay bills.",
+      "roles": [
+        "Order Placer",
+        "Bill Payer",
+        "Feedback Provider"
+      ]
+    },
+    {
+      "name": "Admin",
+      "description": "The person responsible for managing the DineOut system, including adding, editing, and deleting staff members and menu items.",
+      "roles": [
+        "System Manager",
+        "Staff Manager",
+        "Menu Manager"
+      ]
+    },
+    {
+      "name": "Head Chef",
+      "description": "The person responsible for managing the kitchen and assigning orders to chefs.",
+      "roles": [
+        "Kitchen Manager",
+        "Order Assigner"
+      ]
+    },
+    {
+      "name": "Chef",
+      "description": "The person responsible for preparing dishes for customer orders.",
+      "roles": [
+        "Dish Preparer"
+      ]
+    },
+    {
+      "name": "Hall Manager",
+      "description": "The person responsible for managing the dining area and receiving notifications from the system.",
+      "roles": [
+        "Dining Area Manager",
+        "Notification Receiver"
+      ]
+    },
+    {
+      "name": "Waiter",
+      "description": "The person responsible for serving customers and receiving orders.",
+      "roles": [
+        "Order Receiver",
+        "Server"
+      ]
+    }
+  ],
+  "functional_requirements": [
+    {
+      "id": "FR1",
+      "description": "The system shall allow users to create, read, update, and delete (CRUD) menu items.",
+      "actions": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "actors": [
+        "Admin"
+      ]
+    },
+    {
+      "id": "FR2",
+      "description": "The system shall allow users to create, read, update, and delete (CRUD) inventory items.",
+      "actions": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "actors": [
+        "Admin"
+      ]
+    },
+    {
+      "id": "FR3",
+      "description": "The system shall allow head chefs to mark dishes as cooked.",
+      "actions": [
+        "mark cooked"
+      ],
+      "actors": [
+        "Head Chef"
+      ]
+    },
+    {
+      "id": "FR4",
+      "description": "The system shall allow head chefs to approve dish cancellations.",
+      "actions": [
+        "approve cancellation"
+      ],
+      "actors": [
+        "Head Chef"
+      ]
+    },
+    {
+      "id": "FR5",
+      "description": "The system shall allow users to mark bills as paid.",
+      "actions": [
+        "mark paid"
+      ],
+      "actors": [
+        "Admin",
+        "Hall Manager"
+      ]
+    },
+    {
+      "id": "FR6",
+      "description": "The system shall allow users to add orders to the queue.",
+      "actions": [
+        "add order"
+      ],
+      "actors": [
+        "Chef",
+        "Head Chef"
+      ]
+    },
+    {
+      "id": "FR7",
+      "description": "The system shall allow head chefs to remove orders from the queue.",
+      "actions": [
+        "remove order"
+      ],
+      "actors": [
+        "Head Chef"
+      ]
+    },
+    {
+      "id": "FR8",
+      "description": "The system shall allow chefs to view orders in their queue.",
+      "actions": [
+        "view orders"
+      ],
+      "actors": [
+        "Chef"
+      ]
+    },
+    {
+      "id": "FR9",
+      "description": "The system shall allow the system to load balance orders across chefs.",
+      "actions": [
+        "load balance"
+      ],
+      "actors": [
+        "System"
+      ]
+    },
+    {
+      "id": "FR10",
+      "description": "The system shall allow users to print orders and receipts using a remote printer.",
+      "actions": [
+        "print order",
+        "print receipt"
+      ],
+      "actors": [
+        "Admin",
+        "Hall Manager"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "introduction": {
+    "purpose": "The purpose of this software requirements specification is to detail the requirements for the DineOut restaurant management system, focusing on ordering and inventory management, with the goal of improving restaurant performance and customer satisfaction.",
+    "scope": "This specification covers the scope of the DineOut system, including its features, functionalities, and limitations, specifically for Version 1.0.",
+    "definitions_acronyms_abbreviations": [
+      {
+        "term": "DineOut",
+        "definition": "An android application for restaurant management, focusing on ordering and inventory management."
+      },
+      {
+        "term": "POS",
+        "definition": "Point of Sale, referring to future features of the application."
+      },
+      {
+        "term": "Firebase",
+        "definition": "A cloud-based database and storage server used by the DineOut application."
+      }
+    ],
+    "references": [
+      {
+        "document_title": "Android User Interface",
+        "author": "Not Specified",
+        "date": "Not Specified",
+        "url": "Not Specified"
+      },
+      {
+        "document_title": "IEEE Std 830-1998",
+        "author": "IEEE Computer Society",
+        "date": "1998",
+        "url": "Not Specified"
+      }
+    ],
+    "overview": "This SRS document provides a comprehensive overview of the DineOut system, including its purpose, scope, definitions, references, and an overview of the document structure."
+  },
+  "overall_description": {
+    "product_perspective": "DineOut is a self-contained software system consisting of a mobile application and a Firebase database, designed to replace traditional manual ordering processes in restaurants.",
+    "product_functions": [
+      "Allow customers to place orders",
+      "Enable customers to cancel or edit orders",
+      "Provide a feedback mechanism for customers",
+      "Allow customers to request bills",
+      "Enable staff to manage orders and inventory"
+    ],
+    "user_characteristics": [
+      "Customers: interact with the system to place orders, provide feedback, and request bills",
+      "Head Chefs: manage orders, assign dishes to chefs, and mark dishes as cooked",
+      "Chefs: view their assigned orders and prepare dishes",
+      "Admin: manage staff, menu items, and inventory"
+    ],
+    "constraints": [
+      "System compatibility with Android version 6.0 or above",
+      "Device constraint: the system should be compatible with tablets",
+      "Regulatory policies and safety violations"
+    ],
+    "assumptions_dependencies": [
+      "The system will always be used on tablets with sufficient resources",
+      "Firebase database will be in a working state"
+    ],
+    "apportioning_of_requirements": [
+      "Software: develop the mobile application and integrate with Firebase database",
+      "Hardware: tablets with Android 6.0 or above for system operation",
+      "People: staff to manage orders, prepare dishes, and operate the system"
+    ]
+  },
+  "specific_requirements": {
+    "external_interface_requirements": {
+      "user_interfaces": [
+        "Customer Interface: allows customers to place orders, provide feedback, and request bills",
+        "Head Chef Interface: allows head chefs to manage orders and assign dishes to chefs",
+        "Chef Interface: allows chefs to view their assigned orders",
+        "Admin Interface: allows admin to manage staff, menu items, and inventory"
+      ],
+      "hardware_interfaces": [
+        "Bill printer for printing receipts",
+        "Credit card reader for payment (manually entered into the system)"
+      ],
+      "software_interfaces": [
+        "Firebase database for storing orders and menu items"
+      ],
+      "communication_interfaces": [
+        "HTTP protocol for communication with Firebase"
+      ]
+    },
+    "functional_requirements": [
+      {
+        "id": "FR-001",
+        "description": "The system shows a list of cards of dishes, each with a picture and price.",
+        "inputs": [
+          "Customer selection of dishes"
+        ],
+        "processing": "System displays list of dishes, allows customer to select and add to order",
+        "outputs": [
+          "List of selected dishes and total price"
+        ],
+        "priority": "High",
+        "source": "Customer requirement",
+        "dependencies": [
+          "FR-002"
+        ]
+      },
+      {
+        "id": "FR-002",
+        "description": "The system allows customers to cancel or edit orders.",
+        "inputs": [
+          "Customer request to cancel or edit order"
+        ],
+        "processing": "System checks order status, allows cancellation or editing if possible",
+        "outputs": [
+          "Updated order status or confirmation of cancellation"
+        ],
+        "priority": "High",
+        "source": "Customer requirement",
+        "dependencies": [
+          "FR-001"
+        ]
+      },
+      {
+        "id": "FR-003",
+        "description": "The system provides a feedback mechanism for customers.",
+        "inputs": [
+          "Customer feedback"
+        ],
+        "processing": "System stores customer feedback",
+        "outputs": [
+          "Feedback summary or acknowledgment"
+        ],
+        "priority": "High",
+        "source": "Customer requirement",
+        "dependencies": []
+      }
+    ],
+    "performance_requirements": [
+      "System response time should be less than 2 seconds for menu scrolling",
+      "Order placement and update should be visible to head chefs in less than 1 second"
+    ],
+    "logical_database_requirements": [
+      "Store customer orders and order status",
+      "Store menu items and prices",
+      "Store staff information and roles"
+    ],
+    "design_constraints": {
+      "standards_compliance": [
+        "Android compatibility and security standards"
+      ],
+      "hardware_limitations": [
+        "Tablet device limitations"
+      ]
+    },
+    "software_system_attributes": {
+      "reliability": "The system should be able to recover from crashes and errors",
+      "availability": "The system should be available 99% of the time",
+      "security": "The system should protect customer and staff data from unauthorized access",
+      "maintainability": "The system should be easy to update and maintain",
+      "portability": "The system should be compatible with different devices and operating systems",
+      "usability": "The system should be easy to use for customers and staff"
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "system": {
+    "name": "DineOut",
+    "description": "DineOut is an Android application designed to automate restaurant management tasks such as ordering, inventory management, and bill generation. It aims to improve restaurant performance by reducing paperwork, minimizing human error, and balancing workload during peak hours. The system includes a mobile application for various user roles and a Firebase database for storing order and inventory information.",
+    "purpose": "The purpose of DineOut is to digitalize the process of restaurant management operations, including ordering and inventory management, to enhance efficiency and reduce manual errors. It aims to streamline tasks, improve performance, and provide better customer service.",
+    "scope": "DineOut is a restaurant management system that automates day-to-day tasks such as order and inventory management, bill generation, and feedback collection. The current version focuses on these tasks, with future versions planned to include additional features like POS. The system is designed for use on Android tablets and interacts with a Firebase database for data storage. It supports multiple user roles including Customer, Manager, Head Chef, Admin, and Chef, each with specific functionalities."
+  },
+  "stakeholders": {
+    "customers": {
+      "description": "Users who place orders, request bills, and provide feedback.",
+      "roles": [
+        "Ordering",
+        "Feedback",
+        "Bill Request"
+      ]
+    },
+    "hall_manager": {
+      "description": "Manages tables, marks bills as paid, and receives notifications for completed orders and customer help requests.",
+      "roles": [
+        "Table Management",
+        "Bill Management",
+        "Notification Handling"
+      ]
+    },
+    "head_chef": {
+      "description": "Assigns dishes to chefs, marks dishes as cooked, and approves order cancellations.",
+      "roles": [
+        "Order Assignment",
+        "Dish Completion",
+        "Cancellation Approval"
+      ]
+    },
+    "admin": {
+      "description": "Manages the inventory, staff members, and menu items.",
+      "roles": [
+        "Inventory Management",
+        "Staff Management",
+        "Menu Management"
+      ]
+    },
+    "chef": {
+      "description": "Prepares dishes based on the orders assigned by the head chef.",
+      "roles": [
+        "Dish Preparation"
+      ]
+    }
+  },
+  "non_functional_requirements": {
+    "performance_requirements": {
+      "interactive_system": "The system must be interactive with minimal delays. Actions like scrolling through the menu should have a delay of no more than 2 seconds, and orders should be visible to the head chef within 1 second.",
+      "cancel_order_updates": "Cancel Order updates must be made with little delay to avoid delivery delays.",
+      "firebase_connection": "Connecting to the Firebase server should have minimal delay for effective real-time communication."
+    },
+    "security_requirements": {
+      "login_authentication": "Proper and encrypted login authentication is required for head chef and admin to protect sensitive employee information and inventory from hacking.",
+      "secure_information_transmission": "Information transmission to Firebase must be secure to avoid disturbances in orders and billing."
+    },
+    "reliability_requirements": {
+      "correct_results": "The system must provide correct results regardless of the number of orders placed.",
+      "availability": "The system should be up and running for most of the time with the server downtime not exceeding a few minutes to avoid customer inconvenience."
+    }
+  },
+  "functional_requirements": [
+    {
+      "id": "FR-001",
+      "description": "Restaurant management system must allow managers to manage restaurant operations",
+      "priority": "High",
+      "source": "Inferred from document context",
+      "actors_involved": "Restaurant Manager",
+      "triggers": "Manager needs to perform operations"
+    },
+    {
+      "id": "FR-002",
+      "description": "System must allow customers to interact with restaurant services",
+      "priority": "High",
+      "source": "Inferred from document context",
+      "actors_involved": "Customer",
+      "triggers": "Customer initiates interaction"
+    }
+  ]
+}

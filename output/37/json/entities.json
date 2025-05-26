@@ -1,0 +1,118 @@
+{
+  "actors": [
+    {
+      "name": "Customer",
+      "description": "Places orders, gives feedback, and requests bills",
+      "type": "primary"
+    },
+    {
+      "name": "Hall Manager",
+      "description": "Manages tables, orders, and staff",
+      "type": "primary"
+    },
+    {
+      "name": "Head Chef",
+      "description": "Assigns dishes to chefs, marks dishes as cooked, and approves dish cancellations",
+      "type": "primary"
+    },
+    {
+      "name": "Chef",
+      "description": "Prepares dishes based on assignments",
+      "type": "primary"
+    },
+    {
+      "name": "Admin",
+      "description": "Manages menu items, inventory, and staff",
+      "type": "primary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "Place Order",
+      "description": "The system shows a list of cards of dishes, each with a picture and price, and allows customers to select and place orders."
+    },
+    {
+      "name": "Cancel or Edit Order",
+      "description": "The system allows customers to cancel or edit orders."
+    },
+    {
+      "name": "Give Feedback",
+      "description": "The system provides customers with the ability to give feedback."
+    },
+    {
+      "name": "Request Bill",
+      "description": "The system allows customers to request bills."
+    },
+    {
+      "name": "Ask for Help",
+      "description": "The system enables customers to ask for help, notifying the hall manager of the request."
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Customer",
+      "target": "Place Order",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Cancel or Edit Order",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Give Feedback",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Request Bill",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Ask for Help",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Cancel or Edit Order",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Give Feedback",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Request Bill",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Ask for Help",
+      "type": "association"
+    },
+    {
+      "source": "Place Order",
+      "target": "Cancel or Edit Order",
+      "type": "include"
+    },
+    {
+      "source": "Place Order",
+      "target": "Give Feedback",
+      "type": "include"
+    },
+    {
+      "source": "Place Order",
+      "target": "Request Bill",
+      "type": "include"
+    },
+    {
+      "source": "Place Order",
+      "target": "Ask for Help",
+      "type": "include"
+    }
+  ]
+}

@@ -1,0 +1,629 @@
+{
+  "nodes": [
+    {
+      "id": 44,
+      "labels": [
+        "System"
+      ],
+      "properties": {
+        "name": "DineOut",
+        "description": "DineOut is a restaurant management system developed with the intention of automating the day to day tasks in a restaurant like order and inventory management, bill generation and taking feedback.",
+        "created_at": "2025-05-26T20:55:49.973000000+00:00"
+      }
+    },
+    {
+      "id": 45,
+      "labels": [
+        "Actor"
+      ],
+      "properties": {
+        "name": "Customer",
+        "description": "Interacts with the system to place orders, modify orders, get bills, and provide feedback.",
+        "created_at": "2025-05-26T20:55:50.528000000+00:00",
+        "type": "external-system"
+      }
+    },
+    {
+      "id": 50,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "Manage Place Order",
+        "description": "Allows customers to select dishes from the menu and create an order",
+        "created_at": "2025-05-26T20:55:52.639000000+00:00",
+        "priority": "High"
+      }
+    },
+    {
+      "id": 51,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "Edit Order",
+        "description": "Allows customers to modify or cancel their order before it is prepared",
+        "created_at": "2025-05-26T20:55:52.711000000+00:00",
+        "priority": "High"
+      }
+    },
+    {
+      "id": 52,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "Manage Provide Feedback",
+        "description": "Enables customers to give feedback on the food and service quality",
+        "created_at": "2025-05-26T20:55:52.762000000+00:00",
+        "priority": "Medium"
+      }
+    },
+    {
+      "id": 53,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "Manage Request Bill",
+        "description": "Allows customers to ask for their bill",
+        "created_at": "2025-05-26T20:55:52.835000000+00:00",
+        "priority": "High"
+      }
+    },
+    {
+      "id": 54,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "Manage Ask for Help",
+        "description": "Enables customers to request assistance through the system",
+        "created_at": "2025-05-26T20:55:52.888000000+00:00",
+        "priority": "Medium"
+      }
+    },
+    {
+      "id": 46,
+      "labels": [
+        "Actor"
+      ],
+      "properties": {
+        "name": "Hall Manager",
+        "description": "Manages the restaurant, marks bills as paid, and gets notifications when orders are complete.",
+        "created_at": "2025-05-26T20:55:50.601000000+00:00",
+        "type": "primary"
+      }
+    },
+    {
+      "id": 62,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "Manage Mark Bill Paid",
+        "description": "Allows the Hall Manager to mark a bill as paid",
+        "created_at": "2025-05-26T20:55:53.324000000+00:00",
+        "priority": "High"
+      }
+    },
+    {
+      "id": 63,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "Manage Tables",
+        "description": "Enables the Hall Manager to view and edit the status of tables",
+        "created_at": "2025-05-26T20:55:53.400000000+00:00",
+        "priority": "High"
+      }
+    },
+    {
+      "id": 64,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "Manage Notify Order Completion",
+        "description": "Notifies the Hall Manager when an order is complete",
+        "created_at": "2025-05-26T20:55:53.444000000+00:00",
+        "priority": "High"
+      }
+    },
+    {
+      "id": 68,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "Manage Print Bill",
+        "description": "Allows the Hall Manager to print the bill",
+        "created_at": "2025-05-26T20:55:53.558000000+00:00",
+        "priority": "High"
+      }
+    },
+    {
+      "id": 47,
+      "labels": [
+        "Actor"
+      ],
+      "properties": {
+        "name": "Head Chef",
+        "description": "Assigns dishes to chefs, marks dishes as cooked, and approves cancellations of orders.",
+        "created_at": "2025-05-26T20:55:50.657000000+00:00",
+        "type": "primary"
+      }
+    },
+    {
+      "id": 55,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "Manage Assign Orders",
+        "description": "Allows the Head Chef to assign orders to chefs based on their specialties",
+        "created_at": "2025-05-26T20:55:52.918000000+00:00",
+        "priority": "High"
+      }
+    },
+    {
+      "id": 60,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "Manage Mark Order Complete",
+        "description": "Allows the Head Chef to mark orders as complete",
+        "created_at": "2025-05-26T20:55:53.235000000+00:00",
+        "priority": "High"
+      }
+    },
+    {
+      "id": 61,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "Manage Approve Cancellation",
+        "description": "Allows the Head Chef to approve the cancellation of a dish or order",
+        "created_at": "2025-05-26T20:55:53.280000000+00:00",
+        "priority": "High"
+      }
+    },
+    {
+      "id": 65,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "Manage Assign Orders to Chefs",
+        "description": "Allows the Head Chef to assign orders to chefs",
+        "created_at": "2025-05-26T20:55:53.513000000+00:00",
+        "priority": "High"
+      }
+    },
+    {
+      "id": 67,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "Manage Mark Dish Prepared",
+        "description": "Allows the Head Chef to mark each dish in an order as prepared",
+        "created_at": "2025-05-26T20:55:53.543000000+00:00",
+        "priority": "High"
+      }
+    },
+    {
+      "id": 48,
+      "labels": [
+        "Actor"
+      ],
+      "properties": {
+        "name": "Chef",
+        "description": "Prepares dishes according to the orders assigned by the Head Chef.",
+        "created_at": "2025-05-26T20:55:52.550000000+00:00",
+        "type": "primary"
+      }
+    },
+    {
+      "id": 56,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "View Dish Queues",
+        "description": "Enables chefs to see the status of dishes in their queue",
+        "created_at": "2025-05-26T20:55:52.952000000+00:00",
+        "priority": "High"
+      }
+    },
+    {
+      "id": 66,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "View New Orders",
+        "description": "Enables chefs to see new orders assigned to them",
+        "created_at": "2025-05-26T20:55:53.531000000+00:00",
+        "priority": "High"
+      }
+    },
+    {
+      "id": 49,
+      "labels": [
+        "Actor"
+      ],
+      "properties": {
+        "name": "Admin",
+        "description": "Manages the inventory, staff members, and menu items.",
+        "created_at": "2025-05-26T20:55:52.579000000+00:00",
+        "type": "primary"
+      }
+    },
+    {
+      "id": 57,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "Manage Staff",
+        "description": "Allows the admin to perform CRUD operations on staff members",
+        "created_at": "2025-05-26T20:55:53.111000000+00:00",
+        "priority": "High"
+      }
+    },
+    {
+      "id": 58,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "Manage Menu",
+        "description": "Allows the admin to perform CRUD operations on menu items",
+        "created_at": "2025-05-26T20:55:53.138000000+00:00",
+        "priority": "High"
+      }
+    },
+    {
+      "id": 59,
+      "labels": [
+        "UseCase"
+      ],
+      "properties": {
+        "postconditions": [],
+        "preconditions": [],
+        "name": "Manage Inventory",
+        "description": "Allows the admin to perform CRUD operations on inventory",
+        "created_at": "2025-05-26T20:55:53.192000000+00:00",
+        "priority": "High"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": 1152927002164985901,
+      "start_node_id": 45,
+      "end_node_id": 50,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Customer places an order",
+        "created_at": "2025-05-26T20:55:53.599000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 1155178801978671149,
+      "start_node_id": 45,
+      "end_node_id": 51,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Customer modifies or cancels their order",
+        "created_at": "2025-05-26T20:55:53.630000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 6917534525199220788,
+      "start_node_id": 45,
+      "end_node_id": 52,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Customer gives feedback on the food and service quality",
+        "created_at": "2025-05-26T20:55:54.302000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 6917534525199220789,
+      "start_node_id": 45,
+      "end_node_id": 53,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Customer asks for their bill",
+        "created_at": "2025-05-26T20:55:54.313000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 6917534525199220790,
+      "start_node_id": 45,
+      "end_node_id": 54,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Customer requests assistance through the system",
+        "created_at": "2025-05-26T20:55:54.329000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 1152927002164985902,
+      "start_node_id": 46,
+      "end_node_id": 62,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Hall Manager marks a bill as paid",
+        "created_at": "2025-05-26T20:55:54.341000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 1155178801978671150,
+      "start_node_id": 46,
+      "end_node_id": 63,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Hall Manager views and edits the status of tables",
+        "created_at": "2025-05-26T20:55:54.775000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 6917534525199220800,
+      "start_node_id": 46,
+      "end_node_id": 64,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Hall Manager is notified when an order is complete",
+        "created_at": "2025-05-26T20:55:54.790000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 6917534525199220804,
+      "start_node_id": 46,
+      "end_node_id": 68,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Hall Manager prints the bill",
+        "created_at": "2025-05-26T20:55:54.807000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 1152927002164985903,
+      "start_node_id": 47,
+      "end_node_id": 55,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Head Chef assigns orders to chefs",
+        "created_at": "2025-05-26T20:55:54.824000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 6917534525199220796,
+      "start_node_id": 47,
+      "end_node_id": 60,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Head Chef marks orders as complete",
+        "created_at": "2025-05-26T20:55:54.857000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 6917534525199220797,
+      "start_node_id": 47,
+      "end_node_id": 61,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Head Chef approves the cancellation of a dish or order",
+        "created_at": "2025-05-26T20:55:54.875000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 1155178801978671151,
+      "start_node_id": 47,
+      "end_node_id": 65,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Head Chef assigns orders to chefs",
+        "created_at": "2025-05-26T20:55:54.841000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 6917534525199220803,
+      "start_node_id": 47,
+      "end_node_id": 67,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Head Chef marks each dish in an order as prepared",
+        "created_at": "2025-05-26T20:55:54.891000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 1152927002164985904,
+      "start_node_id": 48,
+      "end_node_id": 56,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Chef sees the status of dishes in their queue",
+        "created_at": "2025-05-26T20:55:54.903000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 1155178801978671152,
+      "start_node_id": 48,
+      "end_node_id": 66,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Chef sees new orders assigned to them",
+        "created_at": "2025-05-26T20:55:54.919000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 1152927002164985905,
+      "start_node_id": 49,
+      "end_node_id": 57,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Admin performs CRUD operations on staff members",
+        "created_at": "2025-05-26T20:55:54.938000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 1155178801978671153,
+      "start_node_id": 49,
+      "end_node_id": 58,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Admin performs CRUD operations on menu items",
+        "created_at": "2025-05-26T20:55:54.952000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 6917534525199220795,
+      "start_node_id": 49,
+      "end_node_id": 59,
+      "type": "ASSOCIATION",
+      "properties": {
+        "description": "Admin performs CRUD operations on inventory",
+        "created_at": "2025-05-26T20:55:54.968000000+00:00",
+        "original_type": "association"
+      }
+    },
+    {
+      "id": 1152928101676613682,
+      "start_node_id": 50,
+      "end_node_id": 55,
+      "type": "INCLUDE",
+      "properties": {
+        "description": "Placing an order includes assigning it to a chef",
+        "created_at": "2025-05-26T20:55:54.995000000+00:00",
+        "original_type": "include"
+      }
+    },
+    {
+      "id": 6917535624710848572,
+      "start_node_id": 50,
+      "end_node_id": 60,
+      "type": "INCLUDE",
+      "properties": {
+        "description": "Placing an order includes marking it as complete when prepared",
+        "created_at": "2025-05-26T20:55:55.017000000+00:00",
+        "original_type": "include"
+      }
+    },
+    {
+      "id": 1152928101676613685,
+      "start_node_id": 53,
+      "end_node_id": 62,
+      "type": "INCLUDE",
+      "properties": {
+        "description": "Requesting a bill includes marking it as paid",
+        "created_at": "2025-05-26T20:55:55.177000000+00:00",
+        "original_type": "include"
+      }
+    },
+    {
+      "id": 1155179901490298935,
+      "start_node_id": 55,
+      "end_node_id": 66,
+      "type": "INCLUDE",
+      "properties": {
+        "description": "Assigning orders includes notifying chefs of new orders",
+        "created_at": "2025-05-26T20:55:55.252000000+00:00",
+        "original_type": "include"
+      }
+    },
+    {
+      "id": 6917535624710848576,
+      "start_node_id": 60,
+      "end_node_id": 64,
+      "type": "INCLUDE",
+      "properties": {
+        "description": "Marking an order as complete includes notifying the Hall Manager",
+        "created_at": "2025-05-26T20:55:55.301000000+00:00",
+        "original_type": "include"
+      }
+    },
+    {
+      "id": 1152929201188241469,
+      "start_node_id": 61,
+      "end_node_id": 60,
+      "type": "EXTEND",
+      "properties": {
+        "description": "Approving cancellation extends marking an order as complete with cancellation details",
+        "created_at": "2025-05-26T20:55:55.314000000+00:00",
+        "original_type": "extend"
+      }
+    },
+    {
+      "id": 1152929201188241476,
+      "start_node_id": 68,
+      "end_node_id": 62,
+      "type": "EXTEND",
+      "properties": {
+        "description": "Printing a bill extends marking it as paid with printed receipt",
+        "created_at": "2025-05-26T20:55:55.567000000+00:00",
+        "original_type": "extend"
+      }
+    }
+  ]
+}

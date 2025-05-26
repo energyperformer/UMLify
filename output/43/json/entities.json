@@ -1,0 +1,130 @@
+{
+  "system": {
+    "name": "DineOut",
+    "description": "Restaurant management system for ordering and inventory management"
+  },
+  "actors": [
+    {
+      "name": "Customer",
+      "type": "primary",
+      "description": "Placing orders and providing feedback"
+    },
+    {
+      "name": "Hall Manager",
+      "type": "secondary",
+      "description": "Manages tables and orders"
+    },
+    {
+      "name": "Head Chef",
+      "type": "secondary",
+      "description": "Assigns orders to chefs and marks dishes as cooked"
+    },
+    {
+      "name": "Admin",
+      "type": "secondary",
+      "description": "Manages menu, inventory, and staff"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "View Available Dishes",
+      "description": "Allow customers to see a list of available and unavailable dishes",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Place Order",
+      "description": "Enable customers to submit their orders to the system",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Assign Orders to Chefs",
+      "description": "Allow head chef to assign orders to available chefs for preparation",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Menu, Inventory, and Staff",
+      "description": "Provide admin with the ability to manage menu items, inventory levels, and staff information",
+      "priority": "High"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Customer",
+      "target": "View Available Dishes",
+      "type": "association",
+      "description": "Customer can view available dishes"
+    },
+    {
+      "source": "Customer",
+      "target": "Manage Place Order",
+      "type": "association",
+      "description": "Customer can place orders"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage Assign Orders to Chefs",
+      "type": "association",
+      "description": "Head chef can assign orders to chefs"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Menu, Inventory, and Staff",
+      "type": "association",
+      "description": "Admin can manage menu, inventory, and staff"
+    },
+    {
+      "source": "Manage Place Order",
+      "target": "View Available Dishes",
+      "type": "include",
+      "description": "View available dishes is included in placing an order"
+    },
+    {
+      "source": "Manage Assign Orders to Chefs",
+      "target": "Manage Place Order",
+      "type": "extend",
+      "description": "Assigning orders to chefs extends the order placement process"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Place Order",
+      "type": "association",
+      "description": "The Hall Manager is responsible for managing the ordering process, thus they are associated with the use case of placing orders."
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Assign Orders to Chefs",
+      "type": "association",
+      "description": "The Hall Manager needs to assign orders to chefs, making this use case directly related to their responsibilities."
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage Assign Orders to Chefs",
+      "type": "include",
+      "description": "The Head Chef is involved in the process of assigning orders to chefs, making this use case an inclusion of their responsibilities."
+    },
+    {
+      "source": "Head Chef",
+      "target": "View Available Dishes",
+      "type": "association",
+      "description": "The Head Chef needs to view available dishes to decide which dishes to assign to orders."
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Menu, Inventory, and Staff",
+      "type": "association",
+      "description": "The Admin is responsible for managing the menu, inventory, and staff, making this use case directly related to their responsibilities."
+    },
+    {
+      "source": "Customer",
+      "target": "View Available Dishes",
+      "type": "association",
+      "description": "The Customer can view available dishes to place an order, making this use case directly related to their interaction with the system."
+    },
+    {
+      "source": "Customer",
+      "target": "Manage Place Order",
+      "type": "association",
+      "description": "The Customer is the one placing the order, making this use case directly related to their interaction with the system."
+    }
+  ]
+}

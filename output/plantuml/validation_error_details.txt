@@ -1,0 +1,66 @@
+Error type: PlantUMLHTTPError
+Error message: 
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\vardh\OneDrive\Desktop\SEM-7\Final_YearProject\New_Subissions\Second_Phase\UMLify\src\plantuml_generator.py", line 815, in _validate_uml_syntax
+    content = self.plantuml_client.processes(uml_code)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vardh\OneDrive\Desktop\SEM-7\Final_YearProject\New_Subissions\Second_Phase\UMLify\.venv\Lib\site-packages\plantuml.py", line 174, in processes
+    raise PlantUMLHTTPError(response, content)
+plantuml.PlantUMLHTTPError
+
+
+--- UML Code that caused error ---
+@startuml
+title DineOut System Use Case Diagram
+left to right direction
+skinparam actorStyle awesome
+skinparam usecaseStyle oval
+skinparam packageStyle rectangle
+
+actor "Customer"
+actor "Admin"
+actor "Head Chef"
+actor "Chef"
+actor "Hall Manager"
+actor "Waiter"
+
+rectangle "DineOut" {
+  usecase "Manage Menu Items"
+  usecase "Manage Inventory Items"
+  usecase "Manage Mark Dishes Cooked"
+  usecase "Manage Approve Cancellations"
+  usecase "Manage Mark Bills Paid"
+  usecase "Add Orders"
+  usecase "Remove Orders"
+  usecase "View Orders"
+  usecase "Manage Load Balance Orders"
+  usecase "Manage Print Orders and Receipts"
+  usecase "Manage Place Orders"
+  usecase "Manage Tables"
+  usecase "Process Payments"
+
+  Customer --> "Manage Place Orders"
+  Customer --> "Process Payments"
+  Admin --> "Manage Menu Items"
+  Admin --> "Manage Inventory Items"
+  Admin --> "Manage Tables"
+  "Head Chef" --> "Manage Load Balance Orders"
+  "Head Chef" --> "Manage Mark Dishes Cooked"
+  "Head Chef" --> "Manage Approve Cancellations"
+  Chef --> "Manage Mark Dishes Cooked"
+  "Hall Manager" --> "Manage Tables"
+  Waiter --> "Add Orders"
+  Waiter --> "Remove Orders"
+  Waiter --> "View Orders"
+  "Manage Place Orders" ..> "Add Orders" : <<include>>
+  "Add Orders" ..> "Manage Load Balance Orders" : <<include>>
+  "Manage Mark Dishes Cooked" ..> "View Orders" : <<include>>
+  "Manage Approve Cancellations" ..> "Remove Orders" : <<include>>
+  "Process Payments" ..> "Manage Mark Bills Paid" : <<include>>
+  "Manage Print Orders and Receipts" ..> "Manage Place Orders" : <<extend>>
+  "Manage Print Orders and Receipts" ..> "Process Payments" : <<extend>>
+}
+
+note "Generated on: 2025-05-27"
+@enduml

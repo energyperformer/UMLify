@@ -1,0 +1,87 @@
+{
+  "introduction": {
+    "purpose": "to integrate 3 faculties databases providing a web interface for users to access and manage the integrated inventory",
+    "scope": "the iufa application provides a web-based interface for users to access and manage the inventory",
+    "definitions": [
+      "faculties",
+      "databases",
+      "inventory",
+      "web interface"
+    ]
+  },
+  "system_overview": {
+    "description": "unified university inventory system (uuis) for managing assets and requests",
+    "features": [
+      "asset management",
+      "request management",
+      "user authentication",
+      "report generation"
+    ]
+  },
+  "functional_requirements": {
+    "user_requirements": [
+      "create requests",
+      "edit assets",
+      "modify assets",
+      "add inventory assets"
+    ],
+    "system_requirements": [
+      "authenticate users",
+      "authorize actions",
+      "update inventory",
+      "generate reports"
+    ]
+  },
+  "non_functional_requirements": {
+    "performance": [
+      "response time",
+      "throughput",
+      "availability"
+    ],
+    "security": [
+      "user authentication",
+      "authorization",
+      "data encryption"
+    ],
+    "usability": [
+      "user-friendly interface",
+      "clear terminology",
+      "easy navigation"
+    ]
+  },
+  "use_cases": {
+    "actors": [
+      "inventory admin",
+      "users",
+      "administrators"
+    ],
+    "descriptions": [
+      "modify asset",
+      "create request",
+      "approve request",
+      "return asset"
+    ]
+  },
+  "system_interfaces": {
+    "user_interfaces": [
+      "web interface",
+      "search interface",
+      "report interface"
+    ],
+    "hardware_interfaces": [
+      "servers",
+      "databases",
+      "network"
+    ],
+    "software_interfaces": [
+      "operating system",
+      "web server",
+      "database management system"
+    ]
+  },
+  "constraints": [
+    "availability during working hours",
+    "maintenance during non-working hours",
+    "compatibility with microsoft and unix platforms"
+  ]
+}

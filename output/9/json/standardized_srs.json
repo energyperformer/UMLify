@@ -1,0 +1,86 @@
+{
+  "introduction": {
+    "purpose": "to integrate 3 faculties databases providing a web interface for users to access and manage the integrated inventory",
+    "scope": "the iufa application provides a web-based interface for users to access and manage the integrated inventory",
+    "definitions": [
+      "unified university inventory system",
+      "technology-independent",
+      "business terminology"
+    ]
+  },
+  "system_overview": {
+    "description": "the unified university inventory system is a web-based application that allows users to access and manage the integrated inventory",
+    "features": [
+      "transferring assets",
+      "editing assets",
+      "adding inventory assets",
+      "creating requests",
+      "approving requests",
+      "authentication"
+    ]
+  },
+  "functional_requirements": {
+    "user_requirements": [
+      "users can create requests",
+      "users can edit assets",
+      "users can add inventory assets"
+    ],
+    "system_requirements": [
+      "the system must authenticate users",
+      "the system must authorize user actions",
+      "the system must update the inventory in real-time"
+    ]
+  },
+  "non_functional_requirements": {
+    "performance": [
+      "the system must be available at all times during working hours",
+      "the system must respond to user requests within 1 minute"
+    ],
+    "security": [
+      "all user actions must be authenticated and authorized",
+      "the system must protect user data from unauthorized access"
+    ],
+    "usability": [
+      "the system must be easy to use for users with basic internet and office experience",
+      "the system must provide clear and consistent terminology"
+    ]
+  },
+  "use_cases": {
+    "actors": [
+      "inventory admin",
+      "users",
+      "authentication system"
+    ],
+    "descriptions": [
+      "modify use case",
+      "edit use case",
+      "add new asset use case",
+      "create request use case",
+      "returning asset use case",
+      "approving request use case"
+    ]
+  },
+  "system_interfaces": {
+    "user_interfaces": [
+      "web interface",
+      "search interface",
+      "report interface"
+    ],
+    "hardware_interfaces": [
+      "microsoft platform",
+      "unix platform"
+    ],
+    "software_interfaces": [
+      "ie browser",
+      "firefox browser",
+      "chrome browser",
+      "opera browser",
+      "safari browser"
+    ]
+  },
+  "constraints": [
+    "the system must be installed on a microsoft or unix platform",
+    "the system must be available at all times during working hours",
+    "the system must respond to user requests within 1 minute"
+  ]
+}

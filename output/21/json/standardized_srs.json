@@ -1,0 +1,81 @@
+{
+  "introduction": {
+    "purpose": "to integrate 3 faculties' databases and provide a web interface for users to access and manage the integrated inventory",
+    "scope": "to provide a unified university inventory system (UUIS) for managing assets and requests",
+    "definitions": [
+      "UUIS",
+      "inventory assets",
+      "user roles"
+    ]
+  },
+  "system_overview": {
+    "description": "a web-based system for managing university inventory and requests",
+    "features": [
+      "asset management",
+      "request management",
+      "user authentication",
+      "report generation"
+    ]
+  },
+  "functional_requirements": {
+    "user_requirements": [
+      "create requests",
+      "view requests",
+      "edit assets",
+      "view assets"
+    ],
+    "system_requirements": [
+      "authenticate users",
+      "authorize actions",
+      "manage assets",
+      "generate reports"
+    ]
+  },
+  "non_functional_requirements": {
+    "performance": [
+      "response time < 1 minute",
+      "availability during working hours"
+    ],
+    "security": [
+      "user authentication",
+      "authorization",
+      "data encryption"
+    ],
+    "usability": [
+      "easy to use interface",
+      "clear terminology",
+      "search functionality"
+    ]
+  },
+  "use_cases": {
+    "actors": [
+      "inventory admin",
+      "user",
+      "administrator"
+    ],
+    "descriptions": [
+      "modify asset",
+      "create request",
+      "approve request",
+      "return asset"
+    ]
+  },
+  "system_interfaces": {
+    "user_interfaces": [
+      "web interface",
+      "search interface"
+    ],
+    "hardware_interfaces": [
+      "servers",
+      "databases"
+    ],
+    "software_interfaces": [
+      "operating systems",
+      "browsers"
+    ]
+  },
+  "constraints": [
+    "availability during working hours",
+    "compatibility with microsoft and unix platforms"
+  ]
+}

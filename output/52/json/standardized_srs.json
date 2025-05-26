@@ -1,0 +1,113 @@
+{
+  "system": {
+    "name": "DineOut",
+    "description": "Restaurant management system for ordering and inventory management",
+    "purpose": "To digitalize restaurant management operations, including ordering and inventory management",
+    "scope": "Scope includes ordering, inventory management, and POS (Point of Sale) features"
+  },
+  "stakeholders": [
+    {
+      "name": "Customer",
+      "role": "User",
+      "needs": "To place orders, modify orders, and provide feedback"
+    },
+    {
+      "name": "Hall Manager",
+      "role": "Manager",
+      "needs": "To manage tables, mark bills as paid, and receive notifications"
+    },
+    {
+      "name": "Head Chef",
+      "role": "Chef",
+      "needs": "To assign dishes to chefs, mark dishes as cooked, and approve cancellations"
+    },
+    {
+      "name": "Admin",
+      "role": "Administrator",
+      "needs": "To manage menu items, inventory, and staff members"
+    }
+  ],
+  "users": [
+    {
+      "type": "Customer",
+      "description": "Users who place orders and provide feedback",
+      "expectations": "To have a user-friendly interface for placing orders and providing feedback"
+    },
+    {
+      "type": "Hall Manager",
+      "description": "Users who manage tables and mark bills as paid",
+      "expectations": "To have a clear view of table status and bill payment"
+    },
+    {
+      "type": "Head Chef",
+      "description": "Users who assign dishes to chefs and mark dishes as cooked",
+      "expectations": "To have a clear view of dish assignments and cooking status"
+    },
+    {
+      "type": "Admin",
+      "description": "Users who manage menu items, inventory, and staff members",
+      "expectations": "To have a clear view of menu items, inventory, and staff members"
+    }
+  ],
+  "functional_requirements": [
+    {
+      "id": "FR-001",
+      "description": "System displays a list of available and unavailable dishes",
+      "priority": "High",
+      "source": "Customer"
+    },
+    {
+      "id": "FR-002",
+      "description": "System allows customers to place orders",
+      "priority": "High",
+      "source": "Customer"
+    },
+    {
+      "id": "FR-003",
+      "description": "System allows head chefs to assign dishes to chefs",
+      "priority": "High",
+      "source": "Head Chef"
+    },
+    {
+      "id": "FR-004",
+      "description": "System allows admins to manage menu items, inventory, and staff members",
+      "priority": "High",
+      "source": "Admin"
+    }
+  ],
+  "non_functional_requirements": [
+    {
+      "category": "Performance",
+      "description": "System responses should be prompt and delays should be minimal"
+    },
+    {
+      "category": "Security",
+      "description": "System should have proper login authentication and data encryption"
+    },
+    {
+      "category": "Reliability",
+      "description": "System should be able to handle a large number of orders and provide accurate results"
+    }
+  ],
+  "constraints": [
+    "System should be compatible with Android version 6.0 or above",
+    "System should be able to connect to Firebase database"
+  ],
+  "assumptions": [
+    "System will always be used on tablets with enough resources to run the application"
+  ],
+  "interfaces": [
+    {
+      "type": "User",
+      "description": "System will have a user-friendly interface for customers, hall managers, head chefs, and admins"
+    },
+    {
+      "type": "Hardware",
+      "description": "System will be able to connect to bill printers and credit card readers"
+    },
+    {
+      "type": "Software",
+      "description": "System will use Firebase database and Android operating system"
+    }
+  ]
+}

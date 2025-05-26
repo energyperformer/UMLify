@@ -1,0 +1,58 @@
+@startuml
+title Use Case Diagram for DineOut
+
+left to right direction
+
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+skinparam usecase {
+    BackgroundColor PaleGreen
+    BorderColor Green
+    ArrowColor Green
+}
+skinparam rectangle {
+    BackgroundColor LightBlue
+    BorderColor Blue
+}
+actor "Customer"
+actor "Admin"
+actor "Head Chef"
+actor "Chef"
+actor "Hall Manager"
+actor "Waiter"
+rectangle "DineOut" {
+  usecase "Manage Menu Items"
+  usecase "Manage Inventory Items"
+  usecase "Manage Mark Dishes Cooked"
+  usecase "Manage Approve Cancellations"
+  usecase "Manage Mark Bills Paid"
+  usecase "Add Orders"
+  usecase "Remove Orders"
+  usecase "View Orders"
+  usecase "Manage Load Balance Orders"
+  usecase "Manage Print Orders and Receipts"
+  usecase "Manage Place Orders"
+  usecase "Manage Tables"
+  usecase "Process Payments"
+}
+  "Unnamed" -- "Unnamed": Customer places orders
+  "Unnamed" -- "Unnamed": Customer makes payments
+  "Unnamed" -- "Unnamed": Admin manages menu items
+  "Unnamed" -- "Unnamed": Admin manages inventory items
+  "Unnamed" -- "Unnamed": Admin manages tables
+  "Unnamed" -- "Unnamed": Head Chef manages order distribution
+  "Unnamed" -- "Unnamed": Head Chef marks dishes as cooked
+  "Unnamed" -- "Unnamed": Head Chef approves cancellations
+  "Unnamed" -- "Unnamed": Chef marks dishes as cooked
+  "Unnamed" -- "Unnamed": Hall Manager manages tables
+  "Unnamed" -- "Unnamed": Waiter adds orders
+  "Unnamed" -- "Unnamed": Waiter removes orders
+  "Unnamed" -- "Unnamed": Waiter views orders
+  "Unnamed" ..> "Unnamed" : <<include>>
+  "Unnamed" ..> "Unnamed" : <<include>>
+  "Unnamed" ..> "Unnamed" : <<include>>
+  "Unnamed" ..> "Unnamed" : <<include>>
+  "Unnamed" ..> "Unnamed" : <<include>>
+  "Unnamed" <.. "Unnamed" : <<extend>>
+  "Unnamed" <.. "Unnamed" : <<extend>>
+@enduml

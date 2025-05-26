@@ -1,0 +1,135 @@
+{
+  "system": {
+    "name": "DineOut",
+    "description": "Restaurant management system for ordering and inventory management"
+  },
+  "actors": [
+    {
+      "name": "Customer",
+      "type": "primary",
+      "description": "Users who place orders and provide feedback"
+    },
+    {
+      "name": "Hall Manager",
+      "type": "primary",
+      "description": "Users who manage tables and mark bills as paid"
+    },
+    {
+      "name": "Head Chef",
+      "type": "primary",
+      "description": "Users who assign dishes to chefs and mark dishes as cooked"
+    },
+    {
+      "name": "Admin",
+      "type": "primary",
+      "description": "Users who manage menu items, inventory, and staff members"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "View Menu",
+      "description": "Display a list of available and unavailable dishes to customers",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Place Order",
+      "description": "Allow customers to submit their orders to the system",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Assign Dishes",
+      "description": "Allow head chefs to assign dishes to available chefs",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Menu and Inventory",
+      "description": "Allow admins to create, update, and delete menu items and manage inventory",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Staff",
+      "description": "Allow admins to create, update, and delete staff members",
+      "priority": "High"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Customer",
+      "target": "View Menu",
+      "type": "association",
+      "description": "Customer views available dishes"
+    },
+    {
+      "source": "Customer",
+      "target": "Manage Place Order",
+      "type": "association",
+      "description": "Customer submits order"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage Assign Dishes",
+      "type": "association",
+      "description": "Head chef assigns dishes to chefs"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Menu and Inventory",
+      "type": "association",
+      "description": "Admin manages menu and inventory"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Staff",
+      "type": "association",
+      "description": "Admin manages staff members"
+    },
+    {
+      "source": "Manage Place Order",
+      "target": "Manage Assign Dishes",
+      "type": "include",
+      "description": "Order management includes dish assignment"
+    },
+    {
+      "source": "Manage Menu and Inventory",
+      "target": "Manage Staff",
+      "type": "extend",
+      "description": "Menu management extends staff management"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Place Order",
+      "type": "association",
+      "description": "The Hall Manager is responsible for managing the ordering process, so they should be associated with the use case of placing orders."
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Assign Dishes",
+      "type": "association",
+      "description": "The Hall Manager needs to assign dishes to customers, so they should be associated with this use case."
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage Assign Dishes",
+      "type": "association",
+      "description": "The Head Chef is responsible for assigning dishes to customers, so they should be associated with this use case."
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Menu and Inventory",
+      "type": "association",
+      "description": "The Admin is responsible for managing the menu and inventory, so they should be associated with this use case."
+    },
+    {
+      "source": "Customer",
+      "target": "View Menu",
+      "type": "association",
+      "description": "Customers need to view the menu before placing an order, so they should be associated with this use case."
+    },
+    {
+      "source": "Customer",
+      "target": "Manage Place Order",
+      "type": "association",
+      "description": "Customers place orders, so they should be associated with this use case."
+    }
+  ]
+}

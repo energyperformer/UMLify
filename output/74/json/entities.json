@@ -1,0 +1,272 @@
+{
+  "system": {
+    "name": "DineOut",
+    "description": "DineOut is a restaurant management system developed with the intention of automating the day-to-day tasks in a restaurant like order and inventory management, bill generation, and taking feedback."
+  },
+  "actors": [
+    {
+      "name": "Customer",
+      "type": "external-system",
+      "description": "The end-user who places orders and interacts with the system"
+    },
+    {
+      "name": "Head Chef",
+      "type": "primary",
+      "description": "Responsible for managing kitchen operations and assigning orders to chefs"
+    },
+    {
+      "name": "Hall Manager",
+      "type": "primary",
+      "description": "Oversees the dining area and manages table assignments and order status"
+    },
+    {
+      "name": "Admin",
+      "type": "external-system",
+      "description": "Responsible for system administration, including staff management and menu updates"
+    },
+    {
+      "name": "Chef",
+      "type": "primary",
+      "description": "Prepares dishes and manages their respective queues"
+    },
+    {
+      "name": "Waiter",
+      "type": "secondary",
+      "description": "Assists customers with ordering and serves food"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "Manage Place Order",
+      "description": "Allows customers to select dishes from the menu and create an order",
+      "priority": "High"
+    },
+    {
+      "name": "Edit Order",
+      "description": "Enables customers to modify or cancel their order before it is prepared",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Request Bill",
+      "description": "Allows customers to ask for their bill",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Provide Feedback",
+      "description": "Enables customers to give feedback on the food and service",
+      "priority": "Medium"
+    },
+    {
+      "name": "Manage Ask for Help",
+      "description": "Allows customers to request assistance through the system",
+      "priority": "Medium"
+    },
+    {
+      "name": "Manage Assign Orders",
+      "description": "Enables the Head Chef to assign dishes to chefs based on their specialties",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Dish Queue",
+      "description": "Allows chefs to view and manage their assigned dishes",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Mark Order Complete",
+      "description": "Enables the Head Chef to mark orders as complete",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Approve Cancellation",
+      "description": "Allows the Head Chef to approve the cancellation of a dish or order",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Staff",
+      "description": "Enables the Admin to perform CRUD operations on staff members",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Menu",
+      "description": "Allows the Admin to add, edit, or delete menu items",
+      "priority": "Medium"
+    },
+    {
+      "name": "Manage Inventory",
+      "description": "Enables the Admin to perform CRUD operations on inventory",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Mark Bill Paid",
+      "description": "Allows the Hall Manager to mark a bill as paid",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Tables",
+      "description": "Enables the Hall Manager to view and edit the status of tables",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Notify Order Completion",
+      "description": "Notifies the Hall Manager when an order is complete",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Print Bill",
+      "description": "Allows the Hall Manager to print the bill",
+      "priority": "High"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Customer",
+      "target": "Manage Place Order",
+      "type": "association",
+      "description": "Customer places an order"
+    },
+    {
+      "source": "Customer",
+      "target": "Edit Order",
+      "type": "association",
+      "description": "Customer modifies or cancels their order"
+    },
+    {
+      "source": "Customer",
+      "target": "Manage Request Bill",
+      "type": "association",
+      "description": "Customer asks for their bill"
+    },
+    {
+      "source": "Customer",
+      "target": "Manage Provide Feedback",
+      "type": "association",
+      "description": "Customer gives feedback on the food and service"
+    },
+    {
+      "source": "Customer",
+      "target": "Manage Ask for Help",
+      "type": "association",
+      "description": "Customer requests assistance through the system"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage Assign Orders",
+      "type": "association",
+      "description": "Head Chef assigns dishes to chefs"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage Mark Order Complete",
+      "type": "association",
+      "description": "Head Chef marks orders as complete"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage Approve Cancellation",
+      "type": "association",
+      "description": "Head Chef approves the cancellation of a dish or order"
+    },
+    {
+      "source": "Chef",
+      "target": "Manage Dish Queue",
+      "type": "association",
+      "description": "Chef views and manages their assigned dishes"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Staff",
+      "type": "association",
+      "description": "Admin performs CRUD operations on staff members"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Menu",
+      "type": "association",
+      "description": "Admin adds, edits, or deletes menu items"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Inventory",
+      "type": "association",
+      "description": "Admin performs CRUD operations on inventory"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Mark Bill Paid",
+      "type": "association",
+      "description": "Hall Manager marks a bill as paid"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Tables",
+      "type": "association",
+      "description": "Hall Manager views and edits the status of tables"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Notify Order Completion",
+      "type": "association",
+      "description": "Hall Manager is notified when an order is complete"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Print Bill",
+      "type": "association",
+      "description": "Hall Manager prints the bill"
+    },
+    {
+      "source": "Waiter",
+      "target": "Manage Place Order",
+      "type": "association",
+      "description": "Waiter assists customer with ordering"
+    },
+    {
+      "source": "Manage Place Order",
+      "target": "Manage Assign Orders",
+      "type": "include",
+      "description": "Placing an order includes assigning it to a chef"
+    },
+    {
+      "source": "Manage Assign Orders",
+      "target": "Manage Dish Queue",
+      "type": "include",
+      "description": "Assigning an order includes managing the dish queue"
+    },
+    {
+      "source": "Manage Dish Queue",
+      "target": "Manage Mark Order Complete",
+      "type": "include",
+      "description": "Managing the dish queue includes marking orders as complete"
+    },
+    {
+      "source": "Manage Mark Order Complete",
+      "target": "Manage Notify Order Completion",
+      "type": "include",
+      "description": "Marking an order as complete includes notifying the Hall Manager"
+    },
+    {
+      "source": "Manage Request Bill",
+      "target": "Manage Mark Bill Paid",
+      "type": "include",
+      "description": "Requesting a bill includes marking it as paid"
+    },
+    {
+      "source": "Manage Request Bill",
+      "target": "Manage Print Bill",
+      "type": "include",
+      "description": "Requesting a bill includes printing it"
+    },
+    {
+      "source": "Manage Edit Order",
+      "target": "Manage Mark Order Complete",
+      "type": "extend",
+      "description": "Editing an order may optionally include marking it as complete"
+    },
+    {
+      "source": "Manage Approve Cancellation",
+      "target": "Manage Edit Order",
+      "type": "extend",
+      "description": "Approving a cancellation may optionally include editing the order"
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "actors": [
+    {
+      "name": "inventory admin",
+      "description": "manages inventory and approves requests",
+      "type": "primary"
+    },
+    {
+      "name": "users",
+      "description": "access and manage inventory",
+      "type": "primary"
+    },
+    {
+      "name": "authentication system",
+      "description": "authenticates users",
+      "type": "secondary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "modify asset",
+      "description": "modify asset information",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "asset exists"
+      ],
+      "postconditions": [
+        "asset information updated"
+      ],
+      "main_flow": [
+        "login",
+        "search asset",
+        "modify asset information",
+        "save changes"
+      ],
+      "alternative_flows": [
+        "asset not found",
+        "insufficient permissions"
+      ]
+    },
+    {
+      "name": "create request",
+      "description": "create a new request",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "user logged in"
+      ],
+      "postconditions": [
+        "request created"
+      ],
+      "main_flow": [
+        "login",
+        "fill request form",
+        "submit request"
+      ],
+      "alternative_flows": [
+        "invalid request data",
+        "request limit exceeded"
+      ]
+    },
+    {
+      "name": "return asset",
+      "description": "return an asset",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "asset borrowed"
+      ],
+      "postconditions": [
+        "asset returned"
+      ],
+      "main_flow": [
+        "login",
+        "search asset",
+        "return asset"
+      ],
+      "alternative_flows": [
+        "asset not found",
+        "asset not borrowed"
+      ]
+    },
+    {
+      "name": "approve request",
+      "description": "approve a request",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "request pending"
+      ],
+      "postconditions": [
+        "request approved"
+      ],
+      "main_flow": [
+        "login",
+        "view requests",
+        "approve request"
+      ],
+      "alternative_flows": [
+        "request not found",
+        "insufficient permissions"
+      ]
+    },
+    {
+      "name": "change permissions",
+      "description": "change user permissions",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "user exists"
+      ],
+      "postconditions": [
+        "permissions updated"
+      ],
+      "main_flow": [
+        "login",
+        "search user",
+        "modify permissions",
+        "save changes"
+      ],
+      "alternative_flows": [
+        "user not found",
+        "insufficient permissions"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "inventory admin",
+      "to": "modify asset",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "create request",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "return asset",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "approve request",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "change permissions",
+      "type": "association"
+    },
+    {
+      "from": "authentication system",
+      "to": "users",
+      "type": "association"
+    },
+    {
+      "from": "modify asset",
+      "to": "approve request",
+      "type": "include"
+    },
+    {
+      "from": "create request",
+      "to": "approve request",
+      "type": "include"
+    }
+  ]
+}

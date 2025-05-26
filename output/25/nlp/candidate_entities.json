@@ -1,0 +1,41 @@
+{
+  "actors": [
+    {
+      "name": "for user",
+      "source": "regex_pattern",
+      "sentence": "INTRODUCTION\nPurpose: to integrate 3 faculties' databases and provide a web interface for users to access and manage the integrated inventory\nScope: to provide a unified university inventory system (UUIS) with a web interface for users to access and manage inventory\nDefinitions:\n- unified university inventory system (UUIS)\n- technology-independent\n- business terminology\nSYSTEM OVERVIEW\nDescription: a web-based system for managing university inventory, including assets, locations, and user permissions\nFeatures:\n- asset management\n- location management\n- user permission management\n- report generation\nFUNCTIONAL REQUIREMENTS\nUser Requirements:\n- create requests\n- edit assets\n- modify assets\n- add inventory assets\n- create new locations\nSystem Requirements:\n- authenticate users\n- authorize user actions\n- update inventory\n- generate reports\nUSE CASES\nActors:\n- inventory admin\n- users\n- administrators\nDescriptions:\n- modify asset\n- edit asset\n- add new asset\n- create request\n- return asset\n- approve request\n- change permissions",
+      "confidence": 0.6
+    },
+    {
+      "name": "system",
+      "source": "regex_pattern",
+      "sentence": "INTRODUCTION\nPurpose: to integrate 3 faculties' databases and provide a web interface for users to access and manage the integrated inventory\nScope: to provide a unified university inventory system (UUIS) with a web interface for users to access and manage inventory\nDefinitions:\n- unified university inventory system (UUIS)\n- technology-independent\n- business terminology\nSYSTEM OVERVIEW\nDescription: a web-based system for managing university inventory, including assets, locations, and user permissions\nFeatures:\n- asset management\n- location management\n- user permission management\n- report generation\nFUNCTIONAL REQUIREMENTS\nUser Requirements:\n- create requests\n- edit assets\n- modify assets\n- add inventory assets\n- create new locations\nSystem Requirements:\n- authenticate users\n- authorize user actions\n- update inventory\n- generate reports\nUSE CASES\nActors:\n- inventory admin\n- users\n- administrators\nDescriptions:\n- modify asset\n- edit asset\n- add new asset\n- create request\n- return asset\n- approve request\n- change permissions",
+      "confidence": 0.6
+    },
+    {
+      "name": "and user",
+      "source": "regex_pattern",
+      "sentence": "INTRODUCTION\nPurpose: to integrate 3 faculties' databases and provide a web interface for users to access and manage the integrated inventory\nScope: to provide a unified university inventory system (UUIS) with a web interface for users to access and manage inventory\nDefinitions:\n- unified university inventory system (UUIS)\n- technology-independent\n- business terminology\nSYSTEM OVERVIEW\nDescription: a web-based system for managing university inventory, including assets, locations, and user permissions\nFeatures:\n- asset management\n- location management\n- user permission management\n- report generation\nFUNCTIONAL REQUIREMENTS\nUser Requirements:\n- create requests\n- edit assets\n- modify assets\n- add inventory assets\n- create new locations\nSystem Requirements:\n- authenticate users\n- authorize user actions\n- update inventory\n- generate reports\nUSE CASES\nActors:\n- inventory admin\n- users\n- administrators\nDescriptions:\n- modify asset\n- edit asset\n- add new asset\n- create request\n- return asset\n- approve request\n- change permissions",
+      "confidence": 0.6
+    },
+    {
+      "name": "authenticate user",
+      "source": "regex_pattern",
+      "sentence": "INTRODUCTION\nPurpose: to integrate 3 faculties' databases and provide a web interface for users to access and manage the integrated inventory\nScope: to provide a unified university inventory system (UUIS) with a web interface for users to access and manage inventory\nDefinitions:\n- unified university inventory system (UUIS)\n- technology-independent\n- business terminology\nSYSTEM OVERVIEW\nDescription: a web-based system for managing university inventory, including assets, locations, and user permissions\nFeatures:\n- asset management\n- location management\n- user permission management\n- report generation\nFUNCTIONAL REQUIREMENTS\nUser Requirements:\n- create requests\n- edit assets\n- modify assets\n- add inventory assets\n- create new locations\nSystem Requirements:\n- authenticate users\n- authorize user actions\n- update inventory\n- generate reports\nUSE CASES\nActors:\n- inventory admin\n- users\n- administrators\nDescriptions:\n- modify asset\n- edit asset\n- add new asset\n- create request\n- return asset\n- approve request\n- change permissions",
+      "confidence": 0.6
+    },
+    {
+      "name": "authorize user",
+      "source": "regex_pattern",
+      "sentence": "INTRODUCTION\nPurpose: to integrate 3 faculties' databases and provide a web interface for users to access and manage the integrated inventory\nScope: to provide a unified university inventory system (UUIS) with a web interface for users to access and manage inventory\nDefinitions:\n- unified university inventory system (UUIS)\n- technology-independent\n- business terminology\nSYSTEM OVERVIEW\nDescription: a web-based system for managing university inventory, including assets, locations, and user permissions\nFeatures:\n- asset management\n- location management\n- user permission management\n- report generation\nFUNCTIONAL REQUIREMENTS\nUser Requirements:\n- create requests\n- edit assets\n- modify assets\n- add inventory assets\n- create new locations\nSystem Requirements:\n- authenticate users\n- authorize user actions\n- update inventory\n- generate reports\nUSE CASES\nActors:\n- inventory admin\n- users\n- administrators\nDescriptions:\n- modify asset\n- edit asset\n- add new asset\n- create request\n- return asset\n- approve request\n- change permissions",
+      "confidence": 0.6
+    },
+    {
+      "name": "admin",
+      "source": "regex_pattern",
+      "sentence": "INTRODUCTION\nPurpose: to integrate 3 faculties' databases and provide a web interface for users to access and manage the integrated inventory\nScope: to provide a unified university inventory system (UUIS) with a web interface for users to access and manage inventory\nDefinitions:\n- unified university inventory system (UUIS)\n- technology-independent\n- business terminology\nSYSTEM OVERVIEW\nDescription: a web-based system for managing university inventory, including assets, locations, and user permissions\nFeatures:\n- asset management\n- location management\n- user permission management\n- report generation\nFUNCTIONAL REQUIREMENTS\nUser Requirements:\n- create requests\n- edit assets\n- modify assets\n- add inventory assets\n- create new locations\nSystem Requirements:\n- authenticate users\n- authorize user actions\n- update inventory\n- generate reports\nUSE CASES\nActors:\n- inventory admin\n- users\n- administrators\nDescriptions:\n- modify asset\n- edit asset\n- add new asset\n- create request\n- return asset\n- approve request\n- change permissions",
+      "confidence": 0.6
+    }
+  ],
+  "use_cases": []
+}

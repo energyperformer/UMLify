@@ -1,0 +1,167 @@
+{
+  "actors": [
+    {
+      "name": "inventory admin",
+      "description": "manages the inventory system",
+      "type": "primary"
+    },
+    {
+      "name": "users",
+      "description": "access and manage the integrated inventory",
+      "type": "primary"
+    },
+    {
+      "name": "authentication system",
+      "description": "authenticates user access",
+      "type": "secondary"
+    },
+    {
+      "name": "faculties databases",
+      "description": "external systems providing data",
+      "type": "secondary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "create request",
+      "description": "users create requests for assets",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "request is created"
+      ],
+      "main_flow": [
+        "user submits request",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "request is rejected"
+      ]
+    },
+    {
+      "name": "edit asset",
+      "description": "users edit asset information",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "user is authenticated",
+        "asset exists"
+      ],
+      "postconditions": [
+        "asset is updated"
+      ],
+      "main_flow": [
+        "user edits asset",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "edit is rejected"
+      ]
+    },
+    {
+      "name": "approve request",
+      "description": "admin approves or rejects requests",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "request exists",
+        "admin is authenticated"
+      ],
+      "postconditions": [
+        "request is approved or rejected"
+      ],
+      "main_flow": [
+        "admin reviews request",
+        "admin approves or rejects"
+      ],
+      "alternative_flows": [
+        "request is pending"
+      ]
+    },
+    {
+      "name": "authenticate user",
+      "description": "system authenticates user access",
+      "actors": [
+        "users",
+        "authentication system"
+      ],
+      "preconditions": [
+        "user attempts to access system"
+      ],
+      "postconditions": [
+        "user is authenticated"
+      ],
+      "main_flow": [
+        "user provides credentials",
+        "system verifies credentials"
+      ],
+      "alternative_flows": [
+        "authentication fails"
+      ]
+    },
+    {
+      "name": "transfer asset",
+      "description": "users transfer assets",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "user is authenticated",
+        "asset exists"
+      ],
+      "postconditions": [
+        "asset is transferred"
+      ],
+      "main_flow": [
+        "user initiates transfer",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "transfer is rejected"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "users",
+      "to": "create request",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "edit asset",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "approve request",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "authenticate user",
+      "type": "association"
+    },
+    {
+      "from": "authentication system",
+      "to": "authenticate user",
+      "type": "association"
+    },
+    {
+      "from": "create request",
+      "to": "approve request",
+      "type": "include"
+    },
+    {
+      "from": "edit asset",
+      "to": "transfer asset",
+      "type": "extend"
+    }
+  ]
+}

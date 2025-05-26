@@ -1,0 +1,113 @@
+{
+  "introduction": {
+    "purpose": "to capture the system requirements and features of the dineout application",
+    "scope": "dineout is a restaurant management system for automating day-to-day tasks",
+    "definitions_acronyms_abbreviations": [
+      "crud",
+      "print helper",
+      "marshmallow 6.0"
+    ],
+    "references": [
+      "android user interface",
+      "ieee std 830-1998"
+    ],
+    "overview": "dineout aims to improve restaurant performance by digitalizing ordering and inventory management"
+  },
+  "overall_description": {
+    "product_perspective": "dineout is a self-contained software system with a mobile application and firebase database",
+    "product_functions": [
+      "place order",
+      "edit order",
+      "cancel order",
+      "mark dish as cooked",
+      "request bill"
+    ],
+    "user_characteristics": [
+      "customer",
+      "head chef",
+      "admin",
+      "hall manager",
+      "chef"
+    ],
+    "constraints": [
+      "compatibility with android version 6.0 or above",
+      "device constraint"
+    ],
+    "assumptions_dependencies": [
+      "enough resources to run the application",
+      "firebase interface"
+    ],
+    "apportioning_of_requirements": [
+      "version 1.0",
+      "later releases"
+    ]
+  },
+  "specific_requirements": {
+    "external_interface_requirements": {
+      "user_interfaces": [
+        "customer interface",
+        "head chef interface",
+        "hall manager interface",
+        "admin interface"
+      ],
+      "hardware_interfaces": [
+        "bill printer",
+        "credit card reader",
+        "central screen in kitchen"
+      ],
+      "software_interfaces": [
+        "firebase database",
+        "android version 6.0 or above"
+      ],
+      "communication_interfaces": [
+        "http protocol"
+      ]
+    },
+    "functional_requirements": [
+      "place order",
+      "edit order",
+      "cancel order",
+      "mark dish as cooked",
+      "request bill"
+    ],
+    "performance_requirements": [
+      "interactive system",
+      "delays less than 2 seconds",
+      "connection to firebase server"
+    ],
+    "logical_database_requirements": [
+      "store inventory and ordering information"
+    ],
+    "design_constraints": [
+      "operating system constraint",
+      "device constraint"
+    ],
+    "software_system_attributes": {
+      "reliability": [
+        "correct results",
+        "no delays"
+      ],
+      "security": [
+        "encrypted login authentication",
+        "secure information transmission"
+      ],
+      "maintainability": [
+        "easy repair",
+        "low response time"
+      ],
+      "portability": [
+        "easy installation",
+        "smooth running"
+      ],
+      "usability": [
+        "simple interface",
+        "easy to use"
+      ]
+    },
+    "organizing_specific_requirements": [
+      "customer help",
+      "chef order queue",
+      "add/edit/delete staff members"
+    ]
+  }
+}

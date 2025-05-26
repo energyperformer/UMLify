@@ -1,0 +1,1761 @@
+1
+SEQUENCE DIAGRAM
+1
+Sequence Diagram
+Creating sequence diagrams with PlantUML is remarkably straightforward. This ease of use is largely
+attributed to the user-friendly nature of its syntax, designed to be both intuitive and easy to remember.
+• Intuitive Syntax:
+First and foremost, users appreciate the straightforward and intuitive syntax that PlantUML employs.
+This well-thought-out design means that even those new to diagram creation find it easy to grasp the
+basics quickly and without hassle.
+• Text-to-Graphic Correlation:
+Another distinguishing feature is the close resemblance between the textual representation and the graph-
+ical output. This harmonious correlation ensures that the textual drafts translate quite accurately into
+graphical diagrams, providing a cohesive and predictable design experience without unpleasant surprises
+in the final output.
+• Eﬀicient Crafting Process:
+The strong correlation between the text and the graphical result not only simplifies the crafting process
+but also significantly speeds it up. Users benefit from a more streamlined process with fewer requirements
+for time-consuming revisions and adjustments.
+• Visualization While Drafting:
+The ability to envisage the final graphical outcome while drafting the text is a feature that many find
+invaluable. It naturally fosters a smooth transition from initial draft to final presentation, enhancing
+productivity and reducing the likelihood of errors.
+• Easy Edits and Revisions:
+Importantly, editing existing diagrams is a hassle-free process. Since the diagrams are generated from
+text, users find that making adjustments is considerably easier and more precise than altering an image
+using graphical tools. It boils down to simply modifying the text, a process far more straightforward and
+less prone to errors than making changes through a graphical interface with a mouse.
+PlantUML facilitates a straightforward and user-friendly approach to creating and editing sequence dia-
+grams, meeting the needs of both novices and seasoned designers alike. It skillfully leverages the simplicity
+of textual inputs to craft visually descriptive and accurate diagrams, thereby establishing itself as a must-
+have tool in the diagram creation toolkit.
+You can learn more about some of the common commands in PlantUML to enhance your diagram creation
+experience.
+1.1
+Basic Examples
+In PlantUML sequence diagrams, the -> sequence denotes a message sent between two participants, which
+are automatically recognized and do not need to be declared beforehand.
+Utilize dotted arrows by employing the --> sequence, offering a distinct visualization in your diagrams.
+To improve readability without affecting the visual representation, use reverse arrows like <- or <--.
+However, be aware that this is specifically for sequence diagrams and the rules differ for other diagram
+types.
+@startuml
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: Another authentication Response
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+1 / 606
+
+
+1.2
+Declaring participant
+1
+SEQUENCE DIAGRAM
+1.2
+Declaring participant
+If the keyword participant is used to declare a participant, more control on that participant is possible.
+The order of declaration will be the (default) order of display.
+Using these other keywords to declare participants will change the shape of the participant represen-
+tation:
+• actor
+• boundary
+• control
+• entity
+• database
+• collections
+• queue
+@startuml
+participant Participant as Foo
+actor
+Actor
+as Foo1
+boundary
+Boundary
+as Foo2
+control
+Control
+as Foo3
+entity
+Entity
+as Foo4
+database
+Database
+as Foo5
+collections Collections as Foo6
+queue
+Queue
+as Foo7
+Foo -> Foo1 : To actor
+Foo -> Foo2 : To boundary
+Foo -> Foo3 : To control
+Foo -> Foo4 : To entity
+Foo -> Foo5 : To database
+Foo -> Foo6 : To collections
+Foo -> Foo7: To queue
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+2 / 606
+
+
+1.2
+Declaring participant
+1
+SEQUENCE DIAGRAM
+Rename a participant using the as keyword.
+You can also change the background color of actor or participant.
+@startuml
+actor Bob #red
+' The only difference between actor
+'and participant is the drawing
+participant Alice
+participant "I have a really\nlong name" as L #99FF99
+/' You can also declare:
+participant L as "I have a really\nlong name"
+#99FF99
+'/
+Alice->Bob: Authentication Request
+Bob->Alice: Authentication Response
+Bob->L: Log transaction
+@enduml
+You can use the order keyword to customize the display order of participants.
+@startuml
+participant Last order 30
+participant Middle order 20
+participant First order 10
+PlantUML Language Reference Guide (1.2025.0)
+3 / 606
+
+
+1.3
+Declaring participant on multiline
+1
+SEQUENCE DIAGRAM
+@enduml
+1.3
+Declaring participant on multiline
+You can declare participant on multi-line.
+@startuml
+participant Participant [
+=Title
+----
+""SubTitle""
+]
+participant Bob
+Participant -> Bob
+@enduml
+[Ref. QA-15232]
+1.4
+Use non-letters in participants
+You can use quotes to define participants. And you can use the as keyword to give an alias to those
+participants.
+@startuml
+Alice -> "Bob()" : Hello
+"Bob()" -> "This is very\nlong" as Long
+' You can also declare:
+' "Bob()" -> Long as "This is very\nlong"
+Long --> "Bob()" : ok
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+4 / 606
+
+
+1.5
+Message to Self
+1
+SEQUENCE DIAGRAM
+1.5
+Message to Self
+A participant can send a message to itself.
+It is also possible to have multi-line using \n.
+@startuml
+Alice -> Alice: This is a signal to self.\nIt also demonstrates\nmultiline \ntext
+@enduml
+@startuml
+Alice <- Alice: This is a signal to self.\nIt also demonstrates\nmultiline \ntext
+@enduml
+[Ref. QA-1361]
+1.6
+Text alignment
+Text alignment on arrows can be set to left, right or center using skinparam sequenceMessageAlign.
+You can also use direction or reverseDirection to align text depending on arrow direction. Further
+details and examples of this are available on the skinparam page.
+@startuml
+skinparam sequenceMessageAlign right
+Bob -> Alice : Request
+Alice -> Bob : Response
+@enduml
+1.6.1
+Text of response message below the arrow
+You can put the text of the response message below the arrow, with the skinparam responseMessageBelowArrow
+true command.
+PlantUML Language Reference Guide (1.2025.0)
+5 / 606
+
+
+1.7
+Change arrow style
+1
+SEQUENCE DIAGRAM
+@startuml
+skinparam responseMessageBelowArrow true
+Bob -> Alice : hello
+Bob <- Alice : ok
+@enduml
+1.7
+Change arrow style
+You can change arrow style by several ways:
+• add a final x to denote a lost message
+• use \ or / instead of < or > to have only the bottom or top part of the arrow
+• repeat the arrow head (for example, >> or //) head to have a thin drawing
+• use -- instead of - to have a dotted arrow
+• add a final ”o” at arrow head
+• use bidirectional arrow <->
+@startuml
+Bob ->x Alice
+Bob -> Alice
+Bob ->> Alice
+Bob -\ Alice
+Bob \\- Alice
+Bob //-- Alice
+Bob ->o Alice
+Bob o\\-- Alice
+Bob <-> Alice
+Bob <->o Alice
+@enduml
+1.8
+Change arrow color
+You can change the color of individual arrows using the following notation:
+@startuml
+PlantUML Language Reference Guide (1.2025.0)
+6 / 606
+
+
+1.9
+Message sequence numbering
+1
+SEQUENCE DIAGRAM
+Bob -[#red]> Alice : hello
+Alice -[#0000FF]->Bob : ok
+@enduml
+1.9
+Message sequence numbering
+The keyword autonumber is used to automatically add an incrementing number to messages.
+@startuml
+autonumber
+Bob -> Alice : Authentication Request
+Bob <- Alice : Authentication Response
+@enduml
+You can specify a startnumber with autonumber <start> , and also an increment with autonumber
+<start> <increment>.
+@startuml
+autonumber
+Bob -> Alice : Authentication Request
+Bob <- Alice : Authentication Response
+autonumber 15
+Bob -> Alice : Another authentication Request
+Bob <- Alice : Another authentication Response
+autonumber 40 10
+Bob -> Alice : Yet another authentication Request
+Bob <- Alice : Yet another authentication Response
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+7 / 606
+
+
+1.9
+Message sequence numbering
+1
+SEQUENCE DIAGRAM
+You can specify a format for your number by using between double-quote.
+The formatting is done with the Java class DecimalFormat (0 means digit, # means digit and zero if
+absent).
+You can use some html tag in the format.
+@startuml
+autonumber "<b>[000]"
+Bob -> Alice : Authentication Request
+Bob <- Alice : Authentication Response
+autonumber 15 "<b>(<u>##</u>)"
+Bob -> Alice : Another authentication Request
+Bob <- Alice : Another authentication Response
+autonumber 40 10 "<font color=red><b>Message 0
+"
+Bob -> Alice : Yet another authentication Request
+Bob <- Alice : Yet another authentication Response
+@enduml
+You can also use autonumber stop and autonumber resume <increment> <format> to respectively
+pause and resume automatic numbering.
+@startuml
+autonumber 10 10 "<b>[000]"
+Bob -> Alice : Authentication Request
+Bob <- Alice : Authentication Response
+autonumber stop
+Bob -> Alice : dummy
+PlantUML Language Reference Guide (1.2025.0)
+8 / 606
+
+
+1.9
+Message sequence numbering
+1
+SEQUENCE DIAGRAM
+autonumber resume "<font color=red><b>Message 0
+"
+Bob -> Alice : Yet another authentication Request
+Bob <- Alice : Yet another authentication Response
+autonumber stop
+Bob -> Alice : dummy
+autonumber resume 1 "<font color=blue><b>Message 0
+"
+Bob -> Alice : Yet another authentication Request
+Bob <- Alice : Yet another authentication Response
+@enduml
+Your startnumber can also be a 2 or 3 digit sequence using a field delimiter such as ., ;, ,, : or a mix
+of these. For example: 1.1.1 or 1.1:1.
+Automatically the last digit will increment.
+To increment the first digit, use: autonumber inc A. To increment the second digit, use: autonumber
+inc B.
+@startuml
+autonumber 1.1.1
+Alice -> Bob: Authentication request
+Bob --> Alice: Response
+autonumber inc A
+'Now we have 2.1.1
+Alice -> Bob: Another authentication request
+Bob --> Alice: Response
+autonumber inc B
+'Now we have 2.2.1
+Alice -> Bob: Another authentication request
+Bob --> Alice: Response
+autonumber inc A
+'Now we have 3.1.1
+Alice -> Bob: Another authentication request
+autonumber inc B
+'Now we have 3.2.1
+Bob --> Alice: Response
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+9 / 606
+
+
+1.10
+Page Title, Header and Footer
+1
+SEQUENCE DIAGRAM
+You can also use the value of autonumber with the %autonumber% variable:
+@startuml
+autonumber 10
+Alice -> Bob
+note right
+the <U+0025>autonumber<U+0025> works everywhere.
+Here, its value is ** %autonumber% **
+end note
+Bob --> Alice: //This is the response %autonumber%//
+@enduml
+[Ref. QA-7119]
+1.10
+Page Title, Header and Footer
+The title keyword is used to add a title to the page.
+Pages can display headers and footers using header and footer.
+@startuml
+header Page Header
+footer Page %page% of %lastpage%
+title Example Title
+Alice -> Bob : message 1
+Alice -> Bob : message 2
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+10 / 606
+
+
+1.11
+Splitting diagrams
+1
+SEQUENCE DIAGRAM
+1.11
+Splitting diagrams
+The newpage keyword is used to split a diagram into several images.
+You can put a title for the new page just after the newpage keyword. This title overrides the previously
+specified title if any.
+This is very handy with Word to print long diagram on several pages.
+(Note: this really does work. Only the first page is shown below, but it is a display artifact.)
+@startuml
+Alice -> Bob : message 1
+Alice -> Bob : message 2
+newpage
+Alice -> Bob : message 3
+Alice -> Bob : message 4
+newpage A title for the\nlast page
+Alice -> Bob : message 5
+Alice -> Bob : message 6
+@enduml
+1.12
+Grouping message
+It is possible to group messages together using the following keywords:
+• alt/else
+• opt
+• loop
+• par
+• break
+• critical
+PlantUML Language Reference Guide (1.2025.0)
+11 / 606
+
+
+1.13
+Secondary group label
+1
+SEQUENCE DIAGRAM
+• group, followed by a text to be displayed
+It is possible to add a text that will be displayed into the header (for group, see next paragraph ’Secondary
+group label’).
+The end keyword is used to close the group.
+Note that it is possible to nest groups.
+@startuml
+Alice -> Bob: Authentication Request
+alt successful case
+Bob -> Alice: Authentication Accepted
+else some kind of failure
+Bob -> Alice: Authentication Failure
+group My own label
+Alice -> Log : Log attack start
+loop 1000 times
+Alice -> Bob: DNS Attack
+end
+Alice -> Log : Log attack end
+end
+else Another type of failure
+Bob -> Alice: Please repeat
+end
+@enduml
+1.13
+Secondary group label
+For group, it is possible to add, between[ and ], a secondary text or label that will be displayed into the
+header.
+PlantUML Language Reference Guide (1.2025.0)
+12 / 606
+
+
+1.14
+Notes on messages
+1
+SEQUENCE DIAGRAM
+@startuml
+Alice -> Bob: Authentication Request
+Bob -> Alice: Authentication Failure
+group My own label [My own label 2]
+Alice -> Log : Log attack start
+loop 1000 times
+Alice -> Bob: DNS Attack
+end
+Alice -> Log : Log attack end
+end
+@enduml
+[Ref. QA-2503]
+1.14
+Notes on messages
+It is possible to put notes on message using the note left or note right keywords just after the message.
+You can have a multi-line note using the end note keywords.
+@startuml
+Alice->Bob : hello
+note left: this is a first note
+Bob->Alice : ok
+note right: this is another note
+Bob->Bob : I am thinking
+note left
+a note
+can also be defined
+on several lines
+end note
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+13 / 606
+
+
+1.15
+Some other notes
+1
+SEQUENCE DIAGRAM
+1.15
+Some other notes
+It is also possible to place notes relative to participant with note left of , note right of or note
+over keywords.
+It is possible to highlight a note by changing its background color.
+You can also have a multi-line note using the end note keywords.
+@startuml
+participant Alice
+participant Bob
+note left of Alice #aqua
+This is displayed
+left of Alice.
+end note
+note right of Alice: This is displayed right of Alice.
+note over Alice: This is displayed over Alice.
+note over Alice, Bob #FFAAAA: This is displayed\n over Bob and Alice.
+note over Bob, Alice
+This is yet another
+example of
+a long note.
+end note
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+14 / 606
+
+
+1.16
+Changing notes shape [hnote, rnote]
+1
+SEQUENCE DIAGRAM
+1.16
+Changing notes shape [hnote, rnote]
+You can use hnote and rnote keywords to change note shapes :
+• hnote for hexagonal note;
+• rnote for rectangle note.
+@startuml
+caller -> server : conReq
+hnote over caller : idle
+caller <- server : conConf
+rnote over server
+"r" as rectangle
+"h" as hexagon
+endrnote
+rnote over server
+this is
+on several
+lines
+endrnote
+hnote over caller
+this is
+on several
+lines
+endhnote
+@enduml
+[Ref. QA-1765]
+1.17
+Note over all participants [across]
+You can directly make a note over all participants, with the syntax:
+• note across: note_description
+@startuml
+Alice->Bob:m1
+Bob->Charlie:m2
+note over Alice, Charlie: Old method for note over all part. with:\n ""note over //FirstPart, LastPar
+note across: New method with:\n""note across""
+Bob->Alice
+hnote across:Note across all part.
+PlantUML Language Reference Guide (1.2025.0)
+15 / 606
+
+
+1.18
+Several notes aligned at the same level [/]
+1
+SEQUENCE DIAGRAM
+@enduml
+[Ref. QA-9738]
+1.18
+Several notes aligned at the same level [/]
+You can make several notes aligned at the same level, with the syntax /:
+• without / (by default, the notes are not aligned)
+@startuml
+note over Alice : initial state of Alice
+note over Bob : initial state of Bob
+Bob -> Alice : hello
+@enduml
+• with / (the notes are aligned)
+@startuml
+note over Alice : initial state of Alice
+/ note over Bob : initial state of Bob
+Bob -> Alice : hello
+@enduml
+[Ref. QA-354]
+PlantUML Language Reference Guide (1.2025.0)
+16 / 606
+
+
+1.19
+Creole and HTML
+1
+SEQUENCE DIAGRAM
+1.19
+Creole and HTML
+It is also possible to use creole formatting:
+@startuml
+participant Alice
+participant "The **Famous** Bob" as Bob
+Alice -> Bob : hello --there--
+... Some ~~long delay~~ ...
+Bob -> Alice : ok
+note left
+This is **bold**
+This is //italics//
+This is ""monospaced""
+This is --stroked--
+This is __underlined__
+This is ~~waved~~
+end note
+Alice -> Bob : A //well formatted// message
+note right of Alice
+This is <back:cadetblue><size:18>displayed</size></back>
+__left of__ Alice.
+end note
+note left of Bob
+<u:red>This</u> is <color #118888>displayed</color>
+**<color purple>left of</color> <s:red>Alice</strike> Bob**.
+end note
+note over Alice, Bob
+<w:#FF33FF>This is hosted</w> by <img sourceforge.jpg>
+end note
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+17 / 606
+
+
+1.20
+Divider or separator
+1
+SEQUENCE DIAGRAM
+1.20
+Divider or separator
+If you want, you can split a diagram using == separator to divide your diagram into logical steps.
+@startuml
+== Initialization ==
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+== Repetition ==
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+@enduml
+1.21
+Reference
+You can use reference in a diagram, using the keyword ref over.
+@startuml
+participant Alice
+actor Bob
+ref over Alice, Bob : init
+Alice -> Bob : hello
+ref over Bob
+This can be on
+several lines
+end ref
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+18 / 606
+
+
+1.22
+Delay
+1
+SEQUENCE DIAGRAM
+1.22
+Delay
+You can use ... to indicate a delay in the diagram. And it is also possible to put a message with this
+delay.
+@startuml
+Alice -> Bob: Authentication Request
+...
+Bob --> Alice: Authentication Response
+...5 minutes later...
+Bob --> Alice: Good Bye !
+@enduml
+1.23
+Text wrapping
+To break long messages, you can manually add \n in your text.
+Another option is to use maxMessageSize setting:
+@startuml
+skinparam maxMessageSize 50
+participant a
+participant b
+a -> b :this\nis\nmanually\ndone
+a -> b :this is a very long message on several words
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+19 / 606
+
+
+1.24
+Space
+1
+SEQUENCE DIAGRAM
+1.24
+Space
+You can use ||| to indicate some spacing in the diagram.
+It is also possible to specify a number of pixel to be used.
+@startuml
+Alice -> Bob: message 1
+Bob --> Alice: ok
+|||
+Alice -> Bob: message 2
+Bob --> Alice: ok
+||45||
+Alice -> Bob: message 3
+Bob --> Alice: ok
+@enduml
+1.25
+Lifeline Activation and Destruction
+The activate and deactivate are used to denote participant activation.
+Once a participant is activated, its lifeline appears.
+The activate and deactivate apply on the previous message.
+PlantUML Language Reference Guide (1.2025.0)
+20 / 606
+
+
+1.25
+Lifeline Activation and Destruction
+1
+SEQUENCE DIAGRAM
+The destroy denote the end of the lifeline of a participant.
+@startuml
+participant User
+User -> A: DoWork
+activate A
+A -> B: << createRequest >>
+activate B
+B -> C: DoWork
+activate C
+C --> B: WorkDone
+destroy C
+B --> A: RequestCreated
+deactivate B
+A -> User: Done
+deactivate A
+@enduml
+Nested lifeline can be used, and it is possible to add a color on the lifeline.
+@startuml
+participant User
+User -> A: DoWork
+activate A #FFBBBB
+A -> A: Internal call
+activate A #DarkSalmon
+A -> B: << createRequest >>
+activate B
+B --> A: RequestCreated
+deactivate B
+deactivate A
+A -> User: Done
+deactivate A
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+21 / 606
+
+
+1.26
+Return
+1
+SEQUENCE DIAGRAM
+Autoactivation is possible and works with the return keywords:
+@startuml
+autoactivate on
+alice -> bob : hello
+bob -> bob : self call
+bill -> bob #005500 : hello from thread 2
+bob -> george ** : create
+return done in thread 2
+return rc
+bob -> george !! : delete
+return success
+@enduml
+1.26
+Return
+Command return generates a return message with optional text label.
+The return point is that which caused the most recent life-line activation.
+The syntax is return label where label if provided is any string acceptable for conventional messages.
+@startuml
+Bob -> Alice : hello
+activate Alice
+Alice -> Alice : some action
+PlantUML Language Reference Guide (1.2025.0)
+22 / 606
+
+
+1.27
+Participant creation
+1
+SEQUENCE DIAGRAM
+return bye
+@enduml
+1.27
+Participant creation
+You can use the create keyword just before the first reception of a message to emphasize the fact that
+this message is actually creating this new object.
+@startuml
+Bob -> Alice : hello
+create Other
+Alice -> Other : new
+create control String
+Alice -> String
+note right : You can also put notes!
+Alice --> Bob : ok
+@enduml
+1.28
+Shortcut syntax for activation, deactivation, creation
+Immediately after specifying the target participant, the following syntax can be used:
+• ++ Activate the target (optionally a color may follow this)
+• -- Deactivate the source
+• ** Create an instance of the target
+• !! Destroy an instance of the target
+@startuml
+alice -> bob ++ : hello
+PlantUML Language Reference Guide (1.2025.0)
+23 / 606
+
+
+1.28
+Shortcut syntax for activation, deactivation, creation
+1
+SEQUENCE DIAGRAM
+bob -> bob ++ : self call
+bob -> bib ++
+#005500 : hello
+bob -> george ** : create
+return done
+return rc
+bob -> george !! : delete
+return success
+@enduml
+Then you can mix activation and deactivation, on same line:
+@startuml
+alice
+->
+bob
+++
+: hello1
+bob
+->
+charlie --++ : hello2
+charlie --> alice
+--
+: ok
+@enduml
+@startuml
+@startuml
+alice -> bob
+--++ #gold: hello
+bob
+-> alice --++ #gold: you too
+alice -> bob
+--: step1
+alice -> bob
+: step2
+@enduml
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+24 / 606
+
+
+1.29
+Incoming and outgoing messages
+1
+SEQUENCE DIAGRAM
+[Ref. QA-4834, QA-9573 and QA-13234]
+1.29
+Incoming and outgoing messages
+You can use incoming or outgoing arrows if you want to focus on a part of the diagram.
+Use square brackets to denote the left ”[” or the right ”]” side of the diagram.
+@startuml
+[-> A: DoWork
+activate A
+A -> A: Internal call
+activate A
+A ->] : << createRequest >>
+A<--] : RequestCreated
+deactivate A
+[<- A: Done
+deactivate A
+@enduml
+You can also have the following syntax:
+@startuml
+participant Alice
+participant Bob #lightblue
+Alice -> Bob
+Bob -> Carol
+...
+[-> Bob
+[o-> Bob
+[o->o Bob
+[x-> Bob
+PlantUML Language Reference Guide (1.2025.0)
+25 / 606
+
+
+1.30
+Short arrows for incoming and outgoing messages
+1
+SEQUENCE DIAGRAM
+...
+[<- Bob
+[x<- Bob
+...
+Bob ->]
+Bob ->o]
+Bob o->o]
+Bob ->x]
+...
+Bob <-]
+Bob x<-]
+@enduml
+1.30
+Short arrows for incoming and outgoing messages
+You can have short arrows with using ?.
+@startuml
+?-> Alice
+: ""?->""\n**short** to actor1
+[-> Alice
+: ""[->""\n**from start** to actor1
+[-> Bob
+: ""[->""\n**from start** to actor2
+?-> Bob
+: ""?->""\n**short** to actor2
+Alice ->]
+: ""->]""\nfrom actor1 **to end**
+Alice ->?
+: ""->?""\n**short** from actor1
+Alice -> Bob : ""->"" \nfrom actor1 to actor2
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+26 / 606
+
+
+1.31
+Anchors and Duration
+1
+SEQUENCE DIAGRAM
+[Ref. QA-310]
+1.31
+Anchors and Duration
+With teoz it is possible to add anchors to the diagram and use the anchors to specify duration time.
+@startuml
+!pragma teoz true
+{start} Alice -> Bob : start doing things during duration
+Bob -> Max : something
+Max -> Bob : something else
+{end} Bob -> Alice : finish
+{start} <-> {end} : some time
+@enduml
+You can use the -P command-line option to specify the pragma:
+java -jar plantuml.jar -Pteoz=true
+[Ref. issue-582]
+1.32
+Stereotypes and Spots
+It is possible to add stereotypes to participants using << and >>.
+PlantUML Language Reference Guide (1.2025.0)
+27 / 606
+
+
+1.33
+Position of the stereotypes
+1
+SEQUENCE DIAGRAM
+In the stereotype, you can add a spotted character in a colored circle using the syntax (X,color).
+@startuml
+participant "Famous Bob" as Bob << Generated >>
+participant Alice << (C,#ADD1B2) Testable >>
+Bob->Alice: First message
+@enduml
+By default, the guillemet character is used to display the stereotype. You can change this behavious
+using the skinparam guillemet:
+@startuml
+skinparam guillemet false
+participant "Famous Bob" as Bob << Generated >>
+participant Alice << (C,#ADD1B2) Testable >>
+Bob->Alice: First message
+@enduml
+@startuml
+participant Bob << (C,#ADD1B2) >>
+participant Alice << (C,#ADD1B2) >>
+Bob->Alice: First message
+@enduml
+1.33
+Position of the stereotypes
+It is possible to define stereotypes position (top or bottom) with the command skinparam stereotypePosition.
+PlantUML Language Reference Guide (1.2025.0)
+28 / 606
+
+
+1.34
+More information on titles
+1
+SEQUENCE DIAGRAM
+1.33.1
+Top postion (by default)
+@startuml
+skinparam stereotypePosition top
+participant A<<st1>>
+participant B<<st2>>
+A --> B : stereo test
+@enduml
+1.33.2
+Bottom postion
+@startuml
+skinparam stereotypePosition bottom
+participant A<<st1>>
+participant B<<st2>>
+A --> B : stereo test
+@enduml
+[Ref. QA-18650]
+1.34
+More information on titles
+You can use creole formatting in the title.
+@startuml
+title __Simple__ **communication** example
+Alice -> Bob: Authentication Request
+Bob -> Alice: Authentication Response
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+29 / 606
+
+
+1.34
+More information on titles
+1
+SEQUENCE DIAGRAM
+You can add newline using \n in the title description.
+@startuml
+title __Simple__ communication example\non several lines
+Alice -> Bob: Authentication Request
+Bob -> Alice: Authentication Response
+@enduml
+You can also define title on several lines using title and end title keywords.
+@startuml
+title
+<u>Simple</u> communication example
+on <i>several</i> lines and using <font color=red>html</font>
+This is hosted by <img:sourceforge.jpg>
+end title
+Alice -> Bob: Authentication Request
+Bob -> Alice: Authentication Response
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+30 / 606
+
+
+1.35
+Participants encompass
+1
+SEQUENCE DIAGRAM
+1.35
+Participants encompass
+It is possible to draw a box around some participants, using box and end box commands.
+You can add an optional title or a optional background color, after the box keyword.
+@startuml
+box "Internal Service" #LightBlue
+participant Bob
+participant Alice
+end box
+participant Other
+Bob -> Alice : hello
+Alice -> Other : hello
+@enduml
+It is also possible to nest boxes - to draw a box within a box - when using the teoz rendering engine, for
+example:
+@startuml
+!pragma teoz true
+box "Internal Service" #LightBlue
+participant Bob
+box "Subteam"
+participant Alice
+participant John
+end box
+end box
+participant Other
+Bob -> Alice : hello
+Alice -> John : hello
+John -> Other: Hello
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+31 / 606
+
+
+1.36
+Removing Foot Boxes
+1
+SEQUENCE DIAGRAM
+1.36
+Removing Foot Boxes
+You can use the hide footbox keywords to remove the foot boxes of the diagram.
+@startuml
+hide footbox
+title Foot Box removed
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+@enduml
+1.37
+Skinparam
+You can use the skinparam command to change colors and fonts for the drawing.
+You can use this command:
+• In the diagram definition, like any other commands,
+• In an included file,
+• In a configuration file, provided in the command line or the ANT task.
+You can also change other rendering parameter, as seen in the following examples:
+@startuml
+skinparam sequenceArrowThickness 2
+skinparam roundcorner 20
+skinparam maxmessagesize 60
+skinparam sequenceParticipant underline
+actor User
+participant "First Class" as A
+participant "Second Class" as B
+participant "Last Class" as C
+User -> A: DoWork
+activate A
+PlantUML Language Reference Guide (1.2025.0)
+32 / 606
+
+
+1.37
+Skinparam
+1
+SEQUENCE DIAGRAM
+A -> B: Create Request
+activate B
+B -> C: DoWork
+activate C
+C --> B: WorkDone
+destroy C
+B --> A: Request Created
+deactivate B
+A --> User: Done
+deactivate A
+@enduml
+@startuml
+skinparam backgroundColor #EEEBDC
+skinparam handwritten true
+skinparam sequence {
+ArrowColor DeepSkyBlue
+ActorBorderColor DeepSkyBlue
+LifeLineBorderColor blue
+LifeLineBackgroundColor #A9DCDF
+ParticipantBorderColor DeepSkyBlue
+ParticipantBackgroundColor DodgerBlue
+ParticipantFontName Impact
+ParticipantFontSize 17
+ParticipantFontColor #A9DCDF
+ActorBackgroundColor aqua
+ActorFontColor DeepSkyBlue
+ActorFontSize 17
+ActorFontName Aapex
+}
+PlantUML Language Reference Guide (1.2025.0)
+33 / 606
+
+
+1.38
+Changing padding
+1
+SEQUENCE DIAGRAM
+actor User
+participant "First Class" as A
+participant "Second Class" as B
+participant "Last Class" as C
+User -> A: DoWork
+activate A
+A -> B: Create Request
+activate B
+B -> C: DoWork
+activate C
+C --> B: WorkDone
+destroy C
+B --> A: Request Created
+deactivate B
+A --> User: Done
+deactivate A
+@enduml
+1.38
+Changing padding
+It is possible to tune some padding settings.
+@startuml
+skinparam ParticipantPadding 20
+skinparam BoxPadding 10
+box "Foo1"
+participant Alice1
+participant Alice2
+end box
+box "Foo2"
+participant Bob1
+participant Bob2
+PlantUML Language Reference Guide (1.2025.0)
+34 / 606
+
+
+1.39
+Appendix: Examples of all arrow type
+1
+SEQUENCE DIAGRAM
+end box
+Alice1 -> Bob1 : hello
+Alice1 -> Out : out
+@enduml
+1.39
+Appendix: Examples of all arrow type
+1.39.1
+Normal arrow
+@startuml
+participant Alice as a
+participant Bob
+as b
+a ->
+b : ""->
+""
+a ->>
+b : ""->>
+""
+a -\
+b : ""-\
+""
+a -\\
+b : ""-\\\\""
+a -/
+b : ""-/
+""
+a -//
+b : ""-//
+""
+a ->x
+b : ""->x
+""
+a x->
+b : ""x->
+""
+a o->
+b : ""o->
+""
+a ->o
+b : ""->o
+""
+a o->o
+b : ""o->o ""
+a <->
+b : ""<->
+""
+a o<->o
+b : ""o<->o""
+a x<->x
+b : ""x<->x""
+a ->>o
+b : ""->>o ""
+a -\o
+b : ""-\o
+""
+a -\\o
+b : ""-\\\\o""
+a -/o
+b : ""-/o
+""
+a -//o
+b : ""-//o ""
+a x->o
+b : ""x->o ""
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+35 / 606
+
+
+1.39
+Appendix: Examples of all arrow type
+1
+SEQUENCE DIAGRAM
+1.39.2
+Itself arrow
+@startuml
+participant Alice as a
+participant Bob
+as b
+a ->
+a : ""->
+""
+a ->>
+a : ""->>
+""
+a -\
+a : ""-\
+""
+a -\\
+a : ""-\\\\""
+a -/
+a : ""-/
+""
+a -//
+a : ""-//
+""
+a ->x
+a : ""->x
+""
+a x->
+a : ""x->
+""
+a o->
+a : ""o->
+""
+a ->o
+a : ""->o
+""
+a o->o
+a : ""o->o ""
+a <->
+a : ""<->
+""
+a o<->o
+a : ""o<->o""
+a x<->x
+a : ""x<->x""
+a ->>o
+a : ""->>o ""
+a -\o
+a : ""-\o
+""
+a -\\o
+a : ""-\\\\o""
+PlantUML Language Reference Guide (1.2025.0)
+36 / 606
+
+
+1.39
+Appendix: Examples of all arrow type
+1
+SEQUENCE DIAGRAM
+a -/o
+a : ""-/o
+""
+a -//o
+a : ""-//o ""
+a x->o
+a : ""x->o ""
+@enduml
+1.39.3
+Incoming and outgoing messages (with ’[’, ’]’)
+1.39.4
+Incoming messages (with ’[’)
+@startuml
+PlantUML Language Reference Guide (1.2025.0)
+37 / 606
+
+
+1.39
+Appendix: Examples of all arrow type
+1
+SEQUENCE DIAGRAM
+participant Alice as a
+participant Bob
+as b
+[->
+b : ""[->
+""
+[->>
+b : ""[->>
+""
+[-\
+b : ""[-\
+""
+[-\\
+b : ""[-\\\\""
+[-/
+b : ""[-/
+""
+[-//
+b : ""[-//
+""
+[->x
+b : ""[->x
+""
+[x->
+b : ""[x->
+""
+[o->
+b : ""[o->
+""
+[->o
+b : ""[->o
+""
+[o->o
+b : ""[o->o ""
+[<->
+b : ""[<->
+""
+[o<->o
+b : ""[o<->o""
+[x<->x
+b : ""[x<->x""
+[->>o
+b : ""[->>o ""
+[-\o
+b : ""[-\o
+""
+[-\\o
+b : ""[-\\\\o""
+[-/o
+b : ""[-/o
+""
+[-//o
+b : ""[-//o ""
+[x->o
+b : ""[x->o ""
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+38 / 606
+
+
+1.39
+Appendix: Examples of all arrow type
+1
+SEQUENCE DIAGRAM
+1.39.5
+Outgoing messages (with ’]’)
+@startuml
+participant Alice as a
+participant Bob
+as b
+a ->]
+: ""->]
+""
+a ->>]
+: ""->>]
+""
+a -\]
+: ""-\]
+""
+a -\\]
+: ""-\\\\]""
+a -/]
+: ""-/]
+""
+a -//]
+: ""-//]
+""
+a ->x]
+: ""->x]
+""
+a x->]
+: ""x->]
+""
+a o->]
+: ""o->]
+""
+a ->o]
+: ""->o]
+""
+a o->o]
+: ""o->o] ""
+a <->]
+: ""<->]
+""
+a o<->o]
+: ""o<->o]""
+a x<->x]
+: ""x<->x]""
+a ->>o]
+: ""->>o] ""
+a -\o]
+: ""-\o]
+""
+a -\\o]
+: ""-\\\\o]""
+PlantUML Language Reference Guide (1.2025.0)
+39 / 606
+
+
+1.39
+Appendix: Examples of all arrow type
+1
+SEQUENCE DIAGRAM
+a -/o]
+: ""-/o]
+""
+a -//o]
+: ""-//o] ""
+a x->o]
+: ""x->o] ""
+@enduml
+1.39.6
+Short incoming and outgoing messages (with ’?’)
+1.39.7
+Short incoming (with ’?’)
+@startuml
+participant Alice as a
+participant Bob
+as b
+a ->
+b : //Long long label//
+?->
+b : ""?->
+""
+?->>
+b : ""?->>
+""
+?-\
+b : ""?-\
+""
+?-\\
+b : ""?-\\\\""
+?-/
+b : ""?-/
+""
+?-//
+b : ""?-//
+""
+?->x
+b : ""?->x
+""
+?x->
+b : ""?x->
+""
+?o->
+b : ""?o->
+""
+?->o
+b : ""?->o
+""
+PlantUML Language Reference Guide (1.2025.0)
+40 / 606
+
+
+1.39
+Appendix: Examples of all arrow type
+1
+SEQUENCE DIAGRAM
+?o->o
+b : ""?o->o ""
+?<->
+b : ""?<->
+""
+?o<->o
+b : ""?o<->o""
+?x<->x
+b : ""?x<->x""
+?->>o
+b : ""?->>o ""
+?-\o
+b : ""?-\o
+""
+?-\\o
+b : ""?-\\\\o ""
+?-/o
+b : ""?-/o
+""
+?-//o
+b : ""?-//o ""
+?x->o
+b : ""?x->o ""
+@enduml
+1.39.8
+Short outgoing (with ’?’)
+@startuml
+participant Alice as a
+participant Bob
+as b
+a ->
+b : //Long long label//
+a ->?
+: ""->?
+""
+a ->>?
+: ""->>?
+""
+a -\?
+: ""-\?
+""
+PlantUML Language Reference Guide (1.2025.0)
+41 / 606
+
+
+1.39
+Appendix: Examples of all arrow type
+1
+SEQUENCE DIAGRAM
+a -\\?
+: ""-\\\\?""
+a -/?
+: ""-/?
+""
+a -//?
+: ""-//?
+""
+a ->x?
+: ""->x?
+""
+a x->?
+: ""x->?
+""
+a o->?
+: ""o->?
+""
+a ->o?
+: ""->o?
+""
+a o->o?
+: ""o->o? ""
+a <->?
+: ""<->?
+""
+a o<->o?
+: ""o<->o?""
+a x<->x?
+: ""x<->x?""
+a ->>o?
+: ""->>o? ""
+a -\o?
+: ""-\o?
+""
+a -\\o?
+: ""-\\\\o?""
+a -/o?
+: ""-/o?
+""
+a -//o?
+: ""-//o? ""
+a x->o?
+: ""x->o? ""
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+42 / 606
+
+
+1.40
+Specific SkinParameter
+1
+SEQUENCE DIAGRAM
+1.40
+Specific SkinParameter
+1.40.1
+By default
+@startuml
+Bob -> Alice : hello
+Alice -> Bob : ok
+@enduml
+1.40.2
+LifelineStrategy
+• nosolid (by default)
+@startuml
+skinparam lifelineStrategy nosolid
+Bob -> Alice : hello
+Alice -> Bob : ok
+@enduml
+[Ref. QA-9016]
+• solid
+In order to have solid life line in sequence diagrams, you can use: skinparam lifelineStrategy solid
+@startuml
+skinparam lifelineStrategy solid
+Bob -> Alice : hello
+Alice -> Bob : ok
+@enduml
+[Ref. QA-2794]
+1.40.3
+style strictuml
+To be conform to strict UML (for arrow style: emits triangle rather than sharp arrowheads), you can use:
+• skinparam style strictuml
+PlantUML Language Reference Guide (1.2025.0)
+43 / 606
+
+
+1.41
+Hide unlinked participant
+1
+SEQUENCE DIAGRAM
+@startuml
+skinparam style strictuml
+Bob -> Alice : hello
+Alice -> Bob : ok
+@enduml
+[Ref. QA-1047]
+1.41
+Hide unlinked participant
+By default, all participants are displayed.
+@startuml
+participant Alice
+participant Bob
+participant Carol
+Alice -> Bob : hello
+@enduml
+But you can hide unlinked participant.
+@startuml
+hide unlinked
+participant Alice
+participant Bob
+participant Carol
+Alice -> Bob : hello
+@enduml
+[Ref. QA-4247]
+1.42
+Color a group message
+It is possible to color a group messages:
+@startuml
+Alice -> Bob: Authentication Request
+alt#Gold #LightBlue Successful case
+Bob -> Alice: Authentication Accepted
+PlantUML Language Reference Guide (1.2025.0)
+44 / 606
+
+
+1.43
+Mainframe
+1
+SEQUENCE DIAGRAM
+else #Pink Failure
+Bob -> Alice: Authentication Rejected
+end
+@enduml
+[Ref. QA-4750 and QA-6410]
+1.43
+Mainframe
+@startuml
+mainframe This is a **mainframe**
+Alice->Bob : Hello
+@enduml
+[Ref. QA-4019 and Issue#148]
+1.44
+Slanted or odd arrows
+You can use the (nn) option (before or after arrow) to make the arrows slanted, where nn is the number
+of shift pixels.
+[Available only after v1.2022.6beta+]
+@startuml
+A ->(10) B: text 10
+B ->(10) A: text 10
+A ->(10) B: text 10
+A (10)<- B: text 10
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+45 / 606
+
+
+1.44
+Slanted or odd arrows
+1
+SEQUENCE DIAGRAM
+@startuml
+A ->(40) B++: Rq
+B -->(20) A--: Rs
+@enduml
+[Ref. QA-14145]
+@startuml
+!pragma teoz true
+A ->(50) C: Starts\nwhen 'B' sends
+& B ->(25) C: \nBut B's message\n arrives before A's
+@enduml
+[Ref. QA-6684]
+@startuml
+!pragma teoz true
+S1 ->(30) S2: msg 1\n
+& S2 ->(30) S1: msg 2
+note left S1: msg\nS2 to S1
+& note right S2: msg\nS1 to S2
+PlantUML Language Reference Guide (1.2025.0)
+46 / 606
+
+
+1.45
+Parallel messages (with teoz)
+1
+SEQUENCE DIAGRAM
+@enduml
+[Ref. QA-1072]
+1.45
+Parallel messages (with teoz)
+You can use the & teoz command to display parallel messages:
+@startuml
+!pragma teoz true
+Alice -> Bob : hello
+& Bob -> Charlie : hi
+@enduml
+(See also Teoz architecture)
+PlantUML Language Reference Guide (1.2025.0)
+47 / 606

@@ -1,0 +1,82 @@
+{
+  "introduction": {
+    "purpose": "to integrate 3 faculties databases providing a web interface for users to access and manage the integrated inventory",
+    "scope": "the iufa application provides a web-based interface for users to access and manage the inventory",
+    "definitions": [
+      "unified university inventory system",
+      "technology-independent",
+      "business terminology"
+    ]
+  },
+  "system_overview": {
+    "description": "a web-based application for managing university inventory",
+    "features": [
+      "transferring assets",
+      "editing assets",
+      "adding inventory assets",
+      "creating requests",
+      "approving requests",
+      "authentication"
+    ]
+  },
+  "functional_requirements": {
+    "user_requirements": [
+      "users can create requests",
+      "users can view their requests",
+      "users can receive notifications"
+    ],
+    "system_requirements": [
+      "system can authenticate users",
+      "system can authorize users",
+      "system can update inventory"
+    ]
+  },
+  "non_functional_requirements": {
+    "performance": [
+      "learning time is between 2 to 4 hours",
+      "application is available at working hours"
+    ],
+    "security": [
+      "all users are authenticated by username and password",
+      "permissions are assigned to users according to their roles"
+    ],
+    "usability": [
+      "web interface uses clear and consistent terminology",
+      "application is easy to use for users with basic experience"
+    ]
+  },
+  "use_cases": {
+    "actors": [
+      "inventory admin",
+      "users",
+      "authentication system"
+    ],
+    "descriptions": [
+      "modify use case",
+      "edit use case",
+      "add new asset use case",
+      "create request use case",
+      "returning asset use case",
+      "approving request use case"
+    ]
+  },
+  "system_interfaces": {
+    "user_interfaces": [
+      "web interface",
+      "search interface",
+      "report interface"
+    ],
+    "hardware_interfaces": [
+      "microsoft platform",
+      "unix platform"
+    ],
+    "software_interfaces": [
+      "browsers like ie, firefox, chrome, opera or safari"
+    ]
+  },
+  "constraints": [
+    "permissions for each administrative level are predefined",
+    "level 0 has permission to create requests only",
+    "level 4 has all possible permissions"
+  ]
+}

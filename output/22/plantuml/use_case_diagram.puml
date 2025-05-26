@@ -1,0 +1,33 @@
+@startuml
+title System Use Case Diagram
+
+rectangle "System" {
+  usecase "create request" as UC1
+  usecase "edit asset" as UC2
+  usecase "modify asset" as UC3
+  usecase "add new asset" as UC4
+  usecase "approve request" as UC5
+  usecase "return asset" as UC6
+  usecase "generate report" as UC7
+}
+
+actor "user" as A1
+actor "inventory admin" as A2
+actor "administrator" as A3
+actor "web interface" as A4
+actor "databases" as A5
+actor "servers" as A6
+
+A1 -- UC1
+A1 -- UC2
+A2 -- UC1
+A2 -- UC2
+A2 -- UC4
+A2 -- UC5
+A2 -- UC6
+A2 -- UC7
+A1 -- UC6
+A1 -- UC7
+A3 -- UC3
+
+@enduml

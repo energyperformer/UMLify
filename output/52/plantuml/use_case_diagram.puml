@@ -1,0 +1,31 @@
+@startumltitle DineOut Use Case Diagram
+left to right direction
+skinparam actorStyle awesome
+skinparam usecaseStyle oval
+skinparam packageStyle rectangle
+
+actor "Customer"
+actor "Hall Manager"
+actor "Head Chef"
+actor "Admin"
+
+rectangle "DineOut" {
+  usecase "View Available Dishes"
+  usecase "Manage Place Order"
+  usecase "Manage Assign Dishes to Chefs"
+  usecase "Manage Menu Items and Inventory"
+  usecase "Manage Staff Members"
+  
+  "Customer" --> "View Available Dishes"
+  "Customer" --> "Manage Place Order"
+  "Hall Manager" --> "Manage Place Order"
+  "Hall Manager" --> "Manage Assign Dishes to Chefs"
+  "Head Chef" --> "Manage Assign Dishes to Chefs"
+  "Admin" --> "Manage Menu Items and Inventory"
+  "Admin" --> "Manage Staff Members"
+  "Manage Place Order" ..> "View Available Dishes" : <<include>>
+  "Manage Assign Dishes to Chefs" ..> "View Available Dishes" : <<include>>
+}
+
+note bottom: Generated 2025-05-22
+@enduml

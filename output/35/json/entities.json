@@ -1,0 +1,174 @@
+{
+  "actors": [
+    {
+      "name": "Customer",
+      "description": "Places orders, provides feedback, and requests bills",
+      "type": "primary"
+    },
+    {
+      "name": "Hall Manager",
+      "description": "Manages tables, orders, and staff",
+      "type": "primary"
+    },
+    {
+      "name": "Head Chef",
+      "description": "Assigns dishes to chefs, marks dishes as cooked, and approves dish cancellations",
+      "type": "primary"
+    },
+    {
+      "name": "Chef",
+      "description": "Prepares dishes based on assigned orders",
+      "type": "primary"
+    },
+    {
+      "name": "Admin",
+      "description": "Manages menu items, inventory, and staff",
+      "type": "primary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "Place Order",
+      "description": "The system allows customers to place orders"
+    },
+    {
+      "name": "Cancel or Edit Order",
+      "description": "The system enables customers to cancel or edit orders"
+    },
+    {
+      "name": "Provide Feedback",
+      "description": "The system provides a feedback mechanism for customers"
+    },
+    {
+      "name": "Request Bill",
+      "description": "The system allows customers to request bills"
+    },
+    {
+      "name": "Ask for Help",
+      "description": "The system enables customers to ask for help"
+    },
+    {
+      "name": "Assign Dishes",
+      "description": "The system allows head chefs to assign dishes to chefs"
+    },
+    {
+      "name": "Mark Dishes as Cooked",
+      "description": "The system allows head chefs to mark dishes as cooked"
+    },
+    {
+      "name": "Approve Dish Cancellations",
+      "description": "The system allows head chefs to approve dish cancellations"
+    },
+    {
+      "name": "Manage Tables",
+      "description": "The system allows hall managers to manage tables"
+    },
+    {
+      "name": "Manage Orders",
+      "description": "The system allows hall managers to manage orders"
+    },
+    {
+      "name": "Manage Staff",
+      "description": "The system allows hall managers to manage staff"
+    },
+    {
+      "name": "Manage Menu Items",
+      "description": "The system allows admins to manage menu items"
+    },
+    {
+      "name": "Manage Inventory",
+      "description": "The system allows admins to manage inventory"
+    },
+    {
+      "name": "Manage Staff",
+      "description": "The system allows admins to manage staff"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Customer",
+      "target": "Place Order",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Cancel or Edit Order",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Provide Feedback",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Request Bill",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Ask for Help",
+      "type": "association"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Assign Dishes",
+      "type": "association"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Mark Dishes as Cooked",
+      "type": "association"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Approve Dish Cancellations",
+      "type": "association"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Tables",
+      "type": "association"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Orders",
+      "type": "association"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Staff",
+      "type": "association"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Menu Items",
+      "type": "association"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Inventory",
+      "type": "association"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Staff",
+      "type": "association"
+    },
+    {
+      "source": "Place Order",
+      "target": "Provide Feedback",
+      "type": "include"
+    },
+    {
+      "source": "Place Order",
+      "target": "Request Bill",
+      "type": "include"
+    },
+    {
+      "source": "Cancel or Edit Order",
+      "target": "Place Order",
+      "type": "extend"
+    }
+  ]
+}

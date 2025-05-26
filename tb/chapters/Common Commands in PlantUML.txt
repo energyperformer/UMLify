@@ -1,0 +1,1633 @@
+21
+COMMON COMMANDS IN PLANTUML
+21
+Common Commands in PlantUML
+Discover the fundamental commands universally applicable across all diagram types in PlantUML. These
+commands allow you to inject versatility and personalized details into your diagrams. Below, we break-
+down these common commands into three major categories:
+21.0.1
+Global Elements
+• Comments: Add remarks or explanatory notes in your diagram script to convey additional infor-
+mation or to leave reminders for further modifications.
+• Notes: Incorporate supplementary information directly onto your diagram to aid in understanding
+or to highlight important aspects.
+• Size Control: Adjust the dimensions of various elements to suit your preferences, ensuring a
+balanced and well-proportioned diagram.
+• Title and Captions: Define a fitting title and add captions to elucidate the context or to annotate
+specific parts of your diagram.
+21.0.2
+Creole Syntax Description
+Harness the power of Creole syntax to further format the content of any element within your diagram.
+This wiki markup style allows for:
+• Text Formatting: Customize the appearance of your text with various styles and alignments.
+• Lists: Create ordered or unordered lists to present information neatly.
+• Links: Integrate hyperlinks to facilitate quick navigation to relevant resources.
+21.0.3
+Style Control Command
+Gain complete control over the presentation style of your diagram elements using the style command.
+Utilize this to:
+• Define Styles: Set uniform styles for elements to maintain a cohesive visual theme.
+• Customize Colors: Choose specific colors for various elements to enhance visual appeal and to
+create distinct classifications.
+Explore these commands to create diagrams that are both functional and aesthetically pleasing, tailoring
+each element to your exact specifications.
+21.1
+Comments
+21.1.1
+Simple comment
+Everything that starts with simple quote ' is a comment.
+@startuml
+'Line comments use a single apostrophe
+@enduml
+21.1.2
+Block comment
+Block comment use C-style comments except that instead of * you use an apostrophe ', then you can
+also put comments on several lines using /' to start and '/ to end.
+@startuml
+/'
+many lines comments
+here
+'/
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+440 / 606
+
+
+21.2
+Zoom
+21
+COMMON COMMANDS IN PLANTUML
+[Ref. QA-1353]
+Then you can also put block comment on the same line, as:
+@startuml
+/' case 1 '/
+A -> B : AB-First step
+B -> C : BC-Second step
+/' case 2 '/
+D -> E : DE-Third step
+@enduml
+[Ref. QA-3906 and QA-3910]
+21.1.3
+Full example
+@startuml
+skinparam activity {
+' this is a comment
+BackgroundColor White
+BorderColor Black /' this is a comment '/
+BorderColor Red
+' this is not a comment and this line is ignored
+}
+start
+:foo1;
+@enduml
+[Ref. GH-214]
+21.2
+Zoom
+You can use the scale command to zoom the generated image.
+You can use either a number or a fraction to define the scale factor. You can also specify either width
+or height (in pixel). And you can also give both width and height: the image is scaled to fit inside the
+specified dimension.
+• scale 1.5
+• scale 2/3
+• scale 200 width
+• scale 200 height
+• scale 200*100
+• scale max 300*200
+• scale max 1024 width
+PlantUML Language Reference Guide (1.2025.0)
+441 / 606
+
+
+21.3
+Title
+21
+COMMON COMMANDS IN PLANTUML
+• scale max 800 height
+@startuml
+scale 180*90
+Bob->Alice : hello
+@enduml
+21.3
+Title
+The title keywords is used to put a title. You can add newline using \n in the title description.
+Some skinparam settings are available to put borders on the title.
+@startuml
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor red
+skinparam titleBackgroundColor Aqua-CadetBlue
+title Simple communication\nexample
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+@enduml
+You can use creole formatting in the title.
+You can also define title on several lines using title and end title keywords.
+@startuml
+title
+<u>Simple</u> communication example
+on <i>several</i> lines and using <back:cadetblue>creole tags</back>
+end title
+Alice -> Bob: Authentication Request
+Bob -> Alice: Authentication Response
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+442 / 606
+
+
+21.4
+Caption
+21
+COMMON COMMANDS IN PLANTUML
+21.4
+Caption
+There is also a caption keyword to put a caption under the diagram.
+@startuml
+caption figure 1
+Alice -> Bob: Hello
+@enduml
+21.5
+Footer and header
+You can use the commands header or footer to add a footer or a header on any generated diagram.
+You can optionally specify if you want a center, left or right footer/header, by adding a keyword.
+As with title, it is possible to define a header or a footer on several lines.
+It is also possible to put some HTML into the header or footer.
+@startuml
+Alice -> Bob: Authentication Request
+header
+<font color=red>Warning:</font>
+Do not use in production.
+endheader
+center footer Generated for demonstration
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+443 / 606
+
+
+21.6
+Legend the diagram
+21
+COMMON COMMANDS IN PLANTUML
+21.6
+Legend the diagram
+The legend and end legend are keywords is used to put a legend.
+You can optionally specify to have left, right, top, bottom or center alignment for the legend.
+@startuml
+Alice -> Bob : Hello
+legend right
+Short
+legend
+endlegend
+@enduml
+@startuml
+Alice -> Bob : Hello
+legend top left
+Short
+legend
+endlegend
+@enduml
+21.7
+Appendix: Examples on all diagram
+21.7.1
+Activity
+@startuml
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+start
+PlantUML Language Reference Guide (1.2025.0)
+444 / 606
+
+
+21.7
+Appendix: Examples on all diagram
+21
+COMMON COMMANDS IN PLANTUML
+:Hello world;
+:This is defined on
+several **lines**;
+stop
+@enduml
+21.7.2
+Archimate
+@startuml
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+archimate #Technology "VPN Server" as vpnServerA <<technology-device>>
+rectangle GO #lightgreen
+rectangle STOP #red
+rectangle WAIT #orange
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+445 / 606
+
+
+21.7
+Appendix: Examples on all diagram
+21
+COMMON COMMANDS IN PLANTUML
+21.7.3
+Class
+@startuml
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+a -- b
+@enduml
+21.7.4
+Component, Deployment, Use-Case
+@startuml
+header some header
+footer some footer
+PlantUML Language Reference Guide (1.2025.0)
+446 / 606
+
+
+21.7
+Appendix: Examples on all diagram
+21
+COMMON COMMANDS IN PLANTUML
+title My title
+caption This is caption
+legend
+The legend
+end legend
+node n
+(u) -> [c]
+@enduml
+21.7.5
+Gantt project planning
+@startgantt
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+[t] lasts 5 days
+@endgantt
+TODO: DONE [(Header, footer) corrected on V1.2020.18]
+21.7.6
+Object
+@startuml
+PlantUML Language Reference Guide (1.2025.0)
+447 / 606
+
+
+21.7
+Appendix: Examples on all diagram
+21
+COMMON COMMANDS IN PLANTUML
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+object user {
+name = "Dummy"
+id = 123
+}
+@enduml
+21.7.7
+MindMap
+@startmindmap
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+* r
+** d1
+** d2
+@endmindmap
+PlantUML Language Reference Guide (1.2025.0)
+448 / 606
+
+
+21.7
+Appendix: Examples on all diagram
+21
+COMMON COMMANDS IN PLANTUML
+21.7.8
+Network (nwdiag)
+@startuml
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+nwdiag {
+network inet {
+web01 [shape = cloud]
+}
+}
+@enduml
+21.7.9
+Sequence
+@startuml
+header some header
+footer some footer
+PlantUML Language Reference Guide (1.2025.0)
+449 / 606
+
+
+21.7
+Appendix: Examples on all diagram
+21
+COMMON COMMANDS IN PLANTUML
+title My title
+caption This is caption
+legend
+The legend
+end legend
+a->b
+@enduml
+21.7.10
+State
+@startuml
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+[*] --> State1
+State1 -> State2
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+450 / 606
+
+
+21.7
+Appendix: Examples on all diagram
+21
+COMMON COMMANDS IN PLANTUML
+21.7.11
+Timing
+@startuml
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+robust "Web Browser" as WB
+concise "Web User" as WU
+@0
+WU is Idle
+WB is Idle
+@100
+WU is Waiting
+WB is Processing
+@300
+WB is Waiting
+@enduml
+21.7.12
+Work Breakdown Structure (WBS)
+@startwbs
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+PlantUML Language Reference Guide (1.2025.0)
+451 / 606
+
+
+21.7
+Appendix: Examples on all diagram
+21
+COMMON COMMANDS IN PLANTUML
+The legend
+end legend
+* r
+** d1
+** d2
+@endwbs
+TODO: DONE [Corrected on V1.2020.17]
+21.7.13
+Wireframe (SALT)
+@startsalt
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+{+
+Login
+| "MyName
+"
+Password | "****
+"
+[Cancel] | [
+OK
+]
+}
+@endsalt
+PlantUML Language Reference Guide (1.2025.0)
+452 / 606
+
+
+21.8
+Appendix: Examples on all diagram with style
+21
+COMMON COMMANDS IN PLANTUML
+TODO: DONE [Corrected on V1.2020.18]
+21.8
+Appendix: Examples on all diagram with style
+TODO: DONE
+FYI:
+• all is only good for Sequence diagram
+• title, caption and legend are good for all diagrams except for salt diagram
+TODO: FIXME ￿
+• Now (test on 1.2020.18-19) header, footer are not good for all other diagrams except only for
+Sequence diagram.
+To be fix; Thanks
+TODO: FIXME
+Here are tests of title, header, footer, caption or legend on all the diagram with the debug style:
+<style>
+title {
+HorizontalAlignment right
+FontSize 24
+FontColor blue
+}
+header {
+HorizontalAlignment center
+FontSize 26
+FontColor purple
+}
+footer {
+HorizontalAlignment left
+FontSize 28
+FontColor red
+}
+legend {
+FontSize 30
+BackGroundColor yellow
+Margin 30
+Padding 50
+}
+caption {
+FontSize 32
+}
+</style>
+21.8.1
+Activity
+@startuml
+<style>
+title {
+HorizontalAlignment right
+FontSize 24
+FontColor blue
+}
+PlantUML Language Reference Guide (1.2025.0)
+453 / 606
+
+
+21.8
+Appendix: Examples on all diagram with style
+21
+COMMON COMMANDS IN PLANTUML
+header {
+HorizontalAlignment center
+FontSize 26
+FontColor purple
+}
+footer {
+HorizontalAlignment left
+FontSize 28
+FontColor red
+}
+legend {
+FontSize 30
+BackGroundColor yellow
+Margin 30
+Padding 50
+}
+caption {
+FontSize 32
+}
+</style>
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+start
+:Hello world;
+:This is defined on
+several **lines**;
+stop
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+454 / 606
+
+
+21.8
+Appendix: Examples on all diagram with style
+21
+COMMON COMMANDS IN PLANTUML
+21.8.2
+Archimate
+@startuml
+<style>
+title {
+HorizontalAlignment right
+FontSize 24
+FontColor blue
+}
+header {
+HorizontalAlignment center
+FontSize 26
+FontColor purple
+}
+footer {
+HorizontalAlignment left
+FontSize 28
+FontColor red
+}
+legend {
+FontSize 30
+BackGroundColor yellow
+Margin 30
+Padding 50
+}
+PlantUML Language Reference Guide (1.2025.0)
+455 / 606
+
+
+21.8
+Appendix: Examples on all diagram with style
+21
+COMMON COMMANDS IN PLANTUML
+caption {
+FontSize 32
+}
+</style>
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+archimate #Technology "VPN Server" as vpnServerA <<technology-device>>
+rectangle GO #lightgreen
+rectangle STOP #red
+rectangle WAIT #orange
+@enduml
+21.8.3
+Class
+@startuml
+<style>
+title {
+HorizontalAlignment right
+FontSize 24
+PlantUML Language Reference Guide (1.2025.0)
+456 / 606
+
+
+21.8
+Appendix: Examples on all diagram with style
+21
+COMMON COMMANDS IN PLANTUML
+FontColor blue
+}
+header {
+HorizontalAlignment center
+FontSize 26
+FontColor purple
+}
+footer {
+HorizontalAlignment left
+FontSize 28
+FontColor red
+}
+legend {
+FontSize 30
+BackGroundColor yellow
+Margin 30
+Padding 50
+}
+caption {
+FontSize 32
+}
+</style>
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+a -- b
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+457 / 606
+
+
+21.8
+Appendix: Examples on all diagram with style
+21
+COMMON COMMANDS IN PLANTUML
+21.8.4
+Component, Deployment, Use-Case
+@startuml
+<style>
+title {
+HorizontalAlignment right
+FontSize 24
+FontColor blue
+}
+header {
+HorizontalAlignment center
+FontSize 26
+FontColor purple
+}
+footer {
+HorizontalAlignment left
+FontSize 28
+FontColor red
+}
+legend {
+FontSize 30
+BackGroundColor yellow
+Margin 30
+Padding 50
+}
+PlantUML Language Reference Guide (1.2025.0)
+458 / 606
+
+
+21.8
+Appendix: Examples on all diagram with style
+21
+COMMON COMMANDS IN PLANTUML
+caption {
+FontSize 32
+}
+</style>
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+node n
+(u) -> [c]
+@enduml
+21.8.5
+Gantt project planning
+@startgantt
+<style>
+title {
+HorizontalAlignment right
+FontSize 24
+FontColor blue
+}
+header {
+HorizontalAlignment center
+FontSize 26
+FontColor purple
+PlantUML Language Reference Guide (1.2025.0)
+459 / 606
+
+
+21.8
+Appendix: Examples on all diagram with style
+21
+COMMON COMMANDS IN PLANTUML
+}
+footer {
+HorizontalAlignment left
+FontSize 28
+FontColor red
+}
+legend {
+FontSize 30
+BackGroundColor yellow
+Margin 30
+Padding 50
+}
+caption {
+FontSize 32
+}
+</style>
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+[t] lasts 5 days
+@endgantt
+PlantUML Language Reference Guide (1.2025.0)
+460 / 606
+
+
+21.8
+Appendix: Examples on all diagram with style
+21
+COMMON COMMANDS IN PLANTUML
+21.8.6
+Object
+@startuml
+<style>
+title {
+HorizontalAlignment right
+FontSize 24
+FontColor blue
+}
+header {
+HorizontalAlignment center
+FontSize 26
+FontColor purple
+}
+footer {
+HorizontalAlignment left
+FontSize 28
+FontColor red
+}
+legend {
+FontSize 30
+BackGroundColor yellow
+Margin 30
+Padding 50
+}
+caption {
+FontSize 32
+}
+</style>
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+object user {
+name = "Dummy"
+id = 123
+}
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+461 / 606
+
+
+21.8
+Appendix: Examples on all diagram with style
+21
+COMMON COMMANDS IN PLANTUML
+21.8.7
+MindMap
+@startmindmap
+<style>
+title {
+HorizontalAlignment right
+FontSize 24
+FontColor blue
+}
+header {
+HorizontalAlignment center
+FontSize 26
+FontColor purple
+}
+footer {
+HorizontalAlignment left
+FontSize 28
+FontColor red
+}
+legend {
+FontSize 30
+BackGroundColor yellow
+Margin 30
+Padding 50
+}
+caption {
+FontSize 32
+}
+</style>
+header some header
+PlantUML Language Reference Guide (1.2025.0)
+462 / 606
+
+
+21.8
+Appendix: Examples on all diagram with style
+21
+COMMON COMMANDS IN PLANTUML
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+* r
+** d1
+** d2
+@endmindmap
+21.8.8
+Network (nwdiag)
+@startuml
+<style>
+title {
+HorizontalAlignment right
+FontSize 24
+FontColor blue
+}
+header {
+HorizontalAlignment center
+FontSize 26
+FontColor purple
+}
+PlantUML Language Reference Guide (1.2025.0)
+463 / 606
+
+
+21.8
+Appendix: Examples on all diagram with style
+21
+COMMON COMMANDS IN PLANTUML
+footer {
+HorizontalAlignment left
+FontSize 28
+FontColor red
+}
+legend {
+FontSize 30
+BackGroundColor yellow
+Margin 30
+Padding 50
+}
+caption {
+FontSize 32
+}
+</style>
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+nwdiag {
+network inet {
+web01 [shape = cloud]
+}
+}
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+464 / 606
+
+
+21.8
+Appendix: Examples on all diagram with style
+21
+COMMON COMMANDS IN PLANTUML
+21.8.9
+Sequence
+@startuml
+<style>
+title {
+HorizontalAlignment right
+FontSize 24
+FontColor blue
+}
+header {
+HorizontalAlignment center
+FontSize 26
+FontColor purple
+}
+footer {
+HorizontalAlignment left
+FontSize 28
+FontColor red
+}
+legend {
+FontSize 30
+BackGroundColor yellow
+Margin 30
+Padding 50
+}
+caption {
+FontSize 32
+}
+</style>
+PlantUML Language Reference Guide (1.2025.0)
+465 / 606
+
+
+21.8
+Appendix: Examples on all diagram with style
+21
+COMMON COMMANDS IN PLANTUML
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+a->b
+@enduml
+21.8.10
+State
+@startuml
+<style>
+title {
+HorizontalAlignment right
+FontSize 24
+FontColor blue
+}
+header {
+HorizontalAlignment center
+FontSize 26
+FontColor purple
+}
+footer {
+HorizontalAlignment left
+FontSize 28
+PlantUML Language Reference Guide (1.2025.0)
+466 / 606
+
+
+21.8
+Appendix: Examples on all diagram with style
+21
+COMMON COMMANDS IN PLANTUML
+FontColor red
+}
+legend {
+FontSize 30
+BackGroundColor yellow
+Margin 30
+Padding 50
+}
+caption {
+FontSize 32
+}
+</style>
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+[*] --> State1
+State1 -> State2
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+467 / 606
+
+
+21.8
+Appendix: Examples on all diagram with style
+21
+COMMON COMMANDS IN PLANTUML
+21.8.11
+Timing
+@startuml
+<style>
+title {
+HorizontalAlignment right
+FontSize 24
+FontColor blue
+}
+header {
+HorizontalAlignment center
+FontSize 26
+FontColor purple
+}
+footer {
+HorizontalAlignment left
+FontSize 28
+FontColor red
+}
+legend {
+FontSize 30
+BackGroundColor yellow
+Margin 30
+Padding 50
+}
+caption {
+FontSize 32
+}
+</style>
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+robust "Web Browser" as WB
+concise "Web User" as WU
+@0
+WU is Idle
+WB is Idle
+@100
+WU is Waiting
+WB is Processing
+@300
+WB is Waiting
+PlantUML Language Reference Guide (1.2025.0)
+468 / 606
+
+
+21.8
+Appendix: Examples on all diagram with style
+21
+COMMON COMMANDS IN PLANTUML
+@enduml
+21.8.12
+Work Breakdown Structure (WBS)
+@startwbs
+<style>
+title {
+HorizontalAlignment right
+FontSize 24
+FontColor blue
+}
+header {
+HorizontalAlignment center
+FontSize 26
+FontColor purple
+}
+footer {
+HorizontalAlignment left
+FontSize 28
+FontColor red
+}
+legend {
+FontSize 30
+BackGroundColor yellow
+Margin 30
+Padding 50
+}
+PlantUML Language Reference Guide (1.2025.0)
+469 / 606
+
+
+21.8
+Appendix: Examples on all diagram with style
+21
+COMMON COMMANDS IN PLANTUML
+caption {
+FontSize 32
+}
+</style>
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+* r
+** d1
+** d2
+@endwbs
+21.8.13
+Wireframe (SALT)
+TODO: FIXME Fix all (title, caption, legend, header, footer) for salt. TODO: FIXME
+@startsalt
+<style>
+title {
+HorizontalAlignment right
+FontSize 24
+FontColor blue
+}
+PlantUML Language Reference Guide (1.2025.0)
+470 / 606
+
+
+21.9
+Mainframe
+21
+COMMON COMMANDS IN PLANTUML
+header {
+HorizontalAlignment center
+FontSize 26
+FontColor purple
+}
+footer {
+HorizontalAlignment left
+FontSize 28
+FontColor red
+}
+legend {
+FontSize 30
+BackGroundColor yellow
+Margin 30
+Padding 50
+}
+caption {
+FontSize 32
+}
+</style>
+@startsalt
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+{+
+Login
+| "MyName
+"
+Password | "****
+"
+[Cancel] | [
+OK
+]
+}
+@endsalt
+21.9
+Mainframe
+@startuml
+mainframe This is a **mainframe**
+PlantUML Language Reference Guide (1.2025.0)
+471 / 606
+
+
+21.10
+Appendix: Examples of Mainframe on all diagram21
+COMMON COMMANDS IN PLANTUML
+Alice->Bob : Hello
+@enduml
+[Ref. QA-4019 and Issue#148]
+21.10
+Appendix: Examples of Mainframe on all diagram
+21.10.1
+Activity
+@startuml
+mainframe This is a **mainframe**
+start
+:Hello world;
+:This is defined on
+several **lines**;
+stop
+@enduml
+21.10.2
+Archimate
+@startuml
+mainframe This is a **mainframe**
+archimate #Technology "VPN Server" as vpnServerA <<technology-device>>
+rectangle GO #lightgreen
+rectangle STOP #red
+rectangle WAIT #orange
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+472 / 606
+
+
+21.10
+Appendix: Examples of Mainframe on all diagram21
+COMMON COMMANDS IN PLANTUML
+TODO: FIXME ￿Cropped on the top and on the left TODO: FIXME
+21.10.3
+Class
+@startuml
+mainframe This is a **mainframe**
+a -- b
+@enduml
+TODO: FIXME ￿Cropped on the top and on the left TODO: FIXME
+21.10.4
+Component, Deployment, Use-Case
+@startuml
+mainframe This is a **mainframe**
+node n
+(u) -> [c]
+@enduml
+TODO: FIXME ￿Cropped on the top and on the left TODO: FIXME
+21.10.5
+Gantt project planning
+@startgantt
+mainframe This is a **mainframe**
+[t] lasts 5 days
+@endgantt
+PlantUML Language Reference Guide (1.2025.0)
+473 / 606
+
+
+21.10
+Appendix: Examples of Mainframe on all diagram21
+COMMON COMMANDS IN PLANTUML
+TODO: FIXME ￿Cropped on the top and on the left TODO: FIXME
+21.10.6
+Object
+@startuml
+mainframe This is a **mainframe**
+object user {
+name = "Dummy"
+id = 123
+}
+@enduml
+TODO: FIXME ￿Cropped on the top! TODO: FIXME
+21.10.7
+MindMap
+@startmindmap
+mainframe This is a **mainframe**
+* r
+** d1
+** d2
+@endmindmap
+21.10.8
+Network (nwdiag)
+@startuml
+mainframe This is a **mainframe**
+nwdiag {
+network inet {
+web01 [shape = cloud]
+}
+}
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+474 / 606
+
+
+21.10
+Appendix: Examples of Mainframe on all diagram21
+COMMON COMMANDS IN PLANTUML
+TODO: FIXME ￿Cropped on the top! TODO: FIXME
+21.10.9
+Sequence
+@startuml
+mainframe This is a **mainframe**
+a->b
+@enduml
+21.10.10
+State
+@startuml
+mainframe This is a **mainframe**
+[*] --> State1
+State1 -> State2
+@enduml
+TODO: FIXME ￿Cropped on the top and on the left TODO: FIXME
+21.10.11
+Timing
+@startuml
+mainframe This is a **mainframe**
+robust "Web Browser" as WB
+concise "Web User" as WU
+@0
+WU is Idle
+PlantUML Language Reference Guide (1.2025.0)
+475 / 606
+
+
+21.10
+Appendix: Examples of Mainframe on all diagram21
+COMMON COMMANDS IN PLANTUML
+WB is Idle
+@100
+WU is Waiting
+WB is Processing
+@300
+WB is Waiting
+@enduml
+21.10.12
+Work Breakdown Structure (WBS)
+@startwbs
+mainframe This is a **mainframe**
+* r
+** d1
+** d2
+@endwbs
+21.10.13
+Wireframe (SALT)
+@startsalt
+mainframe This is a **mainframe**
+{+
+Login
+| "MyName
+"
+Password | "****
+"
+[Cancel] | [
+OK
+]
+}
+@endsalt
+PlantUML Language Reference Guide (1.2025.0)
+476 / 606
+
+
+21.11
+Appendix: Examples of title, header, footer, caption, legend and mainframe on all diagram
+21
+COMMON COMMANDS IN PLANTUML
+21.11
+Appendix: Examples of title, header, footer, caption, legend and main-
+frame on all diagram
+21.11.1
+Activity
+@startuml
+mainframe This is a **mainframe**
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+start
+:Hello world;
+:This is defined on
+several **lines**;
+stop
+@enduml
+21.11.2
+Archimate
+@startuml
+mainframe This is a **mainframe**
+header some header
+footer some footer
+title My title
+caption This is caption
+PlantUML Language Reference Guide (1.2025.0)
+477 / 606
+
+
+21.11
+Appendix: Examples of title, header, footer, caption, legend and mainframe on all diagram
+21
+COMMON COMMANDS IN PLANTUML
+legend
+The legend
+end legend
+archimate #Technology "VPN Server" as vpnServerA <<technology-device>>
+rectangle GO #lightgreen
+rectangle STOP #red
+rectangle WAIT #orange
+@enduml
+21.11.3
+Class
+@startuml
+mainframe This is a **mainframe**
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+a -- b
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+478 / 606
+
+
+21.11
+Appendix: Examples of title, header, footer, caption, legend and mainframe on all diagram
+21
+COMMON COMMANDS IN PLANTUML
+21.11.4
+Component, Deployment, Use-Case
+@startuml
+mainframe This is a **mainframe**
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+node n
+(u) -> [c]
+@enduml
+21.11.5
+Gantt project planning
+@startgantt
+mainframe This is a **mainframe**
+header some header
+PlantUML Language Reference Guide (1.2025.0)
+479 / 606
+
+
+21.11
+Appendix: Examples of title, header, footer, caption, legend and mainframe on all diagram
+21
+COMMON COMMANDS IN PLANTUML
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+[t] lasts 5 days
+@endgantt
+21.11.6
+Object
+@startuml
+mainframe This is a **mainframe**
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+object user {
+name = "Dummy"
+id = 123
+}
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+480 / 606
+
+
+21.11
+Appendix: Examples of title, header, footer, caption, legend and mainframe on all diagram
+21
+COMMON COMMANDS IN PLANTUML
+21.11.7
+MindMap
+@startmindmap
+mainframe This is a **mainframe**
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+* r
+** d1
+** d2
+@endmindmap
+21.11.8
+Network (nwdiag)
+@startuml
+mainframe This is a **mainframe**
+header some header
+PlantUML Language Reference Guide (1.2025.0)
+481 / 606
+
+
+21.11
+Appendix: Examples of title, header, footer, caption, legend and mainframe on all diagram
+21
+COMMON COMMANDS IN PLANTUML
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+nwdiag {
+network inet {
+web01 [shape = cloud]
+}
+}
+@enduml
+21.11.9
+Sequence
+@startuml
+mainframe This is a **mainframe**
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+a->b
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+482 / 606
+
+
+21.11
+Appendix: Examples of title, header, footer, caption, legend and mainframe on all diagram
+21
+COMMON COMMANDS IN PLANTUML
+21.11.10
+State
+@startuml
+mainframe This is a **mainframe**
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+[*] --> State1
+State1 -> State2
+@enduml
+21.11.11
+Timing
+@startuml
+mainframe This is a **mainframe**
+PlantUML Language Reference Guide (1.2025.0)
+483 / 606
+
+
+21.11
+Appendix: Examples of title, header, footer, caption, legend and mainframe on all diagram
+21
+COMMON COMMANDS IN PLANTUML
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+robust "Web Browser" as WB
+concise "Web User" as WU
+@0
+WU is Idle
+WB is Idle
+@100
+WU is Waiting
+WB is Processing
+@300
+WB is Waiting
+@enduml
+21.11.12
+Work Breakdown Structure (WBS)
+@startwbs
+mainframe This is a **mainframe**
+header some header
+footer some footer
+title My title
+caption This is caption
+PlantUML Language Reference Guide (1.2025.0)
+484 / 606
+
+
+21.11
+Appendix: Examples of title, header, footer, caption, legend and mainframe on all diagram
+21
+COMMON COMMANDS IN PLANTUML
+legend
+The legend
+end legend
+* r
+** d1
+** d2
+@endwbs
+21.11.13
+Wireframe (SALT)
+@startsalt
+mainframe This is a **mainframe**
+header some header
+footer some footer
+title My title
+caption This is caption
+legend
+The legend
+end legend
+{+
+Login
+| "MyName
+"
+Password | "****
+"
+[Cancel] | [
+OK
+]
+}
+@endsalt
+PlantUML Language Reference Guide (1.2025.0)
+485 / 606
+
+
+21.11
+Appendix: Examples of title, header, footer, caption, legend and mainframe on all diagram
+21
+COMMON COMMANDS IN PLANTUML
+PlantUML Language Reference Guide (1.2025.0)
+486 / 606

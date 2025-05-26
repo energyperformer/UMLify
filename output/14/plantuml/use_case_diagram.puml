@@ -1,0 +1,52 @@
+@startuml
+!theme plain
+skinparam actorStyle awesome
+skinparam actorBorderColor black
+skinparam actorBackgroundColor white
+skinparam actorFontStyle bold
+skinparam actorFontSize 14
+skinparam usecase {
+    BackgroundColor<< Main >> LightGreen
+    BorderColor<< Main >> DarkGreen
+    BackgroundColor<< Secondary >> LightBlue
+    BorderColor<< Secondary >> DarkBlue
+    BackgroundColor<< Include >> LightYellow
+    BorderColor<< Include >> DarkYellow
+    BackgroundColor<< Extend >> LightPink
+    BorderColor<< Extend >> DarkPink
+    FontStyle bold
+    FontSize 12
+    Padding 10
+    Margin 5
+}
+skinparam arrow {
+    Color black
+    FontStyle bold
+    FontSize 12
+    Thickness 2
+}
+skinparam rectangle {
+    BorderColor black
+    BackgroundColor white
+    FontStyle bold
+    FontSize 14
+    Padding 20
+    Margin 10
+}
+skinparam note {
+    BackgroundColor LightYellow
+    BorderColor DarkYellow
+    FontStyle italic
+    FontSize 11
+}
+skinparam stereotype {
+    CBackgroundColor LightGray
+    CBorderColor DarkGray
+    FontStyle bold
+    FontSize 11
+}
+title System - Use Case Diagram
+
+rectangle "System" {
+}
+@enduml

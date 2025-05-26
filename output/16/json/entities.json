@@ -1,0 +1,190 @@
+{
+  "actors": [
+    {
+      "name": "inventory admin",
+      "description": "manages inventory and assets",
+      "type": "primary"
+    },
+    {
+      "name": "users",
+      "description": "access and manage inventory",
+      "type": "primary"
+    },
+    {
+      "name": "authentication system",
+      "description": "authenticates users",
+      "type": "secondary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "create request",
+      "description": "users create requests for assets",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "request is created"
+      ],
+      "main_flow": [
+        "user submits request",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "request is denied"
+      ]
+    },
+    {
+      "name": "edit asset",
+      "description": "users edit asset information",
+      "actors": [
+        "users",
+        "inventory admin"
+      ],
+      "preconditions": [
+        "user is authenticated",
+        "asset exists"
+      ],
+      "postconditions": [
+        "asset information is updated"
+      ],
+      "main_flow": [
+        "user edits asset",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "edit is denied"
+      ]
+    },
+    {
+      "name": "add new asset",
+      "description": "users add new assets to inventory",
+      "actors": [
+        "users",
+        "inventory admin"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "new asset is added"
+      ],
+      "main_flow": [
+        "user adds asset",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "add is denied"
+      ]
+    },
+    {
+      "name": "approve request",
+      "description": "inventory admin approves requests",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "request exists",
+        "admin is authenticated"
+      ],
+      "postconditions": [
+        "request is approved"
+      ],
+      "main_flow": [
+        "admin approves request",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "request is denied"
+      ]
+    },
+    {
+      "name": "return asset",
+      "description": "users return assets",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "user is authenticated",
+        "asset is borrowed"
+      ],
+      "postconditions": [
+        "asset is returned"
+      ],
+      "main_flow": [
+        "user returns asset",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "return is denied"
+      ]
+    },
+    {
+      "name": "modify use case",
+      "description": "users modify existing use cases",
+      "actors": [
+        "users",
+        "inventory admin"
+      ],
+      "preconditions": [
+        "user is authenticated",
+        "use case exists"
+      ],
+      "postconditions": [
+        "use case is modified"
+      ],
+      "main_flow": [
+        "user modifies use case",
+        "system updates use case"
+      ],
+      "alternative_flows": [
+        "modify is denied"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "users",
+      "to": "create request",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "edit asset",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "add new asset",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "approve request",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "return asset",
+      "type": "association"
+    },
+    {
+      "from": "authentication system",
+      "to": "users",
+      "type": "association"
+    },
+    {
+      "from": "create request",
+      "to": "approve request",
+      "type": "include"
+    },
+    {
+      "from": "edit asset",
+      "to": "modify use case",
+      "type": "extend"
+    }
+  ]
+}

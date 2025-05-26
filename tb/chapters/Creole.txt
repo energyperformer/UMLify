@@ -1,0 +1,1234 @@
+22
+CREOLE
+22
+Creole
+Creole is a lightweight common markup language for various wikis.
+A light-weight Creole engine is
+integrated in PlantUML to have a standardized way to emit styled text.
+All diagrams support this syntax.
+Note that compatibility with HTML syntax is preserved.
+22.1
+Emphasized text
+@startuml
+Alice -> Bob : hello --there-- here
+... Some ~~long delay~~ ...
+Bob -> Alice : ok
+note left
+This is **bold**
+This is //italics//
+This is ""monospaced""
+This is --stricken-out--
+This is __underlined__
+This is ~~wave-underlined~~
+end note
+@enduml
+22.2
+Lists
+You can use numbered and bulleted lists in node text, notes, etc.
+TODO: FIXME ￿You cannot quite mix numbers and bullets in a list and its sublist.
+@startuml
+object demo {
+* Bullet list
+* Second item
+}
+note left
+* Bullet list
+* Second item
+** Sub item
+end note
+legend
+# Numbered list
+# Second item
+## Sub item
+PlantUML Language Reference Guide (1.2025.0)
+487 / 606
+
+
+22.3
+Escape character
+22
+CREOLE
+## Another sub item
+* Can't quite mix
+* Numbers and bullets
+# Third item
+end legend
+@enduml
+22.3
+Escape character
+You can use the tilde ~ to escape special creole characters.
+@startuml
+object demo {
+This is not ~___underscored__.
+This is not ~""monospaced"".
+}
+@enduml
+22.4
+Headings
+@startuml
+usecase UC1 as "
+= Extra-large heading
+Some text
+== Large heading
+Other text
+=== Medium heading
+Information
+....
+==== Small heading"
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+488 / 606
+
+
+22.5
+Emoji
+22
+CREOLE
+22.5
+Emoji
+All emojis from Twemoji (see EmojiTwo on Github) are available using the following syntax:
+@startuml
+Alice -> Bob : Hello <:1f600:>
+return <:innocent:>
+Alice -> Bob : Without color: <#0:sunglasses:>
+Alice -> Bob : Change color: <#green:sunny:>
+@enduml
+Unlike Unicode Special characters that depend on installed fonts, the emoji are always available. Fur-
+thermore, emoji are already colored, but you can recolor them if you like (see examples above).
+One can pick emoji from the emoji cheat sheet, the Unicode full-emoji-list, or the flat list emoji.txt in
+the plantuml source.
+You can also use the following PlantUML command to list available emoji:
+@startuml
+emoji <block>
+@enduml
+As of 13 April 2023, you can select between 1174 emoji from the following Unicode blocks:
+• Unicode block 26: 83 emoji
+• Unicode block 27: 33 emoji
+• Unicode block 1F3: 246 emoji
+• Unicode block 1F4: 255 emoji
+• Unicode block 1F5: 136 emoji
+• Unicode block 1F6: 181 emoji
+• Unicode block 1F9: 240 emoji
+22.5.1
+Unicode block 26
+@startuml
+emoji 26
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+489 / 606
+
+
+22.6
+Horizontal lines
+22
+CREOLE
+22.6
+Horizontal lines
+@startuml
+database DB1 as "
+You can have horizontal line
+----
+Or double line
+====
+Or strong line
+____
+Or dotted line
+..My title..
+Enjoy!
+"
+note right
+This is working also in notes
+You can also add title in all these lines
+==Title==
+--Another title--
+end note
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+490 / 606
+
+
+22.7
+Links
+22
+CREOLE
+22.7
+Links
+You can also use URL and links.
+Simple links are define using two square brackets (or three square brackets for field or method on class
+diagram).
+Example:
+• [[http://plantuml.com]]
+• [[http://plantuml.com This label is printed]]
+• [[http://plantuml.com{Optional tooltip} This label is printed]]
+URL can also be authenticated.
+22.8
+Code
+You can use <code> to display some programming code in your diagram (sorry, syntax highlighting is
+not yet supported).
+@startuml
+Alice -> Bob : hello
+note right
+<code>
+main() {
+printf("Hello world");
+}
+</code>
+end note
+@enduml
+This is especially useful to illustrate some PlantUML code and the resulting rendering:
+@startuml
+hide footbox
+note over Source
+<code>
+This is **bold**
+This is //italics//
+This is ""monospaced""
+This is --stricken-out--
+This is __underlined__
+PlantUML Language Reference Guide (1.2025.0)
+491 / 606
+
+
+22.9
+Table
+22
+CREOLE
+This is ~~wave-underlined~~
+--test Unicode and icons--
+This is <U+221E> long
+This is a <&code> icon
+</code>
+end note
+/note over Output
+This is **bold**
+This is //italics//
+This is ""monospaced""
+This is --stricken-out--
+This is __underlined__
+This is ~~wave-underlined~~
+--test Unicode and icons--
+This is <U+221E> long
+This is a <&code> icon
+end note
+@enduml
+22.9
+Table
+22.9.1
+Create a table
+It is possible to build table, with | separator.
+@startuml
+skinparam titleFontSize 14
+title
+Example of simple table
+|= |= table |= header |
+| a | table | row |
+| b | table | row |
+end title
+[*] --> State1
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+492 / 606
+
+
+22.9
+Table
+22
+CREOLE
+22.9.2
+Align fields using Table
+You can use a table to align ”fields” of class members. The example below (taken from buildingSmart Data
+Dictionary shows for each member: icon, name, datatype and cardinality. Use the <#transparent,#transparent>
+color specification so table cells have no foreground and background color.
+(The example also shows the use of icons)
+@startuml
+hide empty members
+hide circle
+class "<:wrench:> Property" as Property {
+<#transparent,#transparent>|<:link:>| id| iri| 1..1|
+|<:spiral_notepad:>| name (bsdd:name)| string| 1..1|
+|<:calendar:>| activationDateUtc| dateTime| 1..1|
+|<:spiral_notepad:>| code| string| 1..1|
+|<:spiral_notepad:>| connectedPropertyCode| string| 0..*|
+|<:spiral_notepad:>| countryOfOrigin| string| 0..1|
+|<:spiral_notepad:>| countryOfUse| string| 0..*|
+|<:spiral_notepad:>| creatorLanguageCode| string| 0..1|
+|<:spiral_notepad:>| dataType| string| 0..1|
+|<:calendar:>| deActivationDateUtc| dateTime| 0..1|
+|<:spiral_notepad:>| definition| string| 0..1|
+|<:spiral_notepad:>| deprecationExplanation| string| 0..1|
+|<:spiral_notepad:>| description| string| 0..1|
+|<:spiral_notepad:>| dimension| string| 0..1|
+|<:1234:>| dimensionAmountOfSubstance| int| 0..1|
+|<:1234:>| dimensionElectricCurrent| int| 0..1|
+|<:1234:>| dimensionLength| int| 0..1|
+|<:1234:>| dimensionLuminousIntensity| int| 0..1|
+|<:1234:>| dimensionMass| int| 0..1|
+|<:1234:>| dimensionThermodynamicTemperature| int| 0..1|
+|<:1234:>| dimensionTime| int| 0..1|
+|<:spiral_notepad:>| documentReference| string| 0..1|
+|<:spiral_notepad:>| dynamicParameterPropertyCodes| string| 0..*|
+|<:spiral_notepad:>| example| string| 0..1|
+|<:ballot_box_with_check:>| isDynamic| boolean| 1..1|
+|<:eight_spoked_asterisk:>| maxExclusive| decimal| 0..1|
+|<:eight_spoked_asterisk:>| maxInclusive| decimal| 0..1|
+|<:spiral_notepad:>| methodOfMeasurement| string| 0..1|
+|<:eight_spoked_asterisk:>| minExclusive| decimal| 0..1|
+|<:eight_spoked_asterisk:>| minInclusive| decimal| 0..1|
+|<:spiral_notepad:>| name| string| 1..1|
+|<:spiral_notepad:>| pattern| string| 0..1|
+|<:spiral_notepad:>| physicalQuantity| string| 0..1|
+|<:book:>| propertyValueKind| PropertyValueKind| 0..1|
+|<:spiral_notepad:>| replacedObjectCodes| string| 0..*|
+|<:spiral_notepad:>| replacingObjectCodes| string| 0..*|
+|<:calendar:>| revisionDateUtc| dateTime| 0..1|
+|<:1234:>| revisionNumber| int| 0..1|
+|<:spiral_notepad:>| status| string| 1..1|
+|<:spiral_notepad:>| subdivisionsOfUse| string| 0..*|
+|<:spiral_notepad:>| textFormat| string| 0..1|
+|<:spiral_notepad:>| uid| string| 0..1|
+|<:spiral_notepad:>| unit| string| 0..*|
+|<:calendar:>| versionDateUtc| dateTime| 0..1|
+|<:1234:>| versionNumber| int| 0..1|
+|<:link:>| visualRepresentationUri| iri| 0..1|
+}
+PlantUML Language Reference Guide (1.2025.0)
+493 / 606
+
+
+22.9
+Table
+22
+CREOLE
+@enduml
+You can also try to use tabs \t and skinparam tabSize n to align fields, but this doesn’t work so well:
+[Ref. QA-3820]
+PlantUML Language Reference Guide (1.2025.0)
+494 / 606
+
+
+22.9
+Table
+22
+CREOLE
+22.9.3
+Add color on rows or cells
+You can specify background colors of rows and cells:
+@startuml
+start
+:Here is the result
+|= |= table |= header |
+| a | table | row |
+|<#FF8080> red |<#80FF80> green |<#8080FF> blue |
+<#yellow>| b | table | row |;
+@enduml
+22.9.4
+Add color on border and text
+You can also specify colors of text and borders.
+@startuml
+title
+<#lightblue,#red>|=
+Step
+|=
+Date
+|=
+Name
+|=
+Status
+|=
+Link
+|
+<#lightgreen>|
+1.1
+|
+TBD
+| plantuml news |<#Navy><color:OrangeRed><b> Unknown
+| [[https://plantu
+end title
+@enduml
+[Ref. QA-7184]
+22.9.5
+No border or same color as the background
+You can also set the border color to the same color as the background.
+@startuml
+node n
+note right of n
+<#FBFB77,#FBFB77>|= Husky / Yorkie |= Foo |
+| SourceTree1 | foo1 |
+| ST2 | foo2 |
+end note
+@enduml
+[Ref. QA-12448]
+22.9.6
+Bold header or not
+= as the first char of a cell indicates whether to make it bold (usually used for headers), or not.
+PlantUML Language Reference Guide (1.2025.0)
+495 / 606
+
+
+22.10
+Tree
+22
+CREOLE
+@startuml
+note as deepCSS0
+|<#white> Husky / Yorkie |
+|=<#gainsboro> SourceTree0 |
+endnote
+note as deepCSS1
+|= <#white> Husky / Yorkie |= Foo |
+|<#gainsboro><r> SourceTree1 | foo1 |
+endnote
+note as deepCSS2
+|= Husky / Yorkie |
+|<#gainsboro> SourceTree2 |
+endnote
+note as deepCSS3
+<#white>|= Husky / Yorkie |= Foo |
+|<#gainsboro> SourceTree1 | foo1 |
+endnote
+@enduml
+[Ref. QA-10923]
+22.10
+Tree
+You can use |_ characters to build a tree.
+On common commands, like title:
+@startuml
+skinparam titleFontSize 14
+title
+Example of Tree
+|_ First line
+|_ **Bom (Model)**
+|_ prop1
+|_ prop2
+|_ prop3
+|_ Last line
+end title
+[*] --> State1
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+496 / 606
+
+
+22.10
+Tree
+22
+CREOLE
+On Class diagram.
+(Please note how we have to use an empty second compartment, else the parentheses in (Model) cause
+that text to be moved to a separate first compartment):
+@startuml
+class Foo {
+**Bar (Model)**
+|_ prop
+|_ **Bom (Model)**
+|_ prop2
+|_ prop3
+|_ prop3.1
+|_ prop4 :(
+--
+}
+@enduml
+[Ref. QA-3448]
+On Component or Deployment diagrams:
+@startuml
+[A] as A
+rectangle "Box B" {
+component B [
+Level 1
+|_ Level 2a
+|_ Level 3a
+|_ Level 3b
+|_ Level 3c
+|_ Level 4a
+|_ Level 3d
+|_ Level 2b
+|_ Level 3e
+PlantUML Language Reference Guide (1.2025.0)
+497 / 606
+
+
+22.11
+Special characters
+22
+CREOLE
+]
+}
+A -> B
+@enduml
+[Ref. QA-11365]
+22.11
+Special characters
+It’s possible to use any unicode character, either directly or with syntax &#nnnnnn; (decimal) or <U+XXXXX>
+(hex):
+@startuml
+usecase direct as "this is ∞long"
+usecase ampHash as "this is also ∞long"
+usecase angleBrackets as "this is also <U+221E> long"
+@enduml
+Please note that not all Unicode chars appear correctly, depending on installed fonts.
+• You can use the listfonts command with a test string of your desired characters, to see which fonts
+may include them.
+• For characters that are emoji, it’s better to use the Emoji notation that doesn’t depend on installed
+fonts, and the emoji are colored.
+• The PlantUML server has the ”Noto Emoji” font that has most emoji.
+If you want to render
+diagrams on your local system, you should check which fonts you have.
+• Unfortunately ”Noto Emoji” lacks normal chars, so you need to switch fonts, eg
+@startuml
+rectangle "<font:Noto Emoji><U+1F3F7></font> label"
+rectangle "<font:Noto Emoji><U+1F527></font> wrench"
+rectangle "<font:Noto Emoji><U+1F6E0></font> hammer_and_wrench"
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+498 / 606
+
+
+22.12
+Legacy HTML
+22
+CREOLE
+See Issue 72 for more details.
+22.12
+Legacy HTML
+You can mix Creole with the following HTML tags:
+• <b> for bold text
+• <u> or <u:#AAAAAA> or <u:[[color|colorName]]> for underline
+• <i> for italic
+• <s> or <s:#AAAAAA> or <s:[[color|colorName]]> for strike text
+• <w> or <w:#AAAAAA> or <w:[[color|colorName]]> for wave underline text
+• <plain> for plain text
+• <color:#AAAAAA> or <color:[[color|colorName]]>
+• <back:#AAAAAA> or <back:[[color|colorName]]> for background color
+• <size:nn> to change font size
+• <img:file> : the file must be accessible by the filesystem
+• <img:https://plantuml.com/logo3.png> : the URL must be available from the Internet
+• {scale:nn} to change image size, eg <img:file.png{scale=0.3}>
+@startuml
+:* You can change <color:red>text color</color>
+* You can change <back:cadetblue>background color</back>
+* You can change <size:18>size</size>
+* You use <u>legacy</u> <b>HTML <i>tag</i></b>
+* You use <u:red>color</u> <s:green>in HTML</s> <w:#0000FF>tag</w>
+----
+* Use image : <img:https://plantuml.com/logo3.png>
+;
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+499 / 606
+
+
+22.12
+Legacy HTML
+22
+CREOLE
+22.12.1
+Common HTML element
+@startuml
+hide footbox
+note over Source
+<code>
+This is <b>bold</b>
+This is <i>italics</i>
+This is <font:monospaced>monospaced</font>
+This is <s>stroked</s>
+This is <u>underlined</u>
+This is <w>waved</w>
+This is <s:green>stroked</s>
+This is <u:red>underlined</u>
+This is <w:#0000FF>waved</w>
+This is <b>a bold text containing <plain>plain text</plain> inside</b>
+-- other examples --
+This is <color:blue>Blue</color>
+This is <back:orange>Orange background</back>
+This is <size:20>big</size>
+</code>
+end note
+/note over Output
+This is <b>bold</b>
+This is <i>italics</i>
+This is <font:monospaced>monospaced</font>
+This is <s>stroked</s>
+This is <u>underlined</u>
+This is <w>waved</w>
+This is <s:green>stroked</s>
+This is <u:red>underlined</u>
+This is <w:#0000FF>waved</w>
+This is <b>a bold text containing <plain>plain text</plain> inside</b>
+-- other examples --
+This is <color:blue>Blue</color>
+This is <back:orange>Orange background</back>
+This is <size:20>big</size>
+end note
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+500 / 606
+
+
+22.13
+OpenIconic
+22
+CREOLE
+[Ref. QA-5254 for plain]
+22.12.2
+Subscript and Superscript element [sub, sup]
+@startuml
+:<code>
+This is the "caffeine" molecule: C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>
+</code>
+This is the "caffeine" molecule: C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>
+----
+<code>
+This is the Pythagorean theorem: a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>
+</code>
+This is the Pythagorean theorem: a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>;
+@enduml
+22.13
+OpenIconic
+OpenIconic is a very nice open-source icon set. Those icons are integrated in the creole parser, so you
+can use them out-of-the-box.
+Use the following syntax: <&ICON_NAME>.
+@startuml
+title: <size:20><&heart>Use of OpenIconic<&heart></size>
+class Wifi
+note left
+Click on <&wifi>
+end note
+@enduml
+The complete list is available with the following special command:
+@startuml
+listopeniconic
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+501 / 606
+
+
+22.14
+Appendix: Examples of ”Creole List” on all diagrams
+22
+CREOLE
+22.14
+Appendix: Examples of ”Creole List” on all diagrams
+22.14.1
+Activity
+@startuml
+start
+:**test list 1**
+* Bullet list
+* Second item
+** Sub item
+*** Sub sub item
+* Third item
+----
+**test list 2**
+# Numbered list
+# Second item
+## Sub item
+## Another sub item
+# Third item;
+stop
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+502 / 606
+
+
+22.14
+Appendix: Examples of ”Creole List” on all diagrams
+22
+CREOLE
+22.14.2
+Class
+TODO: FIXME ￿
+• Sub item
+• Sub sub item
+TODO: FIXME
+@startuml
+class a {
+**test list 1**
+* Bullet list
+* Second item
+** Sub item
+*** Sub sub item
+* Third item
+----
+**test list 2**
+# Numbered list
+# Second item
+## Sub item
+## Another sub item
+# Third item
+}
+a -- b
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+503 / 606
+
+
+22.14
+Appendix: Examples of ”Creole List” on all diagrams
+22
+CREOLE
+22.14.3
+Component, Deployment, Use-Case
+@startuml
+node n [
+**test list 1**
+* Bullet list
+* Second item
+** Sub item
+*** Sub sub item
+* Third item
+----
+**test list 2**
+# Numbered list
+# Second item
+## Sub item
+## Another sub item
+# Third item
+]
+file f as "
+**test list 1**
+* Bullet list
+* Second item
+** Sub item
+*** Sub sub item
+* Third item
+----
+**test list 2**
+# Numbered list
+# Second item
+## Sub item
+## Another sub item
+# Third item
+"
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+504 / 606
+
+
+22.14
+Appendix: Examples of ”Creole List” on all diagrams
+22
+CREOLE
+TODO: DONE [Corrected in V1.2020.18]
+22.14.4
+Gantt project planning
+N/A
+22.14.5
+Object
+TODO: FIXME ￿
+• Sub item
+• Sub sub item
+TODO: FIXME
+@startuml
+object user {
+**test list 1**
+* Bullet list
+* Second item
+** Sub item
+*** Sub sub item
+* Third item
+----
+**test list 2**
+# Numbered list
+# Second item
+## Sub item
+## Another sub item
+# Third item
+}
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+505 / 606
+
+
+22.14
+Appendix: Examples of ”Creole List” on all diagrams
+22
+CREOLE
+22.14.6
+MindMap
+@startmindmap
+* root
+** d1
+**:**test list 1**
+* Bullet list
+* Second item
+** Sub item
+*** Sub sub item
+* Third item
+----
+**test list 2**
+# Numbered list
+# Second item
+## Sub item
+## Another sub item
+# Third item;
+@endmindmap
+22.14.7
+Network (nwdiag)
+@startuml
+nwdiag {
+PlantUML Language Reference Guide (1.2025.0)
+506 / 606
+
+
+22.14
+Appendix: Examples of ”Creole List” on all diagrams
+22
+CREOLE
+network Network {
+Server [description="**test list 1**\n* Bullet list\n* Second item\n** Sub item\n*** Sub sub it
+}
+@enduml
+22.14.8
+Note
+@startuml
+note as n
+**test list 1**
+* Bullet list
+* Second item
+** Sub item
+*** Sub sub item
+* Third item
+----
+**test list 2**
+# Numbered list
+# Second item
+## Sub item
+## Another sub item
+# Third item
+end note
+@enduml
+22.14.9
+Sequence
+@startuml
+<style>
+participant {HorizontalAlignment left}
+</style>
+PlantUML Language Reference Guide (1.2025.0)
+507 / 606
+
+
+22.14
+Appendix: Examples of ”Creole List” on all diagrams
+22
+CREOLE
+participant Participant [
+**test list 1**
+* Bullet list
+* Second item
+** Sub item
+*** Sub sub item
+* Third item
+----
+**test list 2**
+# Numbered list
+# Second item
+## Sub item
+## Another sub item
+# Third item
+]
+participant B
+Participant -> B
+@enduml
+[Ref. QA-15232]
+22.14.10
+State
+@startuml
+<style>
+stateDiagram {
+title {HorizontalAlignment left}
+}
+</style>
+state "**test list 1**\n* Bullet list\n* Second item\n** Sub item\n*** Sub sub item\n* Third item\n--
+a: **test list 1**\n* Bullet list\n* Second item\n** Sub item\n*** Sub sub item\n* Third item\n----\n
+PlantUML Language Reference Guide (1.2025.0)
+508 / 606
+
+
+22.14
+Appendix: Examples of ”Creole List” on all diagrams
+22
+CREOLE
+state "**test list 1**\n* Bullet list\n* Second item\n** Sub item\n*** Sub sub item\n* Third item\n--
+state : **test list 1**\n* Bullet list\n* Second item\n** Sub item\n*** Sub sub item\n* Third item\n-
+}
+@enduml
+[Ref. QA-16978]
+22.14.11
+WBS
+@startwbs
+* root
+** d1
+**:**test list 1**
+* Bullet list
+* Second item
+** Sub item
+*** Sub sub item
+* Third item
+----
+**test list 2**
+# Numbered list
+# Second item
+PlantUML Language Reference Guide (1.2025.0)
+509 / 606
+
+
+22.15
+Appendix: Examples of ”Creole horizontal lines” on all diagrams
+22
+CREOLE
+## Sub item
+## Another sub item
+# Third item;
+@endwbs
+22.15
+Appendix: Examples of ”Creole horizontal lines” on all diagrams
+22.15.1
+Activity
+TODO: FIXME ￿strong line ____ TODO: FIXME
+@startuml
+start
+:You can have horizontal line
+----
+Or double line
+====
+Or strong line
+____
+Or dotted line
+..My title..
+Or dotted title
+//and title... //
+==Title==
+Or double-line title
+--Another title--
+Or single-line title
+Enjoy!;
+stop
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+510 / 606
+
+
+22.15
+Appendix: Examples of ”Creole horizontal lines” on all diagrams
+22
+CREOLE
+22.15.2
+Class
+@startuml
+class a {
+You can have horizontal line
+----
+Or double line
+====
+Or strong line
+____
+Or dotted line
+..My title..
+Or dotted title
+//and title... //
+==Title==
+Or double-line title
+--Another title--
+Or single-line title
+Enjoy!
+}
+a -- b
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+511 / 606
+
+
+22.15
+Appendix: Examples of ”Creole horizontal lines” on all diagrams
+22
+CREOLE
+22.15.3
+Component, Deployment, Use-Case
+@startuml
+node n [
+You can have horizontal line
+----
+Or double line
+====
+Or strong line
+____
+Or dotted line
+..My title..
+//and title... //
+==Title==
+--Another title--
+Enjoy!
+]
+file f as "
+You can have horizontal line
+----
+Or double line
+====
+Or strong line
+____
+Or dotted line
+..My title..
+//and title... //
+==Title==
+--Another title--
+Enjoy!
+"
+person p [
+You can have horizontal line
+----
+PlantUML Language Reference Guide (1.2025.0)
+512 / 606
+
+
+22.15
+Appendix: Examples of ”Creole horizontal lines” on all diagrams
+22
+CREOLE
+Or double line
+====
+Or strong line
+____
+Or dotted line
+..My title..
+//and title... //
+==Title==
+--Another title--
+Enjoy!
+]
+@enduml
+22.15.4
+Gantt project planning
+N/A
+22.15.5
+Object
+@startuml
+object user {
+You can have horizontal line
+----
+Or double line
+====
+PlantUML Language Reference Guide (1.2025.0)
+513 / 606
+
+
+22.15
+Appendix: Examples of ”Creole horizontal lines” on all diagrams
+22
+CREOLE
+Or strong line
+____
+Or dotted line
+..My title..
+//and title... //
+==Title==
+--Another title--
+Enjoy!
+}
+@enduml
+TODO: DONE [Corrected on V1.2020.18]
+22.15.6
+MindMap
+TODO: FIXME ￿strong line ____ TODO: FIXME
+@startmindmap
+* root
+** d1
+**:You can have horizontal line
+----
+Or double line
+====
+Or strong line
+____
+Or dotted line
+..My title..
+//and title... //
+==Title==
+--Another title--
+Enjoy!;
+@endmindmap
+PlantUML Language Reference Guide (1.2025.0)
+514 / 606
+
+
+22.15
+Appendix: Examples of ”Creole horizontal lines” on all diagrams
+22
+CREOLE
+22.15.7
+Network (nwdiag)
+@startuml
+nwdiag {
+network Network {
+Server [description="You can have horizontal line\n----\nOr double line\n====\nOr strong line\n
+}
+@enduml
+22.15.8
+Note
+@startuml
+note as n
+You can have horizontal line
+----
+Or double line
+====
+Or strong line
+____
+Or dotted line
+..My title..
+//and title... //
+==Title==
+--Another title--
+Enjoy!
+end note
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+515 / 606
+
+
+22.15
+Appendix: Examples of ”Creole horizontal lines” on all diagrams
+22
+CREOLE
+22.15.9
+Sequence
+@startuml
+<style>
+participant {HorizontalAlignment left}
+</style>
+participant Participant [
+You can have horizontal line
+----
+Or double line
+====
+Or strong line
+____
+Or dotted line
+..My title..
+//and title... //
+==Title==
+--Another title--
+Enjoy!
+]
+participant B
+Participant -> B
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+516 / 606
+
+
+22.15
+Appendix: Examples of ”Creole horizontal lines” on all diagrams
+22
+CREOLE
+[Ref. QA-15232]
+22.15.10
+State
+@startuml
+<style>
+stateDiagram {
+title {HorizontalAlignment left}
+}
+</style>
+state "You can have horizontal line\n----\nOr double line\n====\nOr strong line\n____\nOr dotted line
+a: You can have horizontal line\n----\nOr double line\n====\nOr strong line\n____\nOr dotted line\n.
+state "You can have horizontal line\n----\nOr double line\n====\nOr strong line\n____\nOr dotted line
+state : You can have horizontal line\n----\nOr double line\n====\nOr strong line\n____\nOr dotted lin
+}
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+517 / 606
+
+
+22.15
+Appendix: Examples of ”Creole horizontal lines” on all diagrams
+22
+CREOLE
+[Ref. QA-16978, GH-1479]
+22.15.11
+WBS
+TODO: FIXME ￿strong line ____ TODO: FIXME
+@startwbs
+* root
+** d1
+**:You can have horizontal line
+----
+Or double line
+====
+Or strong line
+____
+Or dotted line
+..My title..
+//and title... //
+==Title==
+--Another title--
+Enjoy!;
+@endwbs
+PlantUML Language Reference Guide (1.2025.0)
+518 / 606
+
+
+22.16
+Style equivalent (between Creole and HTML)
+22
+CREOLE
+22.16
+Style equivalent (between Creole and HTML)
+Style
+Creole
+Legacy HTML like
+bold
+This is **bold**
+This is <b>bold</b>
+italics
+This is //italics//
+This is <i>italics</i>
+monospaced
+This is ""monospaced""
+This is <font:monospaced>monospaced</font>
+stroked
+This is --stroked--
+This is <s>stroked</s>
+underlined
+This is __underlined__
+This is <u>underlined</u>
+waved
+This is ~~~
+This is <w>waved</w>
+@startmindmap
+* Style equivalent\n(between Creole and HTML)
+**:**Creole**
+----
+<#silver>|= code|= output|
+| \n This is ""~**bold**""\n | \n This is **bold** |
+| \n This is ""~//italics//""\n | \n This is //italics// |
+| \n This is ""~""monospaced~"" ""\n | \n This is ""monospaced"" |
+| \n This is ""~--stroked--""\n | \n This is --stroked-- |
+| \n This is ""~__underlined__""\n |
+\n This is __underlined__ |
+| \n This is ""<U+007E><U+007E>waved<U+007E><U+007E>""\n | \n This is ~~waved~~ |;
+**:<b>Legacy HTML like
+----
+<#silver>|= code|= output|
+| \n This is ""~<b>bold</b>""\n | \n This is <b>bold</b> |
+| \n This is ""~<i>italics</i>""\n | \n This is <i>italics</i> |
+| \n This is ""~<font:monospaced>monospaced</font>""\n | \n This is <font:monospaced>monospaced</font
+| \n This is ""~<s>stroked</s>""\n | \n
+This is <s>stroked</s> |
+| \n This is ""~<u>underlined</u>""\n | \n This is <u>underlined</u> |
+| \n This is ""~<w>waved</w>""\n | \n This is <w>waved</w> |
+And color as a bonus...
+<#silver>|= code|= output|
+| \n This is ""~<s:""<color:green>""green""</color>"">stroked</s>""\n | \n
+This is <s:green>stroked<
+| \n This is ""~<u:""<color:red>""red""</color>"">underlined</u>""\n | \n This is <u:red>underlined</
+| \n This is ""~<w:""<color:#0000FF>""#0000FF""</color>"">waved</w>""\n | \n This is <w:#0000FF>waved
+@endmindmap
+PlantUML Language Reference Guide (1.2025.0)
+519 / 606
+
+
+22.16
+Style equivalent (between Creole and HTML)
+22
+CREOLE
+PlantUML Language Reference Guide (1.2025.0)
+520 / 606

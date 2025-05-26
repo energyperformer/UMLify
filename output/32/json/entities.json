@@ -1,0 +1,97 @@
+{
+  "actors": [
+    {
+      "name": "Customer",
+      "description": "Places orders, provides feedback, and requests bills",
+      "type": "primary"
+    },
+    {
+      "name": "Hall Manager",
+      "description": "Manages tables, orders, and staff",
+      "type": "primary"
+    },
+    {
+      "name": "Head Chef",
+      "description": "Assigns dishes, marks dishes as cooked, and approves dish cancellations",
+      "type": "primary"
+    },
+    {
+      "name": "Chef",
+      "description": "Prepares dishes based on assignments",
+      "type": "primary"
+    },
+    {
+      "name": "Admin",
+      "description": "Manages menu items, inventory, and staff",
+      "type": "primary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "Display Dishes",
+      "description": "The system displays a list of available and unavailable dishes to the customer."
+    },
+    {
+      "name": "Place Order",
+      "description": "The system allows customers to place orders."
+    },
+    {
+      "name": "Cancel or Edit Order",
+      "description": "The system enables customers to cancel or edit orders."
+    },
+    {
+      "name": "Manage Tables",
+      "description": "The system allows Hall Managers to manage tables."
+    },
+    {
+      "name": "Assign Dishes",
+      "description": "The system allows Head Chefs to assign dishes to chefs."
+    },
+    {
+      "name": "Manage Menu Items",
+      "description": "The system allows Admins to manage menu items."
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Customer",
+      "target": "Display Dishes",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Place Order",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Cancel or Edit Order",
+      "type": "association"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Tables",
+      "type": "association"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Assign Dishes",
+      "type": "association"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Menu Items",
+      "type": "association"
+    },
+    {
+      "source": "Display Dishes",
+      "target": "Place Order",
+      "type": "include"
+    },
+    {
+      "source": "Place Order",
+      "target": "Cancel or Edit Order",
+      "type": "include"
+    }
+  ]
+}

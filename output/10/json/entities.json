@@ -1,0 +1,203 @@
+{
+  "actors": [
+    {
+      "name": "inventory admin",
+      "description": "manages inventory and assets",
+      "type": "primary"
+    },
+    {
+      "name": "users",
+      "description": "access and manage inventory",
+      "type": "primary"
+    },
+    {
+      "name": "administrators",
+      "description": "manage system and user accounts",
+      "type": "primary"
+    },
+    {
+      "name": "databases",
+      "description": "store and provide data",
+      "type": "secondary"
+    },
+    {
+      "name": "servers",
+      "description": "host and serve the system",
+      "type": "secondary"
+    },
+    {
+      "name": "browsers",
+      "description": "provide user interface",
+      "type": "secondary"
+    },
+    {
+      "name": "operating systems",
+      "description": "run and support the system",
+      "type": "secondary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "create request",
+      "description": "users create requests for assets",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "request is created and stored"
+      ],
+      "main_flow": [
+        "user submits request",
+        "system stores request"
+      ],
+      "alternative_flows": [
+        "user cancels request"
+      ]
+    },
+    {
+      "name": "modify asset",
+      "description": "admin modifies asset information",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "admin is authenticated"
+      ],
+      "postconditions": [
+        "asset information is updated"
+      ],
+      "main_flow": [
+        "admin submits changes",
+        "system updates asset"
+      ],
+      "alternative_flows": [
+        "admin cancels changes"
+      ]
+    },
+    {
+      "name": "approve request",
+      "description": "admin approves or rejects user requests",
+      "actors": [
+        "administrators"
+      ],
+      "preconditions": [
+        "request is pending"
+      ],
+      "postconditions": [
+        "request is approved or rejected"
+      ],
+      "main_flow": [
+        "admin reviews request",
+        "admin approves or rejects"
+      ],
+      "alternative_flows": [
+        "admin requests more information"
+      ]
+    },
+    {
+      "name": "return asset",
+      "description": "users return assets",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "user has borrowed asset"
+      ],
+      "postconditions": [
+        "asset is returned and updated"
+      ],
+      "main_flow": [
+        "user returns asset",
+        "system updates asset status"
+      ],
+      "alternative_flows": [
+        "user is unable to return asset"
+      ]
+    },
+    {
+      "name": "view asset information",
+      "description": "users view asset details",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "user can view asset information"
+      ],
+      "main_flow": [
+        "user searches for asset",
+        "system displays asset information"
+      ],
+      "alternative_flows": [
+        "asset information is not available"
+      ]
+    },
+    {
+      "name": "generate report",
+      "description": "system generates reports",
+      "actors": [
+        "administrators"
+      ],
+      "preconditions": [
+        "report criteria are set"
+      ],
+      "postconditions": [
+        "report is generated"
+      ],
+      "main_flow": [
+        "admin sets report criteria",
+        "system generates report"
+      ],
+      "alternative_flows": [
+        "report generation fails"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "users",
+      "to": "create request",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "modify asset",
+      "type": "association"
+    },
+    {
+      "from": "administrators",
+      "to": "approve request",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "return asset",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "view asset information",
+      "type": "association"
+    },
+    {
+      "from": "administrators",
+      "to": "generate report",
+      "type": "association"
+    },
+    {
+      "from": "create request",
+      "to": "approve request",
+      "type": "include"
+    },
+    {
+      "from": "modify asset",
+      "to": "view asset information",
+      "type": "include"
+    }
+  ]
+}

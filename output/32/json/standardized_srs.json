@@ -1,0 +1,159 @@
+{
+  "introduction": {
+    "purpose": "The purpose of this software requirements specification is to detail the requirements for the DineOut restaurant management system, focusing on ordering and inventory management, with the goal of improving restaurant performance and customer satisfaction.",
+    "scope": "This specification covers the scope of the DineOut system, including its functionality, user interfaces, and system requirements, to ensure a comprehensive understanding of the system's capabilities and limitations.",
+    "definitions_acronyms_abbreviations": [
+      {
+        "term": "POS",
+        "definition": "Point of Sale"
+      },
+      {
+        "term": "CRUD",
+        "definition": "Create, Read, Update, Delete"
+      },
+      {
+        "term": "Firebase",
+        "definition": "A cloud-hosted database for real-time data synchronization"
+      }
+    ],
+    "references": [
+      {
+        "document_title": "Android User Interface",
+        "author": "Not Specified",
+        "date": "Not Specified",
+        "url": "Not Specified"
+      },
+      {
+        "document_title": "IEEE Std 830-1998",
+        "author": "IEEE Computer Society",
+        "date": "1998",
+        "url": "Not Specified"
+      }
+    ],
+    "overview": "This SRS document provides a detailed description of the DineOut system, including its purpose, scope, definitions, references, and an overview of the document's structure and content."
+  },
+  "overall_description": {
+    "product_perspective": "DineOut is a restaurant management system designed to automate daily tasks, including order and inventory management, bill generation, and feedback collection, with the goal of improving restaurant performance and customer satisfaction.",
+    "product_functions": [
+      "Allow customers to place orders",
+      "Enable customers to cancel or edit orders",
+      "Provide a feedback mechanism for customers",
+      "Allow customers to request bills",
+      "Enable customers to ask for help"
+    ],
+    "user_characteristics": [
+      "Hall Manager: responsible for managing tables, orders, and staff",
+      "Customer: places orders, provides feedback, and requests bills",
+      "Head Chef: assigns dishes to chefs, marks dishes as cooked, and approves dish cancellations",
+      "Chef: prepares dishes based on assignments",
+      "Admin: manages menu items, inventory, and staff"
+    ],
+    "constraints": [
+      "System compatibility with Android version 6.0 or above",
+      "Device compatibility with tablets",
+      "Operating system constraint: Android 6.0 or above"
+    ],
+    "assumptions_dependencies": [
+      "Assumption: the system will always be used on tablets with sufficient resources",
+      "Dependency: Firebase database for online storage of information"
+    ],
+    "apportioning_of_requirements": [
+      "Software: handles user interfaces, order management, and feedback collection",
+      "Hardware: requires tablets with Android 6.0 or above for operation",
+      "People: Hall Managers, Customers, Head Chefs, Chefs, and Admins interact with the system",
+      "Other systems: integrates with Firebase database for data storage"
+    ]
+  },
+  "specific_requirements": {
+    "external_interface_requirements": {
+      "user_interfaces": [
+        "Customer Interface: allows customers to place orders, cancel/edit orders, provide feedback, and request bills",
+        "Head Chef Interface: allows Head Chefs to assign dishes, mark dishes as cooked, and approve dish cancellations",
+        "Hall Manager Interface: allows Hall Managers to manage tables, orders, and staff",
+        "Admin Interface: allows Admins to manage menu items, inventory, and staff"
+      ],
+      "hardware_interfaces": [
+        "Bill printer for printing bills",
+        "Credit card reader for payment"
+      ],
+      "software_interfaces": [
+        "Firebase database for online storage of information"
+      ],
+      "communication_interfaces": [
+        "HTTP protocol for communication with Firebase"
+      ]
+    },
+    "functional_requirements": [
+      {
+        "id": "FR-001",
+        "description": "The system displays a list of available and unavailable dishes to the customer.",
+        "inputs": [
+          "Customer selection of dishes"
+        ],
+        "processing": "System retrieves dish information from database",
+        "outputs": [
+          "List of dishes"
+        ],
+        "priority": "High",
+        "source": "Customer requirement",
+        "dependencies": [
+          "FR-002"
+        ]
+      },
+      {
+        "id": "FR-002",
+        "description": "The system allows customers to place orders.",
+        "inputs": [
+          "Customer selection of dishes and quantities"
+        ],
+        "processing": "System processes order and updates database",
+        "outputs": [
+          "Order confirmation"
+        ],
+        "priority": "High",
+        "source": "Customer requirement",
+        "dependencies": []
+      },
+      {
+        "id": "FR-003",
+        "description": "The system enables customers to cancel or edit orders.",
+        "inputs": [
+          "Customer request to cancel or edit order"
+        ],
+        "processing": "System updates order status and notifies relevant parties",
+        "outputs": [
+          "Order update confirmation"
+        ],
+        "priority": "High",
+        "source": "Customer requirement",
+        "dependencies": [
+          "FR-001"
+        ]
+      }
+    ],
+    "performance_requirements": [
+      "System response time: less than 2 seconds for menu scrolling",
+      "Order placement: less than 1 second for pending orders to be visible to Head Chefs"
+    ],
+    "logical_database_requirements": [
+      "Dish information: name, price, availability",
+      "Order information: order number, table number, dish selection, quantity"
+    ],
+    "design_constraints": {
+      "standards_compliance": [
+        "Android compatibility: Android 6.0 or above"
+      ],
+      "hardware_limitations": [
+        "Tablet compatibility: tablets with Android 6.0 or above"
+      ]
+    },
+    "software_system_attributes": {
+      "reliability": "The system must be able to recover from crashes and errors",
+      "availability": "The system must be available 24/7 with minimal downtime",
+      "security": "The system must protect employee sensitive information and inventory from hacking",
+      "maintainability": "The system must be easy to repair and update",
+      "portability": "The system must be able to run on different devices with minimal modifications",
+      "usability": "The system must have an intuitive and user-friendly interface"
+    }
+  }
+}

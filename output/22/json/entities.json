@@ -1,0 +1,235 @@
+{
+  "actors": [
+    {
+      "name": "inventory admin",
+      "description": "manages inventory and assets",
+      "type": "primary"
+    },
+    {
+      "name": "user",
+      "description": "accesses and manages inventory",
+      "type": "primary"
+    },
+    {
+      "name": "administrator",
+      "description": "manages system and user permissions",
+      "type": "primary"
+    },
+    {
+      "name": "web interface",
+      "description": "provides access to system functionality",
+      "type": "secondary"
+    },
+    {
+      "name": "databases",
+      "description": "stores inventory and asset data",
+      "type": "secondary"
+    },
+    {
+      "name": "servers",
+      "description": "hosts system and provides access",
+      "type": "secondary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "create request",
+      "description": "user creates a request for asset or inventory",
+      "actors": [
+        "user",
+        "inventory admin"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "request is created and pending approval"
+      ],
+      "main_flow": [
+        "user submits request",
+        "request is validated"
+      ],
+      "alternative_flows": [
+        "request is rejected due to invalid data"
+      ]
+    },
+    {
+      "name": "edit asset",
+      "description": "user edits asset information",
+      "actors": [
+        "user",
+        "inventory admin"
+      ],
+      "preconditions": [
+        "user is authenticated and authorized"
+      ],
+      "postconditions": [
+        "asset information is updated"
+      ],
+      "main_flow": [
+        "user edits asset information",
+        "changes are validated and saved"
+      ],
+      "alternative_flows": [
+        "changes are rejected due to invalid data"
+      ]
+    },
+    {
+      "name": "modify asset",
+      "description": "user modifies asset information",
+      "actors": [
+        "user",
+        "inventory admin"
+      ],
+      "preconditions": [
+        "user is authenticated and authorized"
+      ],
+      "postconditions": [
+        "asset information is updated"
+      ],
+      "main_flow": [
+        "user modifies asset information",
+        "changes are validated and saved"
+      ],
+      "alternative_flows": [
+        "changes are rejected due to invalid data"
+      ]
+    },
+    {
+      "name": "add new asset",
+      "description": "user adds new asset to inventory",
+      "actors": [
+        "user",
+        "inventory admin"
+      ],
+      "preconditions": [
+        "user is authenticated and authorized"
+      ],
+      "postconditions": [
+        "new asset is added to inventory"
+      ],
+      "main_flow": [
+        "user adds new asset information",
+        "asset is validated and added"
+      ],
+      "alternative_flows": [
+        "asset is rejected due to invalid data"
+      ]
+    },
+    {
+      "name": "approve request",
+      "description": "inventory admin approves or rejects user request",
+      "actors": [
+        "inventory admin",
+        "user"
+      ],
+      "preconditions": [
+        "request is pending approval"
+      ],
+      "postconditions": [
+        "request is approved or rejected"
+      ],
+      "main_flow": [
+        "inventory admin reviews request",
+        "request is approved or rejected"
+      ],
+      "alternative_flows": [
+        "request is sent back to user for revision"
+      ]
+    },
+    {
+      "name": "return asset",
+      "description": "user returns asset to inventory",
+      "actors": [
+        "user",
+        "inventory admin"
+      ],
+      "preconditions": [
+        "user has borrowed asset"
+      ],
+      "postconditions": [
+        "asset is returned to inventory"
+      ],
+      "main_flow": [
+        "user returns asset",
+        "asset is validated and checked in"
+      ],
+      "alternative_flows": [
+        "asset is damaged or lost"
+      ]
+    },
+    {
+      "name": "generate report",
+      "description": "system generates report on inventory and assets",
+      "actors": [
+        "user",
+        "inventory admin"
+      ],
+      "preconditions": [
+        "user is authenticated and authorized"
+      ],
+      "postconditions": [
+        "report is generated and available"
+      ],
+      "main_flow": [
+        "user requests report",
+        "report is generated and displayed"
+      ],
+      "alternative_flows": [
+        "report generation fails due to system error"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "user",
+      "to": "create request",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "approve request",
+      "type": "association"
+    },
+    {
+      "from": "user",
+      "to": "edit asset",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "edit asset",
+      "type": "association"
+    },
+    {
+      "from": "user",
+      "to": "add new asset",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "add new asset",
+      "type": "association"
+    },
+    {
+      "from": "user",
+      "to": "return asset",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "return asset",
+      "type": "association"
+    },
+    {
+      "from": "user",
+      "to": "generate report",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "generate report",
+      "type": "association"
+    }
+  ]
+}

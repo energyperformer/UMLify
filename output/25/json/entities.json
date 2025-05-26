@@ -1,0 +1,284 @@
+{
+  "actors": [
+    {
+      "name": "inventory admin",
+      "description": "manages inventory and assets",
+      "type": "primary"
+    },
+    {
+      "name": "users",
+      "description": "access and manage inventory",
+      "type": "primary"
+    },
+    {
+      "name": "administrators",
+      "description": "manage user permissions and system settings",
+      "type": "primary"
+    },
+    {
+      "name": "databases",
+      "description": "store inventory data",
+      "type": "secondary"
+    },
+    {
+      "name": "servers",
+      "description": "host the system",
+      "type": "secondary"
+    },
+    {
+      "name": "browsers",
+      "description": "access the system",
+      "type": "secondary"
+    },
+    {
+      "name": "operating systems",
+      "description": "run the system",
+      "type": "secondary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "create request",
+      "description": "create a new request for an asset",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "request is created"
+      ],
+      "main_flow": [
+        "user submits request",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "request is denied"
+      ]
+    },
+    {
+      "name": "edit asset",
+      "description": "edit an existing asset",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "asset exists",
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "asset is updated"
+      ],
+      "main_flow": [
+        "user edits asset",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "edit is denied"
+      ]
+    },
+    {
+      "name": "modify asset",
+      "description": "modify an existing asset",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "asset exists",
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "asset is updated"
+      ],
+      "main_flow": [
+        "user modifies asset",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "modify is denied"
+      ]
+    },
+    {
+      "name": "add new asset",
+      "description": "add a new asset to the inventory",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "asset is added"
+      ],
+      "main_flow": [
+        "user adds asset",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "add is denied"
+      ]
+    },
+    {
+      "name": "create new location",
+      "description": "create a new location for assets",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "location is created"
+      ],
+      "main_flow": [
+        "user creates location",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "create is denied"
+      ]
+    },
+    {
+      "name": "return asset",
+      "description": "return an asset to the inventory",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "asset is checked out",
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "asset is returned"
+      ],
+      "main_flow": [
+        "user returns asset",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "return is denied"
+      ]
+    },
+    {
+      "name": "approve request",
+      "description": "approve a request for an asset",
+      "actors": [
+        "administrators"
+      ],
+      "preconditions": [
+        "request exists",
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "request is approved"
+      ],
+      "main_flow": [
+        "user approves request",
+        "system updates inventory"
+      ],
+      "alternative_flows": [
+        "approve is denied"
+      ]
+    },
+    {
+      "name": "change permissions",
+      "description": "change user permissions",
+      "actors": [
+        "administrators"
+      ],
+      "preconditions": [
+        "user exists",
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "permissions are updated"
+      ],
+      "main_flow": [
+        "user changes permissions",
+        "system updates permissions"
+      ],
+      "alternative_flows": [
+        "change is denied"
+      ]
+    },
+    {
+      "name": "generate reports",
+      "description": "generate reports on inventory",
+      "actors": [
+        "inventory admin",
+        "administrators"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "report is generated"
+      ],
+      "main_flow": [
+        "user generates report",
+        "system provides report"
+      ],
+      "alternative_flows": [
+        "generate is denied"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "inventory admin",
+      "to": "create request",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "create request",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "edit asset",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "modify asset",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "add new asset",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "create new location",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "return asset",
+      "type": "association"
+    },
+    {
+      "from": "administrators",
+      "to": "approve request",
+      "type": "association"
+    },
+    {
+      "from": "administrators",
+      "to": "change permissions",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "generate reports",
+      "type": "association"
+    },
+    {
+      "from": "administrators",
+      "to": "generate reports",
+      "type": "association"
+    }
+  ]
+}

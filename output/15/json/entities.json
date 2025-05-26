@@ -1,0 +1,188 @@
+{
+  "actors": [
+    {
+      "name": "inventory admin",
+      "description": "manages the inventory system",
+      "type": "primary"
+    },
+    {
+      "name": "users",
+      "description": "accesses and manages inventory assets",
+      "type": "primary"
+    },
+    {
+      "name": "authentication system",
+      "description": "handles user authentication",
+      "type": "secondary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "create request",
+      "description": "users create requests for inventory assets",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "request is created and stored"
+      ],
+      "main_flow": [
+        "user submits request",
+        "system stores request"
+      ],
+      "alternative_flows": [
+        "user cancels request"
+      ]
+    },
+    {
+      "name": "approve request",
+      "description": "inventory admin approves or rejects user requests",
+      "actors": [
+        "inventory admin",
+        "users"
+      ],
+      "preconditions": [
+        "request exists",
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "request is approved or rejected"
+      ],
+      "main_flow": [
+        "admin reviews request",
+        "admin approves or rejects request"
+      ],
+      "alternative_flows": [
+        "admin requests more information"
+      ]
+    },
+    {
+      "name": "add new asset",
+      "description": "inventory admin adds new assets to the inventory",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "admin is authenticated"
+      ],
+      "postconditions": [
+        "new asset is added to the inventory"
+      ],
+      "main_flow": [
+        "admin enters asset details",
+        "system stores new asset"
+      ],
+      "alternative_flows": [
+        "admin cancels addition"
+      ]
+    },
+    {
+      "name": "edit asset",
+      "description": "inventory admin edits existing assets in the inventory",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "admin is authenticated",
+        "asset exists"
+      ],
+      "postconditions": [
+        "asset is updated"
+      ],
+      "main_flow": [
+        "admin edits asset details",
+        "system updates asset"
+      ],
+      "alternative_flows": [
+        "admin cancels edit"
+      ]
+    },
+    {
+      "name": "transfer asset",
+      "description": "inventory admin transfers assets between locations",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "admin is authenticated",
+        "asset exists"
+      ],
+      "postconditions": [
+        "asset is transferred"
+      ],
+      "main_flow": [
+        "admin initiates transfer",
+        "system updates asset location"
+      ],
+      "alternative_flows": [
+        "admin cancels transfer"
+      ]
+    },
+    {
+      "name": "return asset",
+      "description": "users return borrowed assets to the inventory",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "user is authenticated",
+        "asset is borrowed"
+      ],
+      "postconditions": [
+        "asset is returned and updated"
+      ],
+      "main_flow": [
+        "user initiates return",
+        "system updates asset status"
+      ],
+      "alternative_flows": [
+        "user cancels return"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "users",
+      "to": "create request",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "approve request",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "add new asset",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "edit asset",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "transfer asset",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "return asset",
+      "type": "association"
+    },
+    {
+      "from": "create request",
+      "to": "approve request",
+      "type": "include"
+    },
+    {
+      "from": "add new asset",
+      "to": "edit asset",
+      "type": "generalization"
+    }
+  ]
+}

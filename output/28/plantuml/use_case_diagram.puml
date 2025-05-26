@@ -1,0 +1,68 @@
+@startumlleft to right direction
+
+actor Customer as "Customer\n(A person who places orders and provides feedback)"
+actor HeadChef as "Head Chef\n(A person responsible for managing kitchen operations)"
+actor Admin as "Admin\n(A person responsible for managing the system and its settings)"
+actor HallManager as "Hall Manager\n(A person responsible for managing the dining hall operations)"
+actor Chef as "Chef\n(A person responsible for preparing dishes)"
+
+usecase "Place Order" as (Place Order)
+usecase "Manage Inventory" as (Manage Inventory)
+usecase "Generate Bill" as (Generate Bill)
+usecase "Take Feedback" as (Take Feedback)
+usecase "Edit Order" as (Edit Order)
+usecase "Cancel Order" as (Cancel Order)
+usecase "Mark Dish as Cooked" as (Mark Dish as Cooked)
+usecase "Request Bill" as (Request Bill)
+usecase "Provide Feedback" as (Provide Feedback)
+usecase "Add Staff Member" as (Add Staff Member)
+usecase "Edit Staff Member" as (Edit Staff Member)
+usecase "Delete Staff Member" as (Delete Staff Member)
+usecase "Add Menu Item" as (Add Menu Item)
+usecase "Edit Menu Item" as (Edit Menu Item)
+usecase "Delete Menu Item" as (Delete Menu Item)
+
+Customer -- (Place Order)
+Customer -- (Request Bill)
+Customer -- (Provide Feedback)
+Customer -- (Edit Order)
+Customer -- (Cancel Order)
+
+HeadChef -- (Mark Dish as Cooked)
+HeadChef -- (Manage Inventory)
+
+Admin -- (Add Staff Member)
+Admin -- (Edit Staff Member)
+Admin -- (Delete Staff Member)
+Admin -- (Add Menu Item)
+Admin -- (Edit Menu Item)
+Admin -- (Delete Menu Item)
+
+HallManager -- (Manage Inventory)
+
+(Place Order) ..> (Manage Inventory) : includes
+(Place Order) ..> (Generate Bill) : includes
+(Request Bill) ..> (Generate Bill) : includes
+(Provide Feedback) ..> (Take Feedback) : includes
+(Edit Order) ..> (Place Order) : extends
+(Cancel Order) ..> (Place Order) : extends
+(Mark Dish as Cooked) ..> (Manage Inventory) : includes
+
+rectangle System [
+  (Place Order)
+  (Manage Inventory)
+  (Generate Bill)
+  (Take Feedback)
+  (Edit Order)
+  (Cancel Order)
+  (Mark Dish as Cooked)
+  (Request Bill)
+  (Provide Feedback)
+  (Add Staff Member)
+  (Edit Staff Member)
+  (Delete Staff Member)
+  (Add Menu Item)
+  (Edit Menu Item)
+  (Delete Menu Item)
+]
+@enduml

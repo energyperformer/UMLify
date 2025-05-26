@@ -1,0 +1,35 @@
+@startuml
+title System Use Case Diagram
+left to right direction
+skinparam monochrome true
+skinparam packageStyle rectangle
+
+' Actors
+actor "Customer" as Customer 
+actor "Hall Manager" as HallManager 
+actor "Head Chef" as HeadChef 
+actor "Chef" as Chef 
+actor "Admin" as Admin 
+
+' Grouped Use Cases
+rectangle "Main Operations" {
+  (Place Order) as PlaceOrder 
+  (Cancel or Edit Order) as CancelorEditOrder 
+  (Provide Feedback) as ProvideFeedback 
+  (Request Bill) as RequestBill 
+  (Ask for Help) as AskforHelp 
+  (Assign Dishes) as AssignDishes 
+  (Mark Dishes as Cooked) as MarkDishesasCooked 
+  (Approve Dish Cancellations) as ApproveDishCancellations 
+  (Manage Tables) as ManageTables 
+  (Manage Orders) as ManageOrders 
+  (Manage Staff) as ManageStaff 
+  (Manage Menu Items) as ManageMenuItems 
+  (Manage Inventory) as ManageInventory 
+
+}
+
+PlaceOrder --> ProvideFeedback
+PlaceOrder --> RequestBill
+CancelorEditOrder --> PlaceOrder
+@enduml

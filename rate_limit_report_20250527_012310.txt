@@ -1,0 +1,17 @@
+============================================================
+🔍 OPENROUTER API RATE LIMIT STATUS
+============================================================
+📅 Checked at: 2025-05-27T01:23:10.759302
+✅ API Status: Working
+
+📊 ESTIMATED LIMITS:
+   Max per minute: 20
+   Max per day: 50
+
+⏰ TIME UNTIL RESET:
+   Next minute: 50 seconds
+   Midnight (daily reset): 23 hours, 37 minutes
+
+💡 RECOMMENDATIONS:
+   ✅ API key is working correctly.
+============================================================

@@ -1,0 +1,64 @@
+{
+  "system": {
+    "name": "DineOut",
+    "description": "DineOut is an Android application designed to automate restaurant management tasks such as ordering, inventory management, and bill generation. It aims to improve restaurant performance by reducing paperwork, minimizing human error, and balancing workload during peak hours. The system includes interfaces for various user roles including Customer, Manager, Head Chef, Admin, and Chef, and utilizes a Firebase database for storing and managing order and inventory information.",
+    "purpose": "The purpose of DineOut is to digitalize the process of various restaurant management operations including ordering and inventory management and POS. It aims to improve the performance of the restaurant by eradicating daily paperwork, reducing human error, and enhancing efficiency during rush hours.",
+    "scope": "DineOut is a restaurant management system that automates day-to-day tasks such as order and inventory management, bill generation, and feedback collection. This version focuses on these tasks, with future versions potentially expanding to other areas. The system is designed to run on Android tablets and uses Firebase for data storage. It includes interfaces for Customers, Managers, Head Chefs, Admins, and Chefs, with specific functionalities tailored to each role."
+  },
+  "stakeholders": {
+    "customers": {
+      "description": "Users who interact with the system to place orders, edit orders, request bills, and provide feedback.",
+      "roles": [
+        "Ordering",
+        "Editing Orders",
+        "Requesting Bills",
+        "Providing Feedback"
+      ]
+    },
+    "hall_manager": {
+      "description": "Manages the status of tables, marks bills as paid, and receives notifications for completed orders and customer help requests.",
+      "roles": [
+        "Managing Tables",
+        "Marking Bills as Paid",
+        "Receiving Notifications"
+      ]
+    },
+    "head_chef": {
+      "description": "Assigns dishes to chefs, marks dishes as cooked, approves order cancellations, and manages order queues.",
+      "roles": [
+        "Assigning Dishes",
+        "Marking Dishes as Cooked",
+        "Approving Cancellations",
+        "Managing Queues"
+      ]
+    },
+    "admin": {
+      "description": "Manages the inventory, staff members, and menu items within the system.",
+      "roles": [
+        "Managing Inventory",
+        "Managing Staff Members",
+        "Managing Menu Items"
+      ]
+    },
+    "chef": {
+      "description": "Prepares dishes based on the orders assigned by the head chef. They do not directly interact with the system but view their order queues.",
+      "roles": [
+        "Preparing Dishes"
+      ]
+    }
+  },
+  "non_functional_requirements": {
+    "performance_requirements": {
+      "interactive_system": "The system must be interactive with minimal delays. Actions like scrolling through the menu should have a delay of no more than 2 seconds, and orders should be visible to the head chef within 1 second.",
+      "real_time_communication": "Updates like cancel order must be made with little delay to avoid delivery delays. The delay to connect to the Firebase server should be minimal for effective real-time communication."
+    },
+    "security_requirements": {
+      "login_authentication": "Proper and encrypted login authentication is required for head chef and admin to protect sensitive employee information and inventory from hacking.",
+      "secure_information_transmission": "Information transmission to Firebase must be secure to avoid any changes in information that could disturb orders and billing."
+    },
+    "reliability_requirements": {
+      "correct_results": "The system must provide correct results regardless of the number of orders placed, ensuring accurate billing and order placement.",
+      "availability": "The system should be up and running most of the time with the server downtime not exceeding a few minutes to avoid customer inconvenience."
+    }
+  }
+}

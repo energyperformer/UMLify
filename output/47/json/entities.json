@@ -1,0 +1,124 @@
+{
+  "system": {
+    "name": "DineOut",
+    "description": "Restaurant management system for ordering and inventory management"
+  },
+  "actors": [
+    {
+      "name": "Customer",
+      "type": "primary",
+      "description": "Users who place orders and provide feedback"
+    },
+    {
+      "name": "Hall Manager",
+      "type": "primary",
+      "description": "Users who manage tables and mark bills as paid"
+    },
+    {
+      "name": "Head Chef",
+      "type": "primary",
+      "description": "Users who assign dishes to chefs and mark dishes as cooked"
+    },
+    {
+      "name": "Admin",
+      "type": "primary",
+      "description": "Users who manage menu items, inventory, and staff members"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "View Available Dishes",
+      "description": "Allow customers to see a list of available and unavailable dishes",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Place Order",
+      "description": "Enable customers to submit their orders to the system",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Assign Dishes to Chefs",
+      "description": "Allow head chefs to assign dishes to available chefs for preparation",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Menu Items and Inventory",
+      "description": "Enable admins to update and manage menu items, inventory levels, and staff members",
+      "priority": "High"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Customer",
+      "target": "View Available Dishes",
+      "type": "association",
+      "description": "Customer can view available dishes"
+    },
+    {
+      "source": "Customer",
+      "target": "Manage Place Order",
+      "type": "association",
+      "description": "Customer can place an order"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage Assign Dishes to Chefs",
+      "type": "association",
+      "description": "Head chef can assign dishes to chefs"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Menu Items and Inventory",
+      "type": "association",
+      "description": "Admin can manage menu items and inventory"
+    },
+    {
+      "source": "Manage Place Order",
+      "target": "View Available Dishes",
+      "type": "include",
+      "description": "Order placement includes viewing available dishes"
+    },
+    {
+      "source": "Manage Assign Dishes to Chefs",
+      "target": "Manage Menu Items and Inventory",
+      "type": "extend",
+      "description": "Assigning dishes to chefs may require managing menu items and inventory"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Place Order",
+      "type": "association",
+      "description": "The Hall Manager is responsible for managing the ordering process, so they should be connected to the use case for placing orders."
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Assign Dishes to Chefs",
+      "type": "association",
+      "description": "The Hall Manager needs to assign dishes to chefs, so this relationship makes logical sense."
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage Assign Dishes to Chefs",
+      "type": "include",
+      "description": "The Head Chef is involved in assigning dishes to chefs, so this relationship is necessary."
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Menu Items and Inventory",
+      "type": "association",
+      "description": "The Admin is responsible for managing the menu items and inventory, so this relationship is logical."
+    },
+    {
+      "source": "Customer",
+      "target": "View Available Dishes",
+      "type": "association",
+      "description": "Customers need to view available dishes before placing an order, so this relationship makes sense."
+    },
+    {
+      "source": "Customer",
+      "target": "Manage Place Order",
+      "type": "association",
+      "description": "Customers place orders, so they should be connected to the use case for managing place orders."
+    }
+  ]
+}

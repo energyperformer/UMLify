@@ -1,0 +1,291 @@
+12
+DISPLAY YAML DATA
+12
+Display YAML Data
+YAML format is widely used in software.
+You can use PlantUML to visualize your data.
+To activate this feature, the diagram must:
+• begin with @startyaml keyword
+• end with @endyaml keyword.
+@startyaml
+fruit: Apple
+size: Large
+color:
+- Red
+- Green
+@endyaml
+12.1
+Complex example
+@startyaml
+doe: "a deer, a female deer"
+ray: "a drop of golden sun"
+pi: 3.14159
+xmas: true
+french-hens: 3
+calling-birds:
+- huey
+- dewey
+- louie
+- fred
+xmas-fifth-day:
+calling-birds: four
+french-hens: 3
+golden-rings: 5
+partridges:
+count: 1
+location: "a pear tree"
+turtle-doves: two
+@endyaml
+PlantUML Language Reference Guide (1.2025.0)
+299 / 606
+
+
+12.2
+Specific key (with symbols or unicode)
+12
+DISPLAY YAML DATA
+12.2
+Specific key (with symbols or unicode)
+@startyaml
+@fruit: Apple
+$size: Large
+&color: Red
+￿: Heart
+‰: Per mille
+@endyaml
+[Ref. QA-13376]
+12.3
+Highlight parts
+12.3.1
+Normal style
+@startyaml
+#highlight "french-hens"
+#highlight "xmas-fifth-day" / "partridges"
+doe: "a deer, a female deer"
+ray: "a drop of golden sun"
+pi: 3.14159
+xmas: true
+french-hens: 3
+calling-birds:
+- huey
+- dewey
+- louie
+- fred
+xmas-fifth-day:
+calling-birds: four
+french-hens: 3
+golden-rings: 5
+partridges:
+count: 1
+location: "a pear tree"
+turtle-doves: two
+@endyaml
+PlantUML Language Reference Guide (1.2025.0)
+300 / 606
+
+
+12.4
+Using different styles for highlight
+12
+DISPLAY YAML DATA
+12.3.2
+Customised style
+@startyaml
+<style>
+yamlDiagram {
+highlight {
+BackGroundColor red
+FontColor white
+FontStyle italic
+}
+}
+</style>
+#highlight "french-hens"
+#highlight "xmas-fifth-day" / "partridges"
+doe: "a deer, a female deer"
+ray: "a drop of golden sun"
+pi: 3.14159
+xmas: true
+french-hens: 3
+calling-birds:
+- huey
+- dewey
+- louie
+- fred
+xmas-fifth-day:
+calling-birds: four
+french-hens: 3
+golden-rings: 5
+partridges:
+count: 1
+location: "a pear tree"
+turtle-doves: two
+@endyaml
+[Ref. QA-13288]
+12.4
+Using different styles for highlight
+It is possible to have different styles for different highlights.
+@startyaml
+<style>
+.h1 {
+BackGroundColor green
+FontColor white
+PlantUML Language Reference Guide (1.2025.0)
+301 / 606
+
+
+12.5
+Using (global) style
+12
+DISPLAY YAML DATA
+FontStyle italic
+}
+.h2 {
+BackGroundColor red
+FontColor white
+FontStyle italic
+}
+</style>
+#highlight "french-hens" <<h1>>
+#highlight "xmas-fifth-day" / "partridges" <<h2>>
+doe: "a deer, a female deer"
+ray: "a drop of golden sun"
+pi: 3.14159
+xmas: true
+french-hens: 3
+calling-birds:
+- huey
+- dewey
+- louie
+- fred
+xmas-fifth-day:
+calling-birds: four
+french-hens: 3
+golden-rings: 5
+partridges:
+count: 1
+location: "a pear tree"
+turtle-doves: two
+@endyaml
+[Ref. QA-15756, GH-1393]
+12.5
+Using (global) style
+12.5.1
+Without style (by default)
+@startyaml
+-
+name: Mark McGwire
+hr:
+65
+avg:
+0.278
+-
+name: Sammy Sosa
+hr:
+63
+PlantUML Language Reference Guide (1.2025.0)
+302 / 606
+
+
+12.5
+Using (global) style
+12
+DISPLAY YAML DATA
+avg:
+0.288
+@endyaml
+12.5.2
+With style
+You can use style to change rendering of elements.
+@startyaml
+<style>
+yamlDiagram {
+node {
+BackGroundColor lightblue
+LineColor lightblue
+FontName Helvetica
+FontColor red
+FontSize 18
+FontStyle bold
+BackGroundColor Khaki
+RoundCorner 0
+LineThickness 2
+LineStyle 10-5
+separator {
+LineThickness 0.5
+LineColor black
+LineStyle 1-5
+}
+}
+arrow {
+BackGroundColor lightblue
+LineColor green
+LineThickness 2
+LineStyle 2-5
+}
+}
+</style>
+-
+name: Mark McGwire
+hr:
+65
+avg:
+0.278
+-
+name: Sammy Sosa
+hr:
+63
+avg:
+0.288
+@endyaml
+PlantUML Language Reference Guide (1.2025.0)
+303 / 606
+
+
+12.6
+Creole on YAML
+12
+DISPLAY YAML DATA
+[Ref. QA-13123]
+12.6
+Creole on YAML
+You can use Creole or HTML Creole on YAML diagram:
+@startyaml
+Creole:
+wave: ~~wave~~
+bold: **bold**
+italics: //italics//
+monospaced: ""monospaced""
+stricken-out: --stricken-out--
+underlined: __underlined__
+not-underlined: ~__not underlined__
+wave-underlined: ~~wave-underlined~~
+HTML Creole:
+bold: <b>bold
+italics: <i>italics
+monospaced: <font:monospaced>monospaced
+stroked: <s>stroked
+underlined: <u>underlined
+waved: <w>waved
+green-stroked: <s:green>stroked
+red-underlined: <u:red>underlined
+blue-waved: <w:#0000FF>waved
+Blue: <color:blue>Blue
+Orange: <back:orange>Orange background
+big: <size:20>big
+Graphic:
+OpenIconic: account-login <&account-login>
+Unicode: This is <U+221E> long
+Emoji: <:calendar:> Calendar
+Image: <img:https://plantuml.com/logo3.png>
+@endyaml
+PlantUML Language Reference Guide (1.2025.0)
+304 / 606
+
+
+12.6
+Creole on YAML
+12
+DISPLAY YAML DATA
+PlantUML Language Reference Guide (1.2025.0)
+305 / 606

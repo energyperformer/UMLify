@@ -1,0 +1,128 @@
+{
+  "actors": [
+    {
+      "name": "Customer",
+      "description": "Places orders, provides feedback, and requests bills",
+      "type": "primary"
+    },
+    {
+      "name": "Hall Manager",
+      "description": "Manages tables, orders, and staff",
+      "type": "primary"
+    },
+    {
+      "name": "Head Chef",
+      "description": "Assigns dishes to chefs, marks dishes as cooked, and approves dish cancellations",
+      "type": "primary"
+    },
+    {
+      "name": "Chef",
+      "description": "Prepares dishes based on assignments",
+      "type": "primary"
+    },
+    {
+      "name": "Admin",
+      "description": "Manages menu items, inventory, and staff",
+      "type": "primary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "View Display Menu",
+      "description": "The system displays a list of available and unavailable dishes in the menu."
+    },
+    {
+      "name": "Manage Place Order",
+      "description": "The system allows customers to place orders."
+    },
+    {
+      "name": "Update Cancel or Edit Order",
+      "description": "The system enables customers to cancel or edit orders."
+    },
+    {
+      "name": "Manage Provide Feedback",
+      "description": "The system provides a feedback mechanism for customers."
+    },
+    {
+      "name": "Manage Request Bill",
+      "description": "The system allows customers to request bills."
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Customer",
+      "target": "Display Menu",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Place Order",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Cancel or Edit Order",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Provide Feedback",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Request Bill",
+      "type": "association"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Place Order",
+      "type": "association"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Cancel or Edit Order",
+      "type": "association"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Place Order",
+      "type": "association"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Cancel or Edit Order",
+      "type": "association"
+    },
+    {
+      "source": "Place Order",
+      "target": "Cancel or Edit Order",
+      "type": "include"
+    },
+    {
+      "source": "Chef",
+      "target": "View Display Menu",
+      "type": "association"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Place Order",
+      "type": "association"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Update Cancel or Edit Order",
+      "type": "association"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Provide Feedback",
+      "type": "association"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Request Bill",
+      "type": "association"
+    }
+  ]
+}

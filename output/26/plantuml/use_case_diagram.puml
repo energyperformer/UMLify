@@ -1,0 +1,59 @@
+@startumlleft to right direction
+
+actor Customer as "Customer\n(A person who places orders)"
+actor HeadChef as "Head Chef\n(The chef in charge of the kitchen)"
+actor Admin as "Admin\n(The system administrator)"
+actor HallManager as "Hall Manager\n(The manager of the dining hall)"
+actor Chef as "Chef\n(A kitchen staff member who prepares dishes)"
+
+rectangle System as "System" {
+  usecase "Place Order" as (Place Order)
+  usecase "Edit Order" as (Edit Order)
+  usecase "Cancel Order" as (Cancel Order)
+  usecase "Mark Dish as Cooked" as (Mark Dish as Cooked)
+  usecase "Request Bill" as (Request Bill)
+  usecase "Add Staff Member" as (Add Staff Member)
+  usecase "Edit Staff Member" as (Edit Staff Member)
+  usecase "Delete Staff Member" as (Delete Staff Member)
+  usecase "View Customer Help" as (View Customer Help)
+  usecase "View Chef Order Queue" as (View Chef Order Queue)
+  usecase "Provide Feedback" as (Provide Feedback)
+  usecase "Manage Staff" as (Manage Staff)
+  usecase "Manage Menu" as (Manage Menu)
+  usecase "Add Menu Item" as (Add Menu Item)
+  usecase "Edit Menu Item" as (Edit Menu Item)
+  usecase "Delete Menu Item" as (Delete Menu Item)
+}
+
+Customer -- (Place Order)
+Customer -- (Edit Order)
+Customer -- (Cancel Order)
+Customer -- (Request Bill)
+Customer -- (View Customer Help)
+Customer -- (Provide Feedback)
+
+HeadChef -- (Mark Dish as Cooked)
+HeadChef -- (View Chef Order Queue)
+
+Admin -- (Add Staff Member)
+Admin -- (Edit Staff Member)
+Admin -- (Delete Staff Member)
+Admin -- (Manage Staff)
+Admin -- (Manage Menu)
+Admin -- (Add Menu Item)
+Admin -- (Edit Menu Item)
+Admin -- (Delete Menu Item)
+
+HallManager -- (View Chef Order Queue)
+
+Chef -- (Mark Dish as Cooked)
+Chef -- (View Chef Order Queue)
+
+(Manage Staff) ..> (Add Staff Member) : includes
+(Manage Staff) ..> (Edit Staff Member) : includes
+(Manage Staff) ..> (Delete Staff Member) : includes
+
+(Manage Menu) ..> (Add Menu Item) : includes
+(Manage Menu) ..> (Edit Menu Item) : includes
+(Manage Menu) ..> (Delete Menu Item) : includes
+@enduml

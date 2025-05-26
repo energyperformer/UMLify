@@ -1,0 +1,158 @@
+{
+  "system": {
+    "name": "DineOut",
+    "description": "Restaurant management system for ordering and inventory management"
+  },
+  "actors": [
+    {
+      "name": "Customer",
+      "type": "primary/secondary",
+      "description": "Users who place orders and provide feedback"
+    },
+    {
+      "name": "Hall Manager",
+      "type": "primary/secondary",
+      "description": "Users who manage tables and mark bills as paid"
+    },
+    {
+      "name": "Head Chef",
+      "type": "primary/secondary",
+      "description": "Users who assign dishes to chefs and mark dishes as cooked"
+    },
+    {
+      "name": "Admin",
+      "type": "primary/secondary",
+      "description": "Users who manage menu items, inventory, and staff members"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "View Menu",
+      "description": "Displays a list of available and unavailable dishes to customers",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Place Order",
+      "description": "Allows customers to place orders and modify orders",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Notify Hall Manager",
+      "description": "Notifies hall managers of bill payments and order completions",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Menu and Inventory",
+      "description": "Allows admins to manage menu items, inventory, and staff members",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Staff",
+      "description": "Allows admins to manage staff members",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Make Payment",
+      "description": "Allows customers to make payments for orders",
+      "priority": "High"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Customer",
+      "target": "View Menu",
+      "type": "association",
+      "description": "Customers interact with the menu"
+    },
+    {
+      "source": "Customer",
+      "target": "Manage Place Order",
+      "type": "association",
+      "description": "Customers place orders"
+    },
+    {
+      "source": "Customer",
+      "target": "Manage Make Payment",
+      "type": "association",
+      "description": "Customers make payments"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Notify Hall Manager",
+      "type": "association",
+      "description": "Hall managers receive notifications"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Menu and Inventory",
+      "type": "association",
+      "description": "Admins manage menu and inventory"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Staff",
+      "type": "association",
+      "description": "Admins manage staff members"
+    },
+    {
+      "source": "Manage Place Order",
+      "target": "Manage Make Payment",
+      "type": "include",
+      "description": "Making payment is part of placing an order"
+    },
+    {
+      "source": "Manage Notify Hall Manager",
+      "target": "Manage Place Order",
+      "type": "extend",
+      "description": "Notifying hall managers is an optional behavior of order management"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage Menu and Inventory",
+      "type": "association",
+      "description": "The Head Chef is responsible for managing the menu and inventory of the hall."
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage Staff",
+      "type": "association",
+      "description": "The Head Chef is responsible for managing the staff in the hall."
+    },
+    {
+      "source": "Customer",
+      "target": "View Menu",
+      "type": "association",
+      "description": "Customers can view the menu of the hall."
+    },
+    {
+      "source": "Customer",
+      "target": "Manage Place Order",
+      "type": "association",
+      "description": "Customers can place orders from the menu."
+    },
+    {
+      "source": "Customer",
+      "target": "Manage Make Payment",
+      "type": "association",
+      "description": "Customers can make payments for their orders."
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Notify Hall Manager",
+      "type": "association",
+      "description": "The Hall Manager needs to be notified of certain events or updates."
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Menu and Inventory",
+      "type": "association",
+      "description": "The Admin can manage the menu and inventory of the hall."
+    },
+    {
+      "source": "Manage Place Order",
+      "target": "Manage Make Payment",
+      "type": "extend",
+      "description": "Placing an order may require making a payment, which is an extension of the order process."
+    }
+  ]
+}

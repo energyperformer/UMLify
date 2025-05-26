@@ -1,0 +1,47 @@
+@startuml
+title Use Case Diagram for System
+
+left to right direction
+
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+skinparam usecase {
+    BackgroundColor PaleGreen
+    BorderColor Green
+    ArrowColor Green
+}
+skinparam rectangle {
+    BackgroundColor LightBlue
+    BorderColor Blue
+}
+actor "Customer"
+actor "Head Chef"
+actor "Admin"
+actor "Hall Manager"
+actor "Chef"
+rectangle "System" {
+  usecase "Place Order"
+  usecase "Edit Order"
+  usecase "Cancel Order"
+  usecase "Mark Dish as Cooked"
+  usecase "Request Bill"
+  usecase "Add Staff Member"
+  usecase "Edit Staff Member"
+  usecase "Delete Staff Member"
+  usecase "View Customer Help"
+  usecase "View Chef Order Queue"
+  usecase "Provide Feedback"
+  usecase "Manage Staff"
+  usecase "Manage Menu"
+}
+  "Unnamed" -- "Unnamed"
+  "Unnamed" -- "Unnamed"
+  "Unnamed" -- "Unnamed"
+  "Unnamed" -- "Unnamed"
+  "Unnamed" -- "Unnamed"
+  "Unnamed" -- "Unnamed"
+  "Unnamed" -- "Unnamed"
+  "Unnamed" -- "Unnamed"
+  "Unnamed" ..> "Unnamed" : <<include>>
+  "Unnamed" ..> "Unnamed" : <<include>>
+@enduml

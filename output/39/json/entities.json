@@ -1,0 +1,169 @@
+{
+  "actors": [
+    {
+      "name": "Customer",
+      "description": "Places orders, gives feedback, and requests bills",
+      "type": "primary"
+    },
+    {
+      "name": "Hall Manager",
+      "description": "Responsible for managing tables, orders, and staff",
+      "type": "primary"
+    },
+    {
+      "name": "Head Chef",
+      "description": "Assigns dishes to chefs, marks dishes as cooked, and approves dish cancellations",
+      "type": "primary"
+    },
+    {
+      "name": "Chef",
+      "description": "Prepares dishes based on orders and queues",
+      "type": "primary"
+    },
+    {
+      "name": "Admin",
+      "description": "Manages menu items, inventory, and staff",
+      "type": "primary"
+    },
+    {
+      "name": "Staff",
+      "description": "Interacts with the system",
+      "type": "secondary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "Manage Place Order",
+      "description": "The system shows a list of cards of dishes, each with a picture and price. The system displays list of dishes, allows customer to select and add to order."
+    },
+    {
+      "name": "Update Cancel or Edit Order",
+      "description": "The system allows customers to cancel or edit orders. The system allows customer to cancel or edit order, updates order status."
+    },
+    {
+      "name": "Manage Give Feedback",
+      "description": "The system provides customers with the ability to give feedback. The system stores customer feedback."
+    },
+    {
+      "name": "Manage Request Bill",
+      "description": "The system allows customers to request bills. The system generates bill, prints to bill printer."
+    },
+    {
+      "name": "List of cards of",
+      "description": "The system shows a list of cards of dishes, each with a picture and price",
+      "priority": "High"
+    },
+    {
+      "name": "Edit orders",
+      "description": "The system allows customers to cancel or edit orders",
+      "priority": "High"
+    },
+    {
+      "name": "Manage The system provides customers",
+      "description": "The system provides customers with the ability to give feedback",
+      "priority": "High"
+    },
+    {
+      "name": "Manage The system allows customers to",
+      "description": "The system allows customers to request bills",
+      "priority": "High"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Customer",
+      "target": "Place Order",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Cancel or Edit Order",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Give Feedback",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Request Bill",
+      "type": "association"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Place Order",
+      "type": "association"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Place Order",
+      "type": "association"
+    },
+    {
+      "source": "Chef",
+      "target": "Place Order",
+      "type": "association"
+    },
+    {
+      "source": "Admin",
+      "target": "Place Order",
+      "type": "association"
+    },
+    {
+      "source": "Place Order",
+      "target": "Cancel or Edit Order",
+      "type": "include"
+    },
+    {
+      "source": "Place Order",
+      "target": "Give Feedback",
+      "type": "include"
+    },
+    {
+      "source": "Place Order",
+      "target": "Request Bill",
+      "type": "include"
+    },
+    {
+      "source": "Staff",
+      "target": "Manage Place Order",
+      "type": "association"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Update Cancel or Edit Order",
+      "type": "association"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Give Feedback",
+      "type": "association"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Request Bill",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "List of cards of",
+      "type": "association"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Edit orders",
+      "type": "association"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage The system provides customers",
+      "type": "association"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage The system allows customers to",
+      "type": "association"
+    }
+  ]
+}

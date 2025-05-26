@@ -1,0 +1,280 @@
+{
+  "introduction": {
+    "purpose": "The purpose of this software system is to digitalize restaurant management operations, including ordering and inventory management, and Point of Sale (POS).",
+    "scope": "This release of the software will deal with ordering and inventory management, with future versions potentially automating more areas.",
+    "definitions_acronyms_abbreviations": [
+      {
+        "term": "POS",
+        "definition": "Point of Sale"
+      },
+      {
+        "term": "Firebase",
+        "definition": "Cloud database for storing information"
+      }
+    ],
+    "references": [
+      {
+        "document_title": "Android User Interface",
+        "author": "Unknown",
+        "date": "Unknown",
+        "url": "Unknown"
+      },
+      {
+        "document_title": "IEEE Std 830-1998",
+        "author": "IEEE",
+        "date": "1998",
+        "url": "Unknown"
+      }
+    ],
+    "overview": "This SRS document outlines the requirements for the DineOut software system."
+  },
+  "overall_description": {
+    "product_perspective": "DineOut is a self-contained software system consisting of a mobile application and a Firebase database.",
+    "product_functions": [
+      "Place Order",
+      "Edit Order",
+      "Cancel Order",
+      "Mark Dish as Cooked",
+      "Request Bill",
+      "Customer Feedback",
+      "Add/Edit/Delete Staff Members",
+      "Add/Edit/Delete Menu Items"
+    ],
+    "user_characteristics": [
+      "Hall Manager",
+      "Customer",
+      "Head Chef",
+      "Admin",
+      "Chef"
+    ],
+    "constraints": [
+      "System must be compatible with Android version 6.0 or above",
+      "System must interact with a bill printer and credit card reader"
+    ],
+    "assumptions_dependencies": [
+      "System assumes tablets have enough resources to run the application",
+      "System depends on Firebase database for online storage"
+    ],
+    "apportioning_of_requirements": [
+      "Software: DineOut mobile application and Firebase database",
+      "Hardware: Tablets and bill printers",
+      "People: Hall Managers, Customers, Head Chefs, Admin, Chefs"
+    ]
+  },
+  "specific_requirements": {
+    "external_interface_requirements": {
+      "user_interfaces": [
+        "Customer Interface",
+        "Head Chef Interface",
+        "Hall Manager Interface",
+        "Admin Interface"
+      ],
+      "hardware_interfaces": [
+        "Bill Printer",
+        "Credit Card Reader",
+        "Central Screen in Kitchen"
+      ],
+      "software_interfaces": [
+        "Firebase Database"
+      ],
+      "communication_interfaces": [
+        "HTTP protocol for communication with Firebase"
+      ]
+    },
+    "functional_requirements": [
+      {
+        "id": "FR-001",
+        "description": "System shows a list of cards of dishes",
+        "inputs": [],
+        "processing": "System displays list of dishes",
+        "outputs": [
+          "List of dishes"
+        ],
+        "priority": "High",
+        "source": "Customer",
+        "dependencies": []
+      },
+      {
+        "id": "FR-002",
+        "description": "System allows customers to place orders",
+        "inputs": [
+          "Dish selection"
+        ],
+        "processing": "System processes order",
+        "outputs": [
+          "Order confirmation"
+        ],
+        "priority": "High",
+        "source": "Customer",
+        "dependencies": []
+      },
+      {
+        "id": "FR-003",
+        "description": "System allows head chefs to mark dishes as cooked",
+        "inputs": [
+          "Dish selection"
+        ],
+        "processing": "System updates dish status",
+        "outputs": [
+          "Dish status update"
+        ],
+        "priority": "High",
+        "source": "Head Chef",
+        "dependencies": []
+      },
+      {
+        "id": "FR-004",
+        "description": "System allows admin to add/edit/delete staff members",
+        "inputs": [
+          "Staff member information"
+        ],
+        "processing": "System updates staff member information",
+        "outputs": [
+          "Staff member information update"
+        ],
+        "priority": "High",
+        "source": "Admin",
+        "dependencies": []
+      },
+      {
+        "id": "FR-005",
+        "description": "System allows admin to add/edit/delete menu items",
+        "inputs": [
+          "Menu item information"
+        ],
+        "processing": "System updates menu item information",
+        "outputs": [
+          "Menu item information update"
+        ],
+        "priority": "High",
+        "source": "Admin",
+        "dependencies": []
+      }
+    ],
+    "performance_requirements": [
+      "System must be interactive with no immediate delays",
+      "System must display menu items within 2 seconds"
+    ],
+    "logical_database_requirements": [
+      "System must store order information in Firebase database",
+      "System must store menu item information in Firebase database"
+    ],
+    "design_constraints": {
+      "standards_compliance": [
+        "System must comply with Android version 6.0 or above"
+      ],
+      "hardware_limitations": [
+        "System must interact with bill printer and credit card reader"
+      ]
+    },
+    "software_system_attributes": {
+      "reliability": "System must be reliable and accurate",
+      "availability": "System must be available most of the time",
+      "security": "System must have proper login authentication and data encryption",
+      "maintainability": "System must be easy to repair and maintain",
+      "portability": "System must be able to run on different devices",
+      "usability": "System must have an easy-to-use interface"
+    }
+  },
+  "uml_metadata": {
+    "potential_use_cases": [
+      {
+        "name": "Manage give customers the ability to place",
+        "source": "raw_text_pattern",
+        "confidence": "high"
+      },
+      {
+        "name": "View show a list of cards",
+        "source": "raw_text_pattern",
+        "confidence": "high"
+      },
+      {
+        "name": "View show all available and unavailable dishes",
+        "source": "raw_text_pattern",
+        "confidence": "high"
+      },
+      {
+        "name": "Manage notify the hall manager that a",
+        "source": "raw_text_pattern",
+        "confidence": "high"
+      },
+      {
+        "name": "Manage give ability to the hall manager",
+        "source": "raw_text_pattern",
+        "confidence": "high"
+      },
+      {
+        "name": "Manage give customers the ability to give",
+        "source": "raw_text_pattern",
+        "confidence": "high"
+      },
+      {
+        "name": "Manage be interactive",
+        "source": "raw_text_pattern",
+        "confidence": "high"
+      },
+      {
+        "name": "Manage havea flexible font that can be",
+        "source": "raw_text_pattern",
+        "confidence": "high"
+      }
+    ],
+    "potential_relationships": [
+      {
+        "source": "Notification",
+        "target": "the table number of the Customer",
+        "type": "include",
+        "confidence": "medium"
+      },
+      {
+        "source": "The application uses Firebase database for online storage of information like orders and menu\nitems that",
+        "target": "to be in working state",
+        "type": "include",
+        "confidence": "medium"
+      },
+      {
+        "source": "The application",
+        "target": "Firebase database for online storage of information like orders and menu\nitems that needs to be in working state",
+        "type": "association",
+        "confidence": "medium"
+      },
+      {
+        "source": "Firebase",
+        "target": "HTTP protacol for\ncommunication",
+        "type": "association",
+        "confidence": "medium"
+      },
+      {
+        "source": "There would be a tab present at every table for customers which they",
+        "target": "to\ngive order",
+        "type": "association",
+        "confidence": "medium"
+      },
+      {
+        "source": "Hardware Interfaces\n\nOur system",
+        "target": "a hardware device directly",
+        "type": "association",
+        "confidence": "medium"
+      },
+      {
+        "source": "Software Interfaces\n\nFor Database services system",
+        "target": "to Firebase latest version released on October",
+        "type": "association",
+        "confidence": "medium"
+      },
+      {
+        "source": "System",
+        "target": "v",
+        "type": "association",
+        "confidence": "medium"
+      },
+      {
+        "source": "Only head\nchef",
+        "target": "the queues containing orders",
+        "type": "association",
+        "confidence": "medium"
+      }
+    ],
+    "domain": "e-commerce"
+  }
+}

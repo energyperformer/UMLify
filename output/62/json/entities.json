@@ -1,0 +1,161 @@
+{
+  "system": {
+    "name": "DineOut",
+    "description": "DineOut is an android application that aims to digitalize the process of various restaurant management operations including ordering and inventory management and POS."
+  },
+  "actors": [
+    {
+      "name": "Customer",
+      "type": "primary",
+      "description": "A customer who interacts with the DineOut system to place orders, request bills, and provide feedback."
+    },
+    {
+      "name": "Head Chef",
+      "type": "primary",
+      "description": "A head chef who assigns dishes to chefs, marks orders complete, and approves cancellations."
+    },
+    {
+      "name": "Chef",
+      "type": "primary",
+      "description": "A chef who views order queues and their status."
+    },
+    {
+      "name": "Admin",
+      "type": "primary",
+      "description": "An administrator who performs CRUD operations on staff members, menu items, and inventory."
+    },
+    {
+      "name": "Hall Manager",
+      "type": "primary",
+      "description": "A hall manager who marks bills as paid, notifies when orders are complete, and views/edits table status."
+    },
+    {
+      "name": "Firebase Database",
+      "type": "external-system",
+      "description": "An external system that stores orders and updates order status."
+    },
+    {
+      "name": "Manager's Interface",
+      "type": "external-system/hardware",
+      "description": "A hardware device or interface used by the manager to print bills."
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "Manage customer",
+      "description": "",
+      "priority": "Medium"
+    },
+    {
+      "name": "Manage head chef",
+      "description": "",
+      "priority": "Medium"
+    },
+    {
+      "name": "Manage chef",
+      "description": "",
+      "priority": "Medium"
+    },
+    {
+      "name": "Manage admin",
+      "description": "",
+      "priority": "Medium"
+    },
+    {
+      "name": "Manage hall manager",
+      "description": "",
+      "priority": "Medium"
+    },
+    {
+      "name": "Manage system",
+      "description": "",
+      "priority": "Medium"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Admin",
+      "target": "Manage customer",
+      "type": "association",
+      "description": "Admin performs CRUD operations on customers"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage head chef",
+      "type": "association",
+      "description": "Admin performs CRUD operations on head chefs"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage chef",
+      "type": "association",
+      "description": "Admin performs CRUD operations on chefs"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage hall manager",
+      "type": "association",
+      "description": "Admin performs CRUD operations on hall managers"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage system",
+      "type": "association",
+      "description": "Admin performs CRUD operations on system"
+    },
+    {
+      "source": "Customer",
+      "target": "Manage customer",
+      "type": "association",
+      "description": "Customer interacts with the system for their information"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage head chef",
+      "type": "association",
+      "description": "Head chef interacts with the system for their information"
+    },
+    {
+      "source": "Chef",
+      "target": "Manage chef",
+      "type": "association",
+      "description": "Chef interacts with the system for their information"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage hall manager",
+      "type": "association",
+      "description": "Hall manager interacts with the system for their information"
+    },
+    {
+      "source": "Manager's Interface",
+      "target": "Manage admin",
+      "type": "association",
+      "description": "The Manager's Interface is likely used by an admin to manage their account or perform administrative tasks."
+    },
+    {
+      "source": "Manager's Interface",
+      "target": "Manage system",
+      "type": "association",
+      "description": "The Manager's Interface might be used to manage overall system settings or configurations."
+    },
+    {
+      "source": "Firebase Database",
+      "target": "Manage customer",
+      "type": "include",
+      "description": "The Firebase Database likely stores customer information, so managing customers involves interacting with the database."
+    },
+    {
+      "source": "Firebase Database",
+      "target": "Manage admin",
+      "type": "include",
+      "description": "The Firebase Database might store admin information, so managing admins involves interacting with the database."
+    },
+    {
+      "source": "Manage admin",
+      "target": "Manage system",
+      "type": "include",
+      "description": "Managing admins might be part of managing the overall system."
+    }
+  ]
+}

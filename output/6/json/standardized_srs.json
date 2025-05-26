@@ -1,0 +1,82 @@
+{
+  "introduction": {
+    "purpose": "to integrate 3 faculties databases providing a web interface for users to access and manage the integrated inventory",
+    "scope": "the iufa application provides a web-based interface for users to access and manage the inventory",
+    "definitions": [
+      "unified university inventory system",
+      "technology-independent",
+      "business terminology"
+    ]
+  },
+  "system_overview": {
+    "description": "a unified university inventory system that allows users to access and manage the integrated inventory",
+    "features": [
+      "transferring assets",
+      "editing assets",
+      "adding inventory assets",
+      "creating requests",
+      "approving requests",
+      "authentication"
+    ]
+  },
+  "functional_requirements": {
+    "user_requirements": [
+      "users can create requests",
+      "users can edit assets",
+      "users can add inventory assets"
+    ],
+    "system_requirements": [
+      "system can transfer assets",
+      "system can edit assets",
+      "system can add inventory assets"
+    ]
+  },
+  "non_functional_requirements": {
+    "performance": [
+      "learning time is between 2 to 4 hours",
+      "system is available at working hours"
+    ],
+    "security": [
+      "all users are authenticated by username and password",
+      "permissions are assigned to users according to their roles"
+    ],
+    "usability": [
+      "web interface uses clear and consistent terminology",
+      "system is easy to use for users with basic experience"
+    ]
+  },
+  "use_cases": {
+    "actors": [
+      "inventory admin",
+      "user",
+      "authentication system"
+    ],
+    "descriptions": [
+      "modify use case",
+      "edit use case",
+      "add new asset use case",
+      "create request use case",
+      "returning asset use case"
+    ]
+  },
+  "system_interfaces": {
+    "user_interfaces": [
+      "web interface",
+      "search interface",
+      "report interface"
+    ],
+    "hardware_interfaces": [
+      "microsoft platform",
+      "unix platform"
+    ],
+    "software_interfaces": [
+      "ie browser",
+      "firefox browser",
+      "chrome browser"
+    ]
+  },
+  "constraints": [
+    "system must be available at working hours",
+    "system must be installed on microsoft or unix platform"
+  ]
+}

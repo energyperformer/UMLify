@@ -1,0 +1,223 @@
+{
+  "actors": [
+    {
+      "name": "inventory admin",
+      "description": "manages inventory assets",
+      "type": "primary"
+    },
+    {
+      "name": "user",
+      "description": "requests and views assets",
+      "type": "primary"
+    },
+    {
+      "name": "administrator",
+      "description": "oversees system operations",
+      "type": "primary"
+    },
+    {
+      "name": "web interface",
+      "description": "provides user interaction",
+      "type": "secondary"
+    },
+    {
+      "name": "servers",
+      "description": "hosts system data",
+      "type": "secondary"
+    },
+    {
+      "name": "databases",
+      "description": "stores system data",
+      "type": "secondary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "create request",
+      "description": "user submits a request for an asset",
+      "actors": [
+        "user"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "request is created"
+      ],
+      "main_flow": [
+        "user submits request",
+        "system validates request"
+      ],
+      "alternative_flows": [
+        "request is rejected"
+      ]
+    },
+    {
+      "name": "view requests",
+      "description": "user views their requests",
+      "actors": [
+        "user"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "requests are displayed"
+      ],
+      "main_flow": [
+        "user navigates to requests page",
+        "system displays requests"
+      ],
+      "alternative_flows": [
+        "no requests found"
+      ]
+    },
+    {
+      "name": "edit assets",
+      "description": "inventory admin updates asset information",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "inventory admin is authenticated"
+      ],
+      "postconditions": [
+        "asset information is updated"
+      ],
+      "main_flow": [
+        "inventory admin edits asset",
+        "system validates changes"
+      ],
+      "alternative_flows": [
+        "changes are rejected"
+      ]
+    },
+    {
+      "name": "view assets",
+      "description": "user views available assets",
+      "actors": [
+        "user"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "assets are displayed"
+      ],
+      "main_flow": [
+        "user navigates to assets page",
+        "system displays assets"
+      ],
+      "alternative_flows": [
+        "no assets found"
+      ]
+    },
+    {
+      "name": "modify asset",
+      "description": "inventory admin updates asset status",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "inventory admin is authenticated"
+      ],
+      "postconditions": [
+        "asset status is updated"
+      ],
+      "main_flow": [
+        "inventory admin updates asset status",
+        "system validates changes"
+      ],
+      "alternative_flows": [
+        "changes are rejected"
+      ]
+    },
+    {
+      "name": "approve request",
+      "description": "administrator approves a request",
+      "actors": [
+        "administrator"
+      ],
+      "preconditions": [
+        "administrator is authenticated"
+      ],
+      "postconditions": [
+        "request is approved"
+      ],
+      "main_flow": [
+        "administrator reviews request",
+        "administrator approves request"
+      ],
+      "alternative_flows": [
+        "request is rejected"
+      ]
+    },
+    {
+      "name": "return asset",
+      "description": "user returns an asset",
+      "actors": [
+        "user"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "asset is returned"
+      ],
+      "main_flow": [
+        "user returns asset",
+        "system updates asset status"
+      ],
+      "alternative_flows": [
+        "return is rejected"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "user",
+      "to": "create request",
+      "type": "association"
+    },
+    {
+      "from": "user",
+      "to": "view requests",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "edit assets",
+      "type": "association"
+    },
+    {
+      "from": "user",
+      "to": "view assets",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "modify asset",
+      "type": "association"
+    },
+    {
+      "from": "administrator",
+      "to": "approve request",
+      "type": "association"
+    },
+    {
+      "from": "user",
+      "to": "return asset",
+      "type": "association"
+    },
+    {
+      "from": "create request",
+      "to": "approve request",
+      "type": "include"
+    },
+    {
+      "from": "approve request",
+      "to": "return asset",
+      "type": "include"
+    }
+  ]
+}

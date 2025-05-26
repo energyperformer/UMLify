@@ -1,0 +1,115 @@
+{
+  "actors": [
+    {
+      "name": "Customer",
+      "description": "A person who places orders and provides feedback",
+      "type": "primary"
+    },
+    {
+      "name": "Head Chef",
+      "description": "A person responsible for managing kitchen operations",
+      "type": "primary"
+    },
+    {
+      "name": "Admin",
+      "description": "A person responsible for managing the system and staff",
+      "type": "primary"
+    },
+    {
+      "name": "Hall Manager",
+      "description": "A person responsible for managing the dining hall",
+      "type": "primary"
+    },
+    {
+      "name": "Chef",
+      "description": "A person responsible for cooking dishes",
+      "type": "primary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "Place Order",
+      "description": "Customer places an order"
+    },
+    {
+      "name": "Edit Order",
+      "description": "Customer or staff edit an existing order"
+    },
+    {
+      "name": "Cancel Order",
+      "description": "Customer or staff cancel an existing order"
+    },
+    {
+      "name": "Mark Dish as Cooked",
+      "description": "Chef marks a dish as cooked"
+    },
+    {
+      "name": "Request Bill",
+      "description": "Customer requests a bill"
+    },
+    {
+      "name": "Provide Feedback",
+      "description": "Customer provides feedback"
+    },
+    {
+      "name": "Manage Staff",
+      "description": "Admin adds, edits, or deletes staff members"
+    },
+    {
+      "name": "Manage Menu",
+      "description": "Admin adds, edits, or deletes menu items"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Customer",
+      "target": "Place Order",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Edit Order",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Cancel Order",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Request Bill",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Provide Feedback",
+      "type": "association"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Mark Dish as Cooked",
+      "type": "association"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Staff",
+      "type": "association"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Menu",
+      "type": "association"
+    },
+    {
+      "source": "Place Order",
+      "target": "Mark Dish as Cooked",
+      "type": "include"
+    },
+    {
+      "source": "Request Bill",
+      "target": "Place Order",
+      "type": "include"
+    }
+  ]
+}

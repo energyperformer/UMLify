@@ -1,0 +1,194 @@
+{
+  "introduction": {
+    "purpose": "The purpose of this software requirements specification is to detail the requirements for the DineOut restaurant management system, focusing on ordering and inventory management, with the goal of improving restaurant performance and customer satisfaction.",
+    "scope": "This specification covers the scope of the DineOut system, including its features, functionalities, and limitations, particularly in relation to ordering, inventory management, and point of sale (POS) capabilities.",
+    "definitions_acronyms_abbreviations": [
+      {
+        "term": "POS",
+        "definition": "Point of Sale, referring to the system's capability to manage transactions at the point of sale."
+      },
+      {
+        "term": "CRUD",
+        "definition": "Create, Read, Update, Delete, referring to the basic functions of persistent storage."
+      },
+      {
+        "term": "Firebase",
+        "definition": "A cloud-hosted database and backend service for Android developers."
+      }
+    ],
+    "references": [
+      {
+        "document_title": "Android User Interface",
+        "author": "Not Specified",
+        "date": "Not Specified",
+        "url": "Not Specified"
+      },
+      {
+        "document_title": "IEEE Std 830-1998",
+        "author": "IEEE Computer Society",
+        "date": "1998",
+        "url": "Not Specified"
+      }
+    ],
+    "overview": "This Software Requirements Specification (SRS) document provides a detailed overview of the DineOut system, including its purpose, scope, definitions, references, and an overview of the document's structure and content."
+  },
+  "overall_description": {
+    "product_perspective": "DineOut is a self-contained software system consisting of a mobile application and a Firebase database, designed to replace traditional manual ordering processes in restaurants.",
+    "product_functions": [
+      "Allow customers to place orders",
+      "Enable customers to cancel or edit orders",
+      "Provide a feedback mechanism for customers",
+      "Allow customers to request bills",
+      "Enable staff to manage orders and inventory"
+    ],
+    "user_characteristics": [
+      "Hall Manager: responsible for managing tables, orders, and staff",
+      "Customer: places orders, provides feedback, and requests bills",
+      "Head Chef: assigns dishes to chefs, marks dishes as cooked, and approves dish cancellations",
+      "Chef: receives orders, prepares dishes, and updates order status",
+      "Admin: manages menu items, inventory, and staff"
+    ],
+    "constraints": [
+      "System compatibility with Android version 6.0 or above",
+      "Device constraint: DineOut's core system and user interfaces should be compatible with tablets",
+      "Regulatory policies and safety violations"
+    ],
+    "assumptions_dependencies": [
+      "Assumption: the system will always be used on tablets with sufficient resources",
+      "Dependency: Firebase database for online storage of information"
+    ],
+    "apportioning_of_requirements": [
+      "Software: handles user interfaces, order management, and inventory control",
+      "Hardware: tablets and printers for bill generation",
+      "People: staff for order preparation and customer service",
+      "Other systems: Firebase database for data storage"
+    ]
+  },
+  "specific_requirements": {
+    "external_interface_requirements": {
+      "user_interfaces": [
+        "Customer Interface: allows customers to place orders, provide feedback, and request bills",
+        "Head Chef Interface: allows head chefs to assign dishes, mark dishes as cooked, and approve cancellations",
+        "Hall Manager Interface: allows hall managers to view orders, mark bills as paid, and manage tables",
+        "Admin Interface: allows admins to manage menu items, inventory, and staff"
+      ],
+      "hardware_interfaces": [
+        "Bill printer for generating hard copies of bills",
+        "Credit card reader for payment processing"
+      ],
+      "software_interfaces": [
+        "Firebase database for online storage of information"
+      ],
+      "communication_interfaces": [
+        "HTTP protocol for communication with Firebase"
+      ]
+    },
+    "functional_requirements": [
+      {
+        "id": "FR-001",
+        "description": "The system displays a list of available and unavailable dishes in the menu.",
+        "inputs": [
+          "User selection of dishes"
+        ],
+        "processing": "System retrieves menu data from Firebase database",
+        "outputs": [
+          "List of dishes with prices"
+        ],
+        "priority": "High",
+        "source": "Customer Interface",
+        "dependencies": [
+          "FR-002"
+        ]
+      },
+      {
+        "id": "FR-002",
+        "description": "The system allows customers to place orders.",
+        "inputs": [
+          "Customer selection of dishes and quantities"
+        ],
+        "processing": "System processes order data and updates Firebase database",
+        "outputs": [
+          "Order confirmation"
+        ],
+        "priority": "High",
+        "source": "Customer Interface",
+        "dependencies": [
+          "FR-001"
+        ]
+      },
+      {
+        "id": "FR-003",
+        "description": "The system enables customers to cancel or edit orders.",
+        "inputs": [
+          "Customer request to cancel or edit order"
+        ],
+        "processing": "System updates order status in Firebase database",
+        "outputs": [
+          "Order update confirmation"
+        ],
+        "priority": "High",
+        "source": "Customer Interface",
+        "dependencies": [
+          "FR-002"
+        ]
+      },
+      {
+        "id": "FR-004",
+        "description": "The system provides a feedback mechanism for customers.",
+        "inputs": [
+          "Customer feedback"
+        ],
+        "processing": "System stores feedback in Firebase database",
+        "outputs": [
+          "Feedback confirmation"
+        ],
+        "priority": "High",
+        "source": "Customer Interface",
+        "dependencies": [
+          "FR-002"
+        ]
+      },
+      {
+        "id": "FR-005",
+        "description": "The system allows customers to request bills.",
+        "inputs": [
+          "Customer request for bill"
+        ],
+        "processing": "System generates bill and prints it using bill printer",
+        "outputs": [
+          "Bill print confirmation"
+        ],
+        "priority": "High",
+        "source": "Customer Interface",
+        "dependencies": [
+          "FR-002"
+        ]
+      }
+    ],
+    "performance_requirements": [
+      "System response time should be less than 2 seconds for menu scrolling",
+      "Order placement should be visible to head chefs in less than 1 second"
+    ],
+    "logical_database_requirements": [
+      "Data entities: orders, menu items, inventory, staff",
+      "Data relationships: orders-menu items, inventory-staff",
+      "Data integrity: ensure data consistency and accuracy"
+    ],
+    "design_constraints": {
+      "standards_compliance": [
+        "Android compatibility standards"
+      ],
+      "hardware_limitations": [
+        "Tablet compatibility with DineOut system"
+      ]
+    },
+    "software_system_attributes": {
+      "reliability": "The system should be able to recover from failures and ensure data integrity.",
+      "availability": "The system should be available 24/7 with minimal downtime.",
+      "security": "The system should ensure secure data transmission and storage.",
+      "maintainability": "The system should be easy to maintain and update.",
+      "portability": "The system should be compatible with different devices and platforms.",
+      "usability": "The system should be user-friendly and intuitive."
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@startuml
+!theme plain
+skinparam actorStyle awesome
+skinparam actorBorderColor black
+skinparam actorBackgroundColor white
+skinparam actorFontStyle bold
+skinparam actorFontSize 14
+skinparam usecase {
+    BackgroundColor<< Main >> LightGreen
+    BorderColor<< Main >> DarkGreen
+    BackgroundColor<< Secondary >> LightBlue
+    BorderColor<< Secondary >> DarkBlue
+    BackgroundColor<< Include >> LightYellow
+    BorderColor<< Include >> DarkYellow
+    BackgroundColor<< Extend >> LightPink
+    BorderColor<< Extend >> DarkPink
+    FontStyle bold
+    FontSize 12
+}
+skinparam arrow {
+    Color black
+    FontStyle bold
+    FontSize 12
+}
+skinparam rectangle {
+    BorderColor black
+    BackgroundColor white
+    FontStyle bold
+    FontSize 14
+}
+rectangle "Inventory Management System" {
+  usecase "transfer assets" as transferassets <<Main>>
+users --> createrequest : ASSOCIATION
+users --> editassets : ASSOCIATION
+users --> addinventoryassets : ASSOCIATION
+inventoryadmin --> approverequests : ASSOCIATION
+inventoryadmin --> editassets : ASSOCIATION
+authenticationsystem --> users : ASSOCIATION
+association --> transferassets : ASSOCIATION
+}
+@enduml

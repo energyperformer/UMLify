@@ -1,0 +1,62 @@
+@startumltitle DineOut System Use Case Diagram
+left to right direction
+skinparam actorStyle awesome
+skinparam usecaseStyle oval
+skinparam packageStyle rectangle
+
+actor "Customer"
+actor "Hall Manager"
+actor "Head Chef"
+actor "Chef"
+actor "Admin"
+
+rectangle "DineOut" {
+  usecase "Manage Place Order"
+  usecase "Edit Order"
+  usecase "Manage Provide Feedback"
+  usecase "Manage Request Bill"
+  usecase "Manage Ask for Help"
+  usecase "Manage Assign Orders"
+  usecase "View Dish Queues"
+  usecase "Manage Staff"
+  usecase "Manage Menu"
+  usecase "Manage Inventory"
+  usecase "Manage Mark Order Complete"
+  usecase "Manage Approve Cancellation"
+  usecase "Manage Mark Bill Paid"
+  usecase "Manage Tables"
+  usecase "Manage Notify Order Completion"
+  usecase "Manage Assign Orders to Chefs"
+  usecase "View New Orders"
+  usecase "Manage Mark Dish Prepared"
+  usecase "Manage Print Bill"
+
+  "Customer" --> "Manage Place Order"
+  "Customer" --> "Edit Order"
+  "Customer" --> "Manage Provide Feedback"
+  "Customer" --> "Manage Request Bill"
+  "Customer" --> "Manage Ask for Help"
+  "Hall Manager" --> "Manage Mark Bill Paid"
+  "Hall Manager" --> "Manage Tables"
+  "Hall Manager" --> "Manage Notify Order Completion"
+  "Hall Manager" --> "Manage Print Bill"
+  "Head Chef" --> "Manage Assign Orders"
+  "Head Chef" --> "Manage Assign Orders to Chefs"
+  "Head Chef" --> "Manage Mark Order Complete"
+  "Head Chef" --> "Manage Approve Cancellation"
+  "Head Chef" --> "Manage Mark Dish Prepared"
+  "Chef" --> "View Dish Queues"
+  "Chef" --> "View New Orders"
+  "Admin" --> "Manage Staff"
+  "Admin" --> "Manage Menu"
+  "Admin" --> "Manage Inventory"
+  
+  "Manage Place Order" ..> "Manage Assign Orders" : <<include>>
+  "Manage Place Order" ..> "Manage Mark Order Complete" : <<include>>
+  "Manage Request Bill" ..> "Manage Mark Bill Paid" : <<include>>
+  "Manage Assign Orders" ..> "View New Orders" : <<include>>
+  "Manage Mark Order Complete" ..> "Manage Notify Order Completion" : <<include>>
+  "Manage Approve Cancellation" ..> "Manage Mark Order Complete" : <<extend>>
+  "Manage Print Bill" ..> "Manage Mark Bill Paid" : <<extend>>
+}
+@enduml

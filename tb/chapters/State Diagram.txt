@@ -1,0 +1,837 @@
+9
+STATE DIAGRAM
+9
+State Diagram
+State diagrams provide a visual representation of the various states a system or an object can be in,
+as well as the transitions between those states. They are essential in modeling the dynamic behavior of
+systems, capturing how they respond to different events over time. State diagrams depict the system’s
+life cycle, making it easier to understand, design, and optimize its behavior.
+Using PlantUML to create state diagrams offers several advantages:
+• Text-Based Language: Quickly define and visualize the states and transitions without the hassle
+of manual drawing.
+• Eﬀiciency and Consistency: Ensure streamlined diagram creation and easy version control.
+• Versatility: Integrate with various documentation platforms and support multiple output formats.
+• Open-Source & Community Support: Backed by a strong community that continuously
+contributes to its enhancements and offers invaluable resources.
+9.1
+Simple State
+You can use [*] for the starting point and ending point of the state diagram.
+Use --> for arrows.
+@startuml
+[*] --> State1
+State1 --> [*]
+State1 : this is a string
+State1 : this is another string
+State1 -> State2
+State2 --> [*]
+@enduml
+9.2
+Change state rendering
+You can use hide empty description to render state as simple box.
+@startuml
+hide empty description
+[*] --> State1
+State1 --> [*]
+State1 : this is a string
+State1 : this is another string
+State1 -> State2
+State2 --> [*]
+PlantUML Language Reference Guide (1.2025.0)
+231 / 606
+
+
+9.3
+Composite state
+9
+STATE DIAGRAM
+@enduml
+9.3
+Composite state
+A state can also be composite. You have to define it using the state keywords and brackets.
+9.3.1
+Internal sub-state
+@startuml
+scale 350 width
+[*] --> NotShooting
+state NotShooting {
+[*] --> Idle
+Idle --> Configuring : EvConfig
+Configuring --> Idle : EvConfig
+}
+state Configuring {
+[*] --> NewValueSelection
+NewValueSelection --> NewValuePreview : EvNewValue
+NewValuePreview --> NewValueSelection : EvNewValueRejected
+NewValuePreview --> NewValueSelection : EvNewValueSaved
+state NewValuePreview {
+State1 -> State2
+}
+}
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+232 / 606
+
+
+9.3
+Composite state
+9
+STATE DIAGRAM
+9.3.2
+Sub-state to sub-state
+@startuml
+state A {
+state X {
+}
+state Y {
+}
+}
+state B {
+state Z {
+}
+}
+X --> Z
+Z --> Y
+@enduml
+[Ref. QA-3300]
+@startuml
+PlantUML Language Reference Guide (1.2025.0)
+233 / 606
+
+
+9.4
+Long name
+9
+STATE DIAGRAM
+state A.X
+state A.Y
+state B.Z
+X --> Z
+Z --> Y
+@enduml
+9.4
+Long name
+You can also use the state keyword to use long description for states.
+@startuml
+scale 600 width
+[*] -> State1
+State1 --> State2 : Succeeded
+State1 --> [*] : Aborted
+State2 --> State3 : Succeeded
+State2 --> [*] : Aborted
+state State3 {
+state "Accumulate Enough Data\nLong State Name" as long1
+long1 : Just a test
+[*] --> long1
+long1 --> long1 : New Data
+long1 --> ProcessData : Enough Data
+}
+State3 --> State3 : Failed
+State3 --> [*] : Succeeded / Save Result
+State3 --> [*] : Aborted
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+234 / 606
+
+
+9.5
+History [[H], [H*]]
+9
+STATE DIAGRAM
+9.5
+History [[H], [H*]]
+You can use [H] for the history and [H*] for the deep history of a substate.
+@startuml
+[*] -> State1
+State1 --> State2 : Succeeded
+State1 --> [*] : Aborted
+State2 --> State3 : Succeeded
+State2 --> [*] : Aborted
+state State3 {
+state "Accumulate Enough Data" as long1
+long1 : Just a test
+[*] --> long1
+long1 --> long1 : New Data
+long1 --> ProcessData : Enough Data
+State2 --> [H]: Resume
+}
+State3 --> State2 : Pause
+State2 --> State3[H*]: DeepResume
+State3 --> State3 : Failed
+State3 --> [*] : Succeeded / Save Result
+State3 --> [*] : Aborted
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+235 / 606
+
+
+9.6
+Fork [fork, join]
+9
+STATE DIAGRAM
+9.6
+Fork [fork, join]
+You can also fork and join using the <<fork>> and <<join>> stereotypes.
+@startuml
+state fork_state <<fork>>
+[*] --> fork_state
+fork_state --> State2
+fork_state --> State3
+state join_state <<join>>
+State2 --> join_state
+State3 --> join_state
+join_state --> State4
+State4 --> [*]
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+236 / 606
+
+
+9.7
+Concurrent state [–, ||]
+9
+STATE DIAGRAM
+9.7
+Concurrent state [–, ||]
+You can define concurrent state into a composite state using either -- or || symbol as separator.
+9.7.1
+Horizontal separator --
+@startuml
+[*] --> Active
+state Active {
+[*] -> NumLockOff
+NumLockOff --> NumLockOn : EvNumLockPressed
+NumLockOn --> NumLockOff : EvNumLockPressed
+--
+[*] -> CapsLockOff
+CapsLockOff --> CapsLockOn : EvCapsLockPressed
+CapsLockOn --> CapsLockOff : EvCapsLockPressed
+--
+[*] -> ScrollLockOff
+ScrollLockOff --> ScrollLockOn : EvScrollLockPressed
+ScrollLockOn --> ScrollLockOff : EvScrollLockPressed
+}
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+237 / 606
+
+
+9.7
+Concurrent state [–, ||]
+9
+STATE DIAGRAM
+9.7.2
+Vertical separator ||
+@startuml
+[*] --> Active
+state Active {
+[*] -> NumLockOff
+NumLockOff --> NumLockOn : EvNumLockPressed
+NumLockOn --> NumLockOff : EvNumLockPressed
+||
+[*] -> CapsLockOff
+CapsLockOff --> CapsLockOn : EvCapsLockPressed
+CapsLockOn --> CapsLockOff : EvCapsLockPressed
+||
+[*] -> ScrollLockOff
+ScrollLockOff --> ScrollLockOn : EvScrollLockPressed
+ScrollLockOn --> ScrollLockOff : EvScrollLockPressed
+}
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+238 / 606
+
+
+9.8
+Conditional [choice]
+9
+STATE DIAGRAM
+[Ref. QA-3086]
+9.8
+Conditional [choice]
+The stereotype <<choice>> can be used to use conditional state.
+@startuml
+state "Req(Id)" as ReqId <<sdlreceive>>
+state "Minor(Id)" as MinorId
+state "Major(Id)" as MajorId
+state c <<choice>>
+Idle --> ReqId
+ReqId --> c
+c --> MinorId : [Id <= 10]
+c --> MajorId : [Id > 10]
+@enduml
+9.9
+Stereotypes full example [start, choice, fork, join, end, history, history*]
+9.9.1
+Start, choice, fork, join, end
+@startuml
+PlantUML Language Reference Guide (1.2025.0)
+239 / 606
+
+
+9.9
+Stereotypes full example [start, choice, fork, join, end, history, history*]
+9
+STATE DIAGRAM
+state start1
+<<start>>
+state choice1 <<choice>>
+state fork1
+<<fork>>
+state join2
+<<join>>
+state end3
+<<end>>
+[*]
+--> choice1 : from start\nto choice
+start1
+--> choice1 : from start stereo\nto choice
+choice1 --> fork1
+: from choice\nto fork
+choice1 --> join2
+: from choice\nto join
+choice1 --> end3
+: from choice\nto end stereo
+fork1
+---> State1 : from fork\nto state
+fork1
+--> State2
+: from fork\nto state
+State2
+--> join2
+: from state\nto join
+State1
+--> [*]
+: from state\nto end
+join2
+--> [*]
+: from join\nto end
+@enduml
+[Ref. QA-404, QA-1159 and GH-887]
+PlantUML Language Reference Guide (1.2025.0)
+240 / 606
+
+
+9.10
+Point [entryPoint, exitPoint]
+9
+STATE DIAGRAM
+9.9.2
+History, history*
+@startuml
+state A {
+state s1 as "Start 1" <<start>>
+state s2 as "H 2" <<history>>
+state s3 as "H 3" <<history*>>
+}
+@enduml
+[Ref. QA-16824]
+9.9.3
+Minimal example with all stereotypes
+@startuml
+state start1
+<<start>>
+state choice1 <<choice>>
+state fork1
+<<fork>>
+state join2
+<<join>>
+state end3
+<<end>>
+state sdlreceive <<sdlreceive>>
+state history <<history>>
+state history2 <<history*>>
+@enduml
+[Ref. QA-19174]
+9.10
+Point [entryPoint, exitPoint]
+You can add point with <<entryPoint>> and <<exitPoint>> stereotypes:
+@startuml
+state Somp {
+state entry1 <<entryPoint>>
+state entry2 <<entryPoint>>
+state sin
+entry1 --> sin
+entry2 -> sin
+sin -> sin2
+sin2 --> exitA <<exitPoint>>
+}
+[*] --> entry1
+exitA --> Foo
+Foo1 -> entry2
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+241 / 606
+
+
+9.11
+Pin [inputPin, outputPin]
+9
+STATE DIAGRAM
+9.11
+Pin [inputPin, outputPin]
+You can add pin with <<inputPin>> and <<outputPin>> stereotypes:
+@startuml
+state Somp {
+state entry1 <<inputPin>>
+state entry2 <<inputPin>>
+state sin
+entry1 --> sin
+entry2 -> sin
+sin -> sin2
+sin2 --> exitA <<outputPin>>
+}
+[*] --> entry1
+exitA --> Foo
+Foo1 -> entry2
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+242 / 606
+
+
+9.12
+Expansion [expansionInput, expansionOutput]
+9
+STATE DIAGRAM
+[Ref. QA-4309]
+9.12
+Expansion [expansionInput, expansionOutput]
+You can add expansion with <<expansionInput>> and <<expansionOutput>> stereotypes:
+@startuml
+state Somp {
+state entry1 <<expansionInput>>
+state entry2 <<expansionInput>>
+state sin
+entry1 --> sin
+entry2 -> sin
+sin -> sin2
+sin2 --> exitA <<expansionOutput>>
+}
+[*] --> entry1
+exitA --> Foo
+Foo1 -> entry2
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+243 / 606
+
+
+9.13
+Arrow direction
+9
+STATE DIAGRAM
+[Ref. QA-4309]
+9.13
+Arrow direction
+You can use -> for horizontal arrows. It is possible to force arrow’s direction using the following syntax:
+• -down-> or -->
+• -right-> or -> (default arrow)
+• -left->
+• -up->
+@startuml
+[*] -up-> First
+First -right-> Second
+Second --> Third
+Third -left-> Last
+@enduml
+You can shorten the arrow definition by using only the first character of the direction (for example, -d-
+instead of -down-) or the two first characters (-do-).
+Please note that you should not abuse this functionality : Graphviz gives usually good results without
+tweaking.
+PlantUML Language Reference Guide (1.2025.0)
+244 / 606
+
+
+9.14
+Change line color and style
+9
+STATE DIAGRAM
+9.14
+Change line color and style
+You can change line color and/or line style.
+@startuml
+State S1
+State S2
+S1 -[#DD00AA]-> S2
+S1 -left[#yellow]-> S3
+S1 -up[#red,dashed]-> S4
+S1 -right[dotted,#blue]-> S5
+X1 -[dashed]-> X2
+Z1 -[dotted]-> Z2
+Y1 -[#blue,bold]-> Y2
+@enduml
+[Ref. Incubation: Change line color in state diagrams]
+9.15
+Note
+You can also define notes using note left of, note right of, note top of, note bottom of key-
+words.
+You can also define notes on several lines.
+@startuml
+[*] --> Active
+Active --> Inactive
+note left of Active : this is a short\nnote
+note right of Inactive
+A note can also
+be defined on
+several lines
+end note
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+245 / 606
+
+
+9.16
+Note on link
+9
+STATE DIAGRAM
+You can also have floating notes.
+@startuml
+state foo
+note "This is a floating note" as N1
+@enduml
+9.16
+Note on link
+You can put notes on state-transition or link, with note on link keyword.
+@startuml
+[*] -> State1
+State1 --> State2
+note on link
+this is a state-transition note
+end note
+@enduml
+9.17
+More in notes
+You can put notes on composite states.
+@startuml
+[*] --> NotShooting
+state "Not Shooting State" as NotShooting {
+state "Idle mode" as Idle
+state "Configuring mode" as Configuring
+PlantUML Language Reference Guide (1.2025.0)
+246 / 606
+
+
+9.18
+Inline color
+9
+STATE DIAGRAM
+[*] --> Idle
+Idle --> Configuring : EvConfig
+Configuring --> Idle : EvConfig
+}
+note right of NotShooting : This is a note on a composite state
+@enduml
+9.18
+Inline color
+@startuml
+state CurrentSite #pink {
+state HardwareSetup #lightblue {
+state Site #brown
+Site -[hidden]-> Controller
+Controller -[hidden]-> Devices
+}
+state PresentationSetup{
+Groups -[hidden]-> PlansAndGraphics
+}
+state Trends #FFFF77
+state Schedule #magenta
+state AlarmSupression
+}
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+247 / 606
+
+
+9.19
+Skinparam
+9
+STATE DIAGRAM
+[Ref. QA-1812]
+9.19
+Skinparam
+You can use the skinparam command to change colors and fonts for the drawing.
+You can use this command :
+• In the diagram definition, like any other commands,
+• In an included file,
+• In a configuration file, provided in the command line or the Ant task.
+You can define specific color and fonts for stereotyped states.
+@startuml
+skinparam backgroundColor LightYellow
+skinparam state {
+StartColor MediumBlue
+EndColor Red
+BackgroundColor Peru
+BackgroundColor<<Warning>> Olive
+BorderColor Gray
+FontName Impact
+}
+[*] --> NotShooting
+state "Not Shooting State" as NotShooting {
+state "Idle mode" as Idle <<Warning>>
+state "Configuring mode" as Configuring
+[*] --> Idle
+Idle --> Configuring : EvConfig
+Configuring --> Idle : EvConfig
+}
+NotShooting --> [*]
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+248 / 606
+
+
+9.20
+Changing style
+9
+STATE DIAGRAM
+9.19.1
+Test of all specific skinparam to State Diagrams
+@startuml
+skinparam State {
+AttributeFontColor blue
+AttributeFontName serif
+AttributeFontSize
+9
+AttributeFontStyle italic
+BackgroundColor palegreen
+BorderColor violet
+EndColor gold
+FontColor red
+FontName Sanserif
+FontSize 15
+FontStyle bold
+StartColor silver
+}
+state A : a a a\na
+state B : b b b\nb
+[*] -> A
+: start
+A -> B : a2b
+B -> [*] : end
+@enduml
+9.20
+Changing style
+You can change style.
+@startuml
+PlantUML Language Reference Guide (1.2025.0)
+249 / 606
+
+
+9.20
+Changing style
+9
+STATE DIAGRAM
+<style>
+stateDiagram {
+BackgroundColor Peru
+'LineColor Gray
+FontName Impact
+FontColor Red
+arrow {
+FontSize 13
+LineColor Blue
+}
+}
+</style>
+[*] --> NotShooting
+state "Not Shooting State" as NotShooting {
+state "Idle mode" as Idle <<Warning>>
+state "Configuring mode" as Configuring
+[*] --> Idle
+Idle --> Configuring : EvConfig
+Configuring --> Idle : EvConfig
+}
+NotShooting --> [*]
+@enduml
+@startuml
+<style>
+diamond {
+BackgroundColor #palegreen
+LineColor #green
+LineThickness 2.5
+}
+</style>
+state state1
+PlantUML Language Reference Guide (1.2025.0)
+250 / 606
+
+
+9.21
+Change state color and style (inline style)
+9
+STATE DIAGRAM
+state state2
+state choice1 <<choice>>
+state end3
+<<end>>
+state1
+--> choice1 : 1
+choice1 --> state2
+: 2
+choice1 --> end3
+: 3
+@enduml
+[Ref. GH-880]
+9.21
+Change state color and style (inline style)
+You can change the color or style of individual state using the following notation:
+• #color ##[style]color
+With background color first (#color), then line style and line color (##[style]color ).
+@startuml
+state FooGradient #red-green ##00FFFF
+state FooDashed #red|green ##[dashed]blue {
+}
+state FooDotted ##[dotted]blue {
+}
+state FooBold ##[bold] {
+}
+state Foo1 ##[dotted]green {
+state inner1 ##[dotted]yellow
+}
+state out ##[dotted]gold
+state Foo2 ##[bold]green {
+state inner2 ##[dotted]yellow
+}
+inner1 -> inner2
+out -> inner2
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+251 / 606
+
+
+9.22
+Alias
+9
+STATE DIAGRAM
+[Ref. QA-1487]
+• #color;line:color;line.[bold|dashed|dotted];text:color
+TODO: FIXME ￿text:color seems not to be taken into account TODO: FIXME
+@startuml
+@startuml
+state FooGradient #red-green;line:00FFFF
+state FooDashed #red|green;line.dashed;line:blue {
+}
+state FooDotted #line.dotted;line:blue {
+}
+state FooBold #line.bold {
+}
+state Foo1 #line.dotted;line:green {
+state inner1 #line.dotted;line:yellow
+}
+state out #line.dotted;line:gold
+state Foo2 #line.bold;line:green {
+state inner2 #line.dotted;line:yellow
+}
+inner1 -> inner2
+out -> inner2
+@enduml
+@enduml
+@startuml
+state s1 : s1 description
+state s2 #pink;line:red;line.bold;text:red : s2 description
+state s3 #palegreen;line:green;line.dashed;text:green : s3 description
+state s4 #aliceblue;line:blue;line.dotted;text:blue
+: s4 description
+@enduml
+[Adapted from QA-3770]
+9.22
+Alias
+With State you can use alias, like:
+@startuml
+state alias1
+PlantUML Language Reference Guide (1.2025.0)
+252 / 606
+
+
+9.23
+Display JSON Data on State diagram
+9
+STATE DIAGRAM
+state "alias2"
+state "long name" as alias3
+state alias4 as "long name"
+alias1 : ""state alias1""
+alias2 : ""state "alias2"""
+alias3 : ""state "long name" as alias3""
+alias4 : ""state alias4 as "long name"""
+alias1 -> alias2
+alias2 -> alias3
+alias3 -> alias4
+@enduml
+or:
+@startuml
+state alias1 : ""state alias1""
+state "alias2" : ""state "alias2"""
+state "long name" as alias3 : ""state "long name" as alias3""
+state alias4 as "long name" : ""state alias4 as "long name"""
+alias1 -> alias2
+alias2 -> alias3
+alias3 -> alias4
+@enduml
+[Ref. QA-1748, QA-14560]
+9.23
+Display JSON Data on State diagram
+9.23.1
+Simple example
+@startuml
+state "A" as stateA
+state "C" as stateC {
+state B
+}
+json jsonJ {
+"fruit":"Apple",
+"size":"Large",
+"color": ["Red", "Green"]
+}
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+253 / 606
+
+
+9.24
+State description
+9
+STATE DIAGRAM
+[Ref. QA-17275]
+For another example, see on JSON page.
+9.24
+State description
+You can add description to a state or to a composite state.
+@startuml
+hide empty description
+state s0
+state "This is the State 1" as s1 {
+s1: State description
+state s2
+state s3: long descr.
+state s4
+s4: long descr.
+}
+[*] -> s0
+s0 --> s2
+s2 -> s3
+s3 -> s4
+@enduml
+[Ref. QA-16719]
+9.25
+Style for Nested State Body
+@startuml
+<style>
+.foo {
+state,stateBody {
+BackGroundColor lightblue;
+}
+}
+</style>
+state MainState <<foo>> {
+state SubA
+PlantUML Language Reference Guide (1.2025.0)
+254 / 606
+
+
+9.25
+Style for Nested State Body
+9
+STATE DIAGRAM
+}
+@enduml
+[Ref. QA-16774]
+PlantUML Language Reference Guide (1.2025.0)
+255 / 606

@@ -1,0 +1,94 @@
+{
+  "system": {
+    "name": "DineOut",
+    "description": "DineOut is an Android application designed to automate restaurant management tasks such as ordering, inventory management, and bill generation. It aims to improve restaurant performance by reducing paperwork, minimizing human error, and balancing workload during peak hours. The system includes a mobile application for various user roles and a Firebase database for storing order and inventory information."
+  },
+  "actors": [
+    {
+      "name": "Customer",
+      "type": "primary",
+      "description": "Users who place orders, request bills, and provide feedback. They initiate interactions with the system for ordering and feedback purposes."
+    },
+    {
+      "name": "Hall Manager",
+      "type": "primary",
+      "description": "Manages tables, marks bills as paid, and receives notifications for completed orders and customer help requests. They are responsible for table and bill management within the system."
+    },
+    {
+      "name": "Head Chef",
+      "type": "primary",
+      "description": "Assigns dishes to chefs, marks dishes as cooked, and approves order cancellations. They oversee the order preparation process and manage cancellations."
+    },
+    {
+      "name": "Admin",
+      "type": "primary",
+      "description": "Manages the inventory, staff members, and menu items. They handle the administrative tasks related to inventory, staff, and menu management."
+    },
+    {
+      "name": "Chef",
+      "type": "secondary",
+      "description": "Prepares dishes based on the orders assigned by the head chef. They are responsible for the actual preparation of dishes as per the assigned orders."
+    },
+    {
+      "name": "Firebase Database",
+      "type": "external-system",
+      "description": "An external system that stores order and inventory information. It interacts with the DineOut system for data storage and retrieval."
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "Manage Operations",
+      "description": "Allows restaurant managers to oversee and control various aspects of restaurant operations.",
+      "priority": "High"
+    },
+    {
+      "name": "Manage Interact With Services",
+      "description": "Enables customers to engage with the restaurant's services, such as ordering food or making reservations.",
+      "priority": "High"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Customer",
+      "target": "Manage Interact With Services",
+      "type": "association",
+      "description": "Customers interact with the system to order food or make reservations."
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Manage Operations",
+      "type": "association",
+      "description": "Hall Managers oversee and control various aspects of restaurant operations."
+    },
+    {
+      "source": "Head Chef",
+      "target": "Manage Operations",
+      "type": "association",
+      "description": "Head Chefs oversee the order preparation process and manage cancellations."
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Operations",
+      "type": "association",
+      "description": "Admins handle administrative tasks related to inventory, staff, and menu management."
+    },
+    {
+      "source": "Chef",
+      "target": "Manage Operations",
+      "type": "association",
+      "description": "Chefs prepare dishes based on the orders assigned by the head chef."
+    },
+    {
+      "source": "Firebase Database",
+      "target": "Manage Operations",
+      "type": "association",
+      "description": "The external system interacts with the DineOut system for data storage and retrieval related to operations."
+    },
+    {
+      "source": "Firebase Database",
+      "target": "Manage Interact With Services",
+      "type": "association",
+      "description": "The external system interacts with the DineOut system for data storage and retrieval related to customer interactions."
+    }
+  ]
+}

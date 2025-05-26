@@ -1,0 +1,41 @@
+@startuml
+title Use Case Diagram for DineOut
+
+left to right direction
+
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+skinparam usecase {
+    BackgroundColor PaleGreen
+    BorderColor Green
+    ArrowColor Green
+}
+skinparam rectangle {
+    BackgroundColor LightBlue
+    BorderColor Blue
+}
+actor "Customer"
+actor "Hall Manager"
+actor "Head Chef"
+actor "Admin"
+actor "Chef"
+actor "Firebase Database"
+rectangle "DineOut" {
+  usecase "Manage Operations"
+  usecase "Manage Interact With Services"
+}
+  "Customer" --> "Manage Interact With Services"
+  "Hall Manager" --> "Manage Operations"
+  "Head Chef" --> "Manage Operations"
+  "Admin" --> "Manage Operations"
+  "Chef" --> "Manage Operations"
+  "Firebase Database" --> "Manage Operations"
+  "Firebase Database" --> "Manage Interact With Services"
+  "Unnamed" -- "Unnamed": Customers interact with the system to order food or make reservations.
+  "Unnamed" -- "Unnamed": Hall Managers oversee and control various aspects of restaurant operations.
+  "Unnamed" -- "Unnamed": Head Chefs oversee the order preparation process and manage cancellations.
+  "Unnamed" -- "Unnamed": Admins handle administrative tasks related to inventory, staff, and menu management.
+  "Unnamed" -- "Unnamed": Chefs prepare dishes based on the orders assigned by the head chef.
+  "Unnamed" -- "Unnamed": The external system interacts with the DineOut system for data storage and retrieval related to operations.
+  "Unnamed" -- "Unnamed": The external system interacts with the DineOut system for data storage and retrieval related to customer interactions.
+@enduml

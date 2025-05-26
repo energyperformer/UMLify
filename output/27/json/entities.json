@@ -1,0 +1,136 @@
+{
+  "actors": [
+    {
+      "name": "Customer",
+      "description": "A person who places orders",
+      "type": "primary"
+    },
+    {
+      "name": "Head Chef",
+      "description": "The chef responsible for managing kitchen operations",
+      "type": "primary"
+    },
+    {
+      "name": "Admin",
+      "description": "The administrator of the dineout application",
+      "type": "primary"
+    },
+    {
+      "name": "Hall Manager",
+      "description": "The manager responsible for managing the dining hall",
+      "type": "primary"
+    },
+    {
+      "name": "Chef",
+      "description": "A chef who prepares dishes",
+      "type": "primary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "Place Order",
+      "description": "Customer places an order"
+    },
+    {
+      "name": "Edit Order",
+      "description": "Customer or staff edit an existing order"
+    },
+    {
+      "name": "Cancel Order",
+      "description": "Customer or staff cancel an existing order"
+    },
+    {
+      "name": "Mark Dish as Cooked",
+      "description": "Chef marks a dish as cooked"
+    },
+    {
+      "name": "Request Bill",
+      "description": "Customer requests the bill"
+    },
+    {
+      "name": "Manage Inventory",
+      "description": "Admin manages inventory and ordering information"
+    },
+    {
+      "name": "Add/Edit/Delete Staff Members",
+      "description": "Admin adds, edits, or deletes staff members"
+    }
+  ],
+  "relationships": [
+    {
+      "source": "Customer",
+      "target": "Place Order",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Edit Order",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Cancel Order",
+      "type": "association"
+    },
+    {
+      "source": "Customer",
+      "target": "Request Bill",
+      "type": "association"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Mark Dish as Cooked",
+      "type": "association"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Edit Order",
+      "type": "association"
+    },
+    {
+      "source": "Head Chef",
+      "target": "Cancel Order",
+      "type": "association"
+    },
+    {
+      "source": "Admin",
+      "target": "Manage Inventory",
+      "type": "association"
+    },
+    {
+      "source": "Admin",
+      "target": "Add/Edit/Delete Staff Members",
+      "type": "association"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Edit Order",
+      "type": "association"
+    },
+    {
+      "source": "Hall Manager",
+      "target": "Cancel Order",
+      "type": "association"
+    },
+    {
+      "source": "Chef",
+      "target": "Mark Dish as Cooked",
+      "type": "association"
+    },
+    {
+      "source": "Place Order",
+      "target": "Edit Order",
+      "type": "include"
+    },
+    {
+      "source": "Place Order",
+      "target": "Cancel Order",
+      "type": "include"
+    },
+    {
+      "source": "Place Order",
+      "target": "Request Bill",
+      "type": "include"
+    }
+  ]
+}

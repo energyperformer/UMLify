@@ -1,0 +1,265 @@
+4
+OBJECT DIAGRAM
+4
+Object Diagram
+An object diagram is a graphical representation that showcases objects and their relationships at a
+specific moment in time. It provides a snapshot of the system’s structure, capturing the static view of
+the instances present and their associations.
+PlantUML offers a simple and intuitive way to create object diagrams using plain text.
+Its user-
+friendly syntax allows for quick diagram creation without the need for complex GUI tools. Moreover,
+the PlantUML forum provides a platform for users to discuss, share, and seek assistance, fostering a
+collaborative community. By choosing PlantUML, users benefit from both the eﬀiciency of markdown-
+based diagramming and the support of an active community.
+4.1
+Definition of objects
+You define instances of objects using the object keyword.
+@startuml
+object firstObject
+object "My Second Object" as o2
+@enduml
+4.2
+Relations between objects
+Relations between objects are defined using the following symbols :
+Type
+Symbol
+Purpose
+Extension
+<|--
+Specialization of a class in a hierarchy
+Implementation
+<|..
+Realization of an interface by a class
+Composition
+*--
+The part cannot exist without the whole
+Aggregation
+o--
+The part can exist independently of the whole
+Dependency
+-->
+The object uses another object
+Dependency
+..>
+A weaker form of dependency
+It is possible to replace -- by .. to have a dotted line.
+Knowing those rules, it is possible to draw the following drawings.
+It is possible a add a label on the relation, using : followed by the text of the label.
+For cardinality, you can use double-quotes "" on each side of the relation.
+@startuml
+object Object01
+object Object02
+object Object03
+object Object04
+object Object05
+object Object06
+object Object07
+object Object08
+Object01 <|-- Object02
+Object03 *-- Object04
+Object05 o-- "4" Object06
+Object07 .. Object08 : some labels
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+105 / 606
+
+
+4.3
+Associations objects
+4
+OBJECT DIAGRAM
+4.3
+Associations objects
+@startuml
+object o1
+object o2
+diamond dia
+object o3
+o1
+--> dia
+o2
+--> dia
+dia --> o3
+@enduml
+4.4
+Adding fields
+To declare fields, you can use the symbol : followed by the field’s name.
+@startuml
+object user
+user : name = "Dummy"
+user : id = 123
+@enduml
+It is also possible to group all fields between brackets {}.
+@startuml
+object user {
+name = "Dummy"
+id = 123
+}
+PlantUML Language Reference Guide (1.2025.0)
+106 / 606
+
+
+4.5
+Common features with class diagrams
+4
+OBJECT DIAGRAM
+@enduml
+4.5
+Common features with class diagrams
+• Hide attributes, methods...
+• Defines notes
+• Use packages
+• Skin the output
+4.6
+Map table or associative array
+You can define a map table or associative array, with map keyword and => separator.
+@startuml
+map CapitalCity {
+UK => London
+USA => Washington
+Germany => Berlin
+}
+@enduml
+@startuml
+map "Map **Contry => CapitalCity**" as CC {
+UK => London
+USA => Washington
+Germany => Berlin
+}
+@enduml
+@startuml
+map "map: Map<Integer, String>" as users {
+1 => Alice
+2 => Bob
+3 => Charlie
+}
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+107 / 606
+
+
+4.6
+Map table or associative array
+4
+OBJECT DIAGRAM
+And add link with object.
+@startuml
+object London
+map CapitalCity {
+UK *-> London
+USA => Washington
+Germany => Berlin
+}
+@enduml
+@startuml
+object London
+object Washington
+object Berlin
+object NewYork
+map CapitalCity {
+UK *-> London
+USA *--> Washington
+Germany *---> Berlin
+}
+NewYork --> CapitalCity::USA
+@enduml
+[Ref. #307]
+PlantUML Language Reference Guide (1.2025.0)
+108 / 606
+
+
+4.6
+Map table or associative array
+4
+OBJECT DIAGRAM
+@startuml
+package foo {
+object baz
+}
+package bar {
+map A {
+b *-> foo.baz
+c =>
+}
+}
+A::c --> foo
+@enduml
+[Ref. QA-12934]
+@startuml
+object Foo
+map Bar {
+abc=>
+def=>
+}
+object Baz
+Bar::abc --> Baz : Label one
+Foo --> Bar::def : Label two
+@enduml
+PlantUML Language Reference Guide (1.2025.0)
+109 / 606
+
+
+4.7
+Program (or project) evaluation and review technique (PERT) with map 4
+OBJECT DIAGRAM
+[Ref. #307]
+4.7
+Program (or project) evaluation and review technique (PERT) with map
+You can use map table in order to make Program (or project) evaluation and review technique (PERT)
+diagram.
+@startuml PERT
+left to right direction
+' Horizontal lines: -->, <--, <-->
+' Vertical lines: ->, <-, <->
+title PERT: Project Name
+map Kick.Off {
+}
+map task.1 {
+Start => End
+}
+map task.2 {
+Start => End
+}
+map task.3 {
+Start => End
+}
+map task.4 {
+Start => End
+}
+map task.5 {
+Start => End
+}
+Kick.Off --> task.1 : Label 1
+Kick.Off --> task.2 : Label 2
+Kick.Off --> task.3 : Label 3
+task.1 --> task.4
+task.2 --> task.4
+task.3 --> task.4
+task.4 --> task.5 : Label 4
+@enduml
+[Ref. QA-12337]
+PlantUML Language Reference Guide (1.2025.0)
+110 / 606
+
+
+4.8
+Display JSON Data on Class or Object diagram
+4
+OBJECT DIAGRAM
+4.8
+Display JSON Data on Class or Object diagram
+4.8.1
+Simple example
+@startuml
+class Class
+object Object
+json JSON {
+"fruit":"Apple",
+"size":"Large",
+"color": ["Red", "Green"]
+}
+@enduml
+[Ref. QA-15481]
+For another example, see on JSON page.
+PlantUML Language Reference Guide (1.2025.0)
+111 / 606

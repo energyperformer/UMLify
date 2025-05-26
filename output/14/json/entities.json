@@ -1,0 +1,203 @@
+{
+  "actors": [
+    {
+      "name": "inventory admin",
+      "description": "manages inventory and assets",
+      "type": "primary"
+    },
+    {
+      "name": "users",
+      "description": "accesses and manages inventory",
+      "type": "primary"
+    },
+    {
+      "name": "administrators",
+      "description": "manages system and user accounts",
+      "type": "primary"
+    },
+    {
+      "name": "databases",
+      "description": "provides data storage and retrieval",
+      "type": "secondary"
+    },
+    {
+      "name": "servers",
+      "description": "hosts system and provides infrastructure",
+      "type": "secondary"
+    },
+    {
+      "name": "browsers",
+      "description": "provides user interface to access system",
+      "type": "secondary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "create request",
+      "description": "users create requests for assets",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "request is created and stored"
+      ],
+      "main_flow": [
+        "user submits request",
+        "system stores request"
+      ],
+      "alternative_flows": [
+        "user cancels request"
+      ]
+    },
+    {
+      "name": "modify asset",
+      "description": "inventory admin modifies asset information",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "asset exists",
+        "admin is authenticated"
+      ],
+      "postconditions": [
+        "asset information is updated"
+      ],
+      "main_flow": [
+        "admin submits changes",
+        "system updates asset"
+      ],
+      "alternative_flows": [
+        "admin cancels changes"
+      ]
+    },
+    {
+      "name": "approve request",
+      "description": "administrators approve or reject user requests",
+      "actors": [
+        "administrators"
+      ],
+      "preconditions": [
+        "request exists",
+        "admin is authenticated"
+      ],
+      "postconditions": [
+        "request is approved or rejected"
+      ],
+      "main_flow": [
+        "admin reviews request",
+        "admin approves or rejects request"
+      ],
+      "alternative_flows": [
+        "admin requests more information"
+      ]
+    },
+    {
+      "name": "return asset",
+      "description": "users return assets to inventory",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "asset is borrowed",
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "asset is returned and updated"
+      ],
+      "main_flow": [
+        "user submits return request",
+        "system updates asset"
+      ],
+      "alternative_flows": [
+        "user cancels return request"
+      ]
+    },
+    {
+      "name": "view asset information",
+      "description": "users view asset information",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "asset exists",
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "user views asset information"
+      ],
+      "main_flow": [
+        "user searches for asset",
+        "system displays asset information"
+      ],
+      "alternative_flows": [
+        "user cancels search"
+      ]
+    },
+    {
+      "name": "generate report",
+      "description": "system generates reports for administrators",
+      "actors": [
+        "administrators"
+      ],
+      "preconditions": [
+        "data exists",
+        "admin is authenticated"
+      ],
+      "postconditions": [
+        "report is generated and displayed"
+      ],
+      "main_flow": [
+        "admin requests report",
+        "system generates report"
+      ],
+      "alternative_flows": [
+        "admin cancels report request"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "users",
+      "to": "create request",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "modify asset",
+      "type": "association"
+    },
+    {
+      "from": "administrators",
+      "to": "approve request",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "return asset",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "view asset information",
+      "type": "association"
+    },
+    {
+      "from": "administrators",
+      "to": "generate report",
+      "type": "association"
+    },
+    {
+      "from": "create request",
+      "to": "approve request",
+      "type": "include"
+    },
+    {
+      "from": "modify asset",
+      "to": "view asset information",
+      "type": "include"
+    }
+  ]
+}

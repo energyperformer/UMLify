@@ -1,0 +1,168 @@
+{
+  "actors": [
+    {
+      "name": "inventory admin",
+      "description": "manages inventory and assets",
+      "type": "primary"
+    },
+    {
+      "name": "users",
+      "description": "access and manage inventory",
+      "type": "primary"
+    },
+    {
+      "name": "administrators",
+      "description": "manage system and user permissions",
+      "type": "primary"
+    },
+    {
+      "name": "database servers",
+      "description": "store and manage data",
+      "type": "secondary"
+    },
+    {
+      "name": "authentication system",
+      "description": "authenticate users",
+      "type": "secondary"
+    }
+  ],
+  "use_cases": [
+    {
+      "name": "modify asset",
+      "description": "update asset information",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "asset exists"
+      ],
+      "postconditions": [
+        "asset updated"
+      ],
+      "main_flow": [
+        "update asset info",
+        "save changes"
+      ],
+      "alternative_flows": [
+        "cancel changes"
+      ]
+    },
+    {
+      "name": "create request",
+      "description": "create a new request for an asset",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "user is authenticated"
+      ],
+      "postconditions": [
+        "request created"
+      ],
+      "main_flow": [
+        "fill request form",
+        "submit request"
+      ],
+      "alternative_flows": [
+        "cancel request"
+      ]
+    },
+    {
+      "name": "approve request",
+      "description": "approve a request for an asset",
+      "actors": [
+        "inventory admin"
+      ],
+      "preconditions": [
+        "request exists"
+      ],
+      "postconditions": [
+        "request approved"
+      ],
+      "main_flow": [
+        "review request",
+        "approve request"
+      ],
+      "alternative_flows": [
+        "reject request"
+      ]
+    },
+    {
+      "name": "return asset",
+      "description": "return an asset to the inventory",
+      "actors": [
+        "users"
+      ],
+      "preconditions": [
+        "asset is borrowed"
+      ],
+      "postconditions": [
+        "asset returned"
+      ],
+      "main_flow": [
+        "return asset",
+        "update asset status"
+      ],
+      "alternative_flows": [
+        "report issue"
+      ]
+    },
+    {
+      "name": "change permissions",
+      "description": "update user permissions",
+      "actors": [
+        "administrators"
+      ],
+      "preconditions": [
+        "user exists"
+      ],
+      "postconditions": [
+        "permissions updated"
+      ],
+      "main_flow": [
+        "update user permissions",
+        "save changes"
+      ],
+      "alternative_flows": [
+        "cancel changes"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "inventory admin",
+      "to": "modify asset",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "create request",
+      "type": "association"
+    },
+    {
+      "from": "inventory admin",
+      "to": "approve request",
+      "type": "association"
+    },
+    {
+      "from": "users",
+      "to": "return asset",
+      "type": "association"
+    },
+    {
+      "from": "administrators",
+      "to": "change permissions",
+      "type": "association"
+    },
+    {
+      "from": "create request",
+      "to": "approve request",
+      "type": "include"
+    },
+    {
+      "from": "approve request",
+      "to": "return asset",
+      "type": "include"
+    }
+  ]
+}

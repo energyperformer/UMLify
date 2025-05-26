@@ -1,0 +1,39 @@
+@startuml
+title Inventory Management System
+actor "inventory admin" as ia
+actor "users" as u
+actor "administrators" as ad
+actor "databases" as db
+actor "servers" as s
+actor "browsers" as b
+actor "operating systems" as os
+
+usecase "create request" as cr
+usecase "edit asset" as ea
+usecase "modify asset" as ma
+usecase "add new asset" as ana
+usecase "create new location" as cnl
+usecase "return asset" as ra
+usecase "approve request" as ar
+usecase "change permissions" as cp
+usecase "generate reports" as gr
+
+rectangle "Inventory Management System" as sys {
+  ia -- cr
+  ia -- ea
+  ia -- ma
+  ia -- ana
+  ia -- cnl
+  ia -- gr
+  u -- cr
+  u -- ra
+  ad -- ar
+  ad -- cp
+  ad -- gr
+}
+
+db -- sys
+s -- sys
+b -- sys
+os -- sys
+@enduml

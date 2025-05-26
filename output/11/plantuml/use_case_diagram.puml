@@ -1,0 +1,20 @@
+@startuml
+!theme plain
+skinparam actorStyle awesome
+skinparam usecase {
+    BackgroundColor<< Main >> YellowGreen
+    BorderColor<< Main >> DarkGreen
+    BackgroundColor<< Secondary >> LightBlue
+    BorderColor<< Secondary >> DarkBlue
+}
+rectangle "Inventory Management System" {
+actor "faculties databases" as facultiesdatabases
+users --> createrequest : ASSOCIATION
+users --> editasset : ASSOCIATION
+inventoryadmin --> approverequest : ASSOCIATION
+users --> authenticateuser : ASSOCIATION
+authenticationsystem --> authenticateuser : ASSOCIATION
+createrequest --> approverequest : INCLUDE
+editasset --> transferasset : EXTEND
+}
+@enduml
